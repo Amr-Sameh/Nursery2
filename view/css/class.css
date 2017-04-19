@@ -1,0 +1,56 @@
+.uk-nav-divider
+{
+    margin-left:20px;
+    margin-right: 20px;
+
+}
+.subject,.post,.students,.Timetable{
+    background-image: url("../images/LTKzaRz5c.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+.post{
+    background-image: url("../images/5f30bc5f26206f40f0b14b47777a3ca1.jpg");
+    background-position: 0% 100%;
+}
+.students{
+    background-image: url("../images/paint-splash-colors-design-paint-spray-drops.jpg");
+}
+.uk-carde{
+    margin: auto;
+}
+.Timetable{
+    background-image: url("../images/Colorsplash.png");
+    background-position: right;
+}
+.comment{
+    border-bottom: 1px solid black;
+}
+.uk-card-default
+{
+    margin-top: 20px;
+}
+.cata{
+    position: fixed;
+    left: 0px;
+    top: 45%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    line-height: 0px;
+    padding: 5px;
+    text-align: center;
+    background-color: #f8f8f8;
+}
+
+.newPost{resize: none;
+    width: 100%;
+    padding: 20px;
+    border: 0px;
+    display:block;}
+
+
+@media (max-width: 450px) {
+    .m-scroll{overflow-x: scroll}
+}

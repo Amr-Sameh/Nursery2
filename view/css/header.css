@@ -1,0 +1,147 @@
+.fake{
+height: 100px;
+    width: 100%;
+display: block;
+}
+
+.navbar-default{
+    margin-bottom: 0px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+
+/*search icon*/
+.fa-search {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    margin-top: 3px;
+    font-size: 25px;
+    margin-left: 25px;
+
+}
+.fa-search:hover {
+    border-bottom: 2px solid black;
+    cursor: pointer;
+}
+/*logo part */
+
+
+.logo{
+max-width: 330px;
+    margin-top: -10px;
+
+}
+@media (max-width: 900px) {
+    .logo{
+
+       max-width: 280px;
+    }
+}
+@media (max-width: 768px) {
+    .logo{
+
+        margin-top: -5px;
+    }
+    .fake{
+        height: 80px;
+    }
+}
+
+
+/* nav colers*/
+.navbar-default .navbar-nav > li:nth-child(1) > a{
+    color: #2590da;
+}
+.navbar-default .navbar-nav > li:nth-child(2) > a{
+    color: #de0000;
+}
+.navbar-default .navbar-nav > li:nth-child(3) > a{
+    color: #9bcc2e;
+}
+.navbar-default .navbar-nav > li:nth-child(4) > a{
+    color: #effd00;
+}
+
+
+
+/* nav hover */
+.navbar-nav > li > a{
+    line-height: 10px;
+    font-weight:bolder;
+
+}
+.navbar-default .navbar-nav > li a:hover{
+    color: white;
+}
+.navbar-default .navbar-nav > li > .login-link{
+    background: none;
+    border: none;
+    margin-top: 10px;
+    font-weight: bolder;
+}
+
+.navbar-default .navbar-nav > li > .login-link:hover{
+    color: #a73b8d;
+}
+
+
+
+
+.navbar-nav > li{
+    margin-top: 20px;
+
+}
+/*nav dropdown*/
+.navbar-nav > li > .dropdown-menu{
+    left: 0px;;
+}
+
+.dropdown-menu{
+display: none;
+}
+
+
+
+/*search*/
+
+.search-btn{
+    background: none;
+    border: none;
+}
+
+
+/*nav form*/
+nav form{
+   display: none;
+}
+
+
+@media (min-width: 768px) {
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
+
+@media (min-width: 768px) {
+    nav{
+        height: 70px;
+    }
+    .fake{
+        height: 100px;
+    }
+}
+
+
+/*active nav */
+.active-navbar
+{
+    background-color: #2e6da4;
+
+}
+.navbar-default .navbar-nav > li.active-navbar > a {
+    color: white;
+}
+
+
+
+/* some classes for */

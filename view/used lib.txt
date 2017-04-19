@@ -1,0 +1,17 @@
+<<<<<<< HEAD
+bootstrap
+wow
+jquery
+fontawesome
+||||||| merged common ancestors
+bootstrap
+wow
+jquery
+fontawesome
+=======
+********* LIB ************
+bootstrap
+wow
+jquery
+fontawesome
+>>>>>>> mostafa
