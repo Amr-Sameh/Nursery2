@@ -296,11 +296,10 @@ foreach ($listofposts as $post){  ?>
     </div>
 </div>
  <footer>
-     <script src="jq/jquery-1.12.3.min.js"></script>
-     <script src="jq/bootstrap.min.js"></script>
-     <script src="jq/uikit.min.js"></script>
-     <script src="jq/uikit-icons.min.js"></script>
-     <script src="jq/class.js"></script>
+     <script src="js/jquery-3.1.1.min.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     <script src="js/uikit.min.js"></script>
+     <script src="js/uikit-icons.min.js"></script>
  </footer>
 </div>
 </body>
