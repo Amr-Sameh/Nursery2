@@ -9,23 +9,16 @@
  * @TODO "USe AjAx to POST"
  */
 
-include_once 'static/db_connect.php' ;
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
 
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-   $sql_stat=$con->prepare("SELECT username , pass FROM user  WHERE username='$username' AND pass='$password'");
-   $sql_stat->execute();
-   $count =$sql_stat->rowCount();
-   if($count==1){
-       echo 'welcome ';
-      header('location: '.$_SERVER['HTTP_REFERER']);
-   }
-   else{
-       echo 'hramy';
-   }
+   include_once '../classes/user.php';
+   $user=new user();
+   $user->login($username,$password);
+
 }
 include_once 'static/header.php';
 
