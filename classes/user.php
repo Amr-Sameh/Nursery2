@@ -42,8 +42,10 @@ class user
         if($this->user_query->check_exist($id,$pass)){
 
             $user_info=$this->user_query->get_user_by_id($id);
+            $_SESSION['user_type']=$user_info['group_id'];
+            $_SESSION['user_id']=$user_info['id'];
 
-                //TODO decide the user type and creat his object
+
             //TODO decide what's better cockies or sessien
             //TODO Move to app main page
             return true;

@@ -37,9 +37,9 @@ include_once 'navbar.php'
                 $pre_flag="active";
                 $pre=$_SERVER['PHP_SELF']."?page=".($_GET['page']-1);
             }
-            if($_GET['page']==$page_num){
+            if($_GET['page']==intval($page_num)){
                 $next_flag="disabled";
-                $next=$_SERVER['PHP_SELF']."?page=".$page_num;
+                $next=$_SERVER['PHP_SELF']."?page=".intval($page_num);
 
             }else{
                 $next_flag="active";
