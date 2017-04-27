@@ -107,30 +107,39 @@ if(!isset($_GET['action']))
 
 
 
-
+<a   href="class.php">jfhslfkdlkjf</a>
 
 
 </div>
 
-    <button class="uk-button uk-margin-small-right cata uk-box-shadow-hover-xlarge "  type="button" uk-toggle="target: #offcanvas-push"><a   class="uk-slidenav-large" uk-slidenav-next></a></button>
+        <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-push">Push</button>
 
-    <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
-        <div class="uk-offcanvas-bar uk-flex uk-flex-column">
-            <button class="uk-offcanvas-close" type="button" uk-close></button>
-            <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical" uk-switcher="connect: #classAtrbiut; animation: uk-animation-fade; toggle: > :not(.uk-nav-header)">
-                <li><a  >Home</a>
-                    <p class="uk-heading-divider"></p></li>
-                <li class="uk-parent">
-                    <a>fuck amr</a>
-                    <p class="uk-heading-divider"></p></li>
-                <li><a  >Students</a>
-                    <p class="uk-heading-divider"></p></li>
-                <li><a  >TimeTable</a></li>
-            </ul>
+        <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
+            <div class="uk-offcanvas-bar uk-flex uk-flex-column">
 
+                <button class="uk-offcanvas-close" type="button" uk-close></button>
+                <div class="uk-width-1-2@s uk-margin-auto uk-nav-center uk-margin-auto-vertical" >
+                    <ul class="uk-nav-primary uk-nav-parent-icon " uk-nav>
+                        <li class="uk-active"><a href="#">Active</a></li>
+                        <li class="uk-parent">
+                            <a href="#">Parent</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">Sub item</a></li>
+                                <li><a href="#">Sub item</a></li>
+                            </ul>
+                        </li>
+                        <li class="uk-parent">
+                            <a href="#">Parent</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">Sub item</a></li>
+                                <li><a href="#">Sub item</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="class.php">Item</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-
-
     </div>
 <?php
 include_once 'static/footer.php';
