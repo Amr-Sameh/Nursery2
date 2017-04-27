@@ -11,7 +11,8 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/login.js"></script>
 <script src="js/home.js"></script>
-
+<script src="js/uikit.min.js"></script>
+<script src="js/uikit-icons.min.js"></script>
 <script src="js/nav.js"></script>
 
 </body>

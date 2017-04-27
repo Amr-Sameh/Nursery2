@@ -1,18 +1,4 @@
 <?php
-<<<<<<< HEAD
-include_once 'database.php';
-class user_query
-{
-
-private $db;
-
-
-public function __construct()
-{
-    $this->db= new database();
-}
-	function
-=======
 
 require_once("database.php"); 
 
@@ -180,5 +166,4 @@ return $return;
 }
 T
 
->>>>>>> 3cccb8c86be8ffaa876f088a3444403206081716
 }
