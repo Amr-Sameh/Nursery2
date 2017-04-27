@@ -24,6 +24,7 @@ $id='s';
     <link rel="stylesheet" href="css/hover.css">
     <link rel="stylesheet" href="css/event.css">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/panel.css">
 
 </head>
 <body>
