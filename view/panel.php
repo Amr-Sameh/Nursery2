@@ -31,7 +31,16 @@ if(!isset($_GET['action']))
 
 
 
+    <!-- This is an anchor toggling the off-canvas sidebar -->
+    <a href="#my-id" data-uk-offcanvas>...</a>
 
+    <!-- This is a button toggling the off-canvas sidebar -->
+    <button class="uk-button" data-uk-offcanvas="{target:'#my-id'}">...</button>
+
+    <!-- This is the off-canvas sidebar -->
+    <div id="my-id" class="uk-offcanvas">
+        <div class="uk-offcanvas-bar">...</div>
+    </div>
 
     <!--start left  nav-->
 
