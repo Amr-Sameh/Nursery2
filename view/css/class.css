@@ -1,3 +1,6 @@
+html{
+   min-height: 100vh;
+}
 .uk-nav-divider
 {
     margin-left:20px;
@@ -10,6 +13,14 @@
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+    min-height: 100vh;
+}
+.wordwrap{
+    white-space: -moz-pre-wrap; /* Firefox */
+    white-space: -o-pre-wrap; /* newer Opera */
+    white-space: pre-wrap; /* Chrome; W3C standard */
+    word-wrap: break-word; /* IE */
+    text-overflow: ellipsis;
 }
 .post{
     background-image: url("../images/5f30bc5f26206f40f0b14b47777a3ca1.jpg");
