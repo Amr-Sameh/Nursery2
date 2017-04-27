@@ -1,0 +1,67 @@
+.left-nav{
+    background-color: #c0392b;
+
+}
+.component{
+    background-color: #ecf0f1;
+
+}
+.panel-body{
+    padding: 0;
+}
+
+/**
+left nav css
+ */
+
+div.left-nav{
+    padding-left: 0;
+}
+
+.left-nav div:first-child{
+    margin-top: 5vw;
+}
+.left-nav div{
+font-size: 2vw;
+    margin-bottom: 3vw;
+    padding-left: 0;
+}
+
+.left-nav div i{
+    margin-right: 2vw;
+    color: #cbbeb1;
+    padding: 1vw ;
+}
+.left-nav div a{
+    text-decoration: none;
+    font-weight: bolder;
+    color: #eeeeee;
+}
+
+
+
+/**
+left nav css ended
+ */
+
+
+
+
+
+
+
+
+
+
+
+/**
+members part
+ */
+
+.stu-box{
+    height: 70%;
+    margin-top: 7%;
+    background-color: #2b542c;
+}
+
+

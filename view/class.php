@@ -377,10 +377,9 @@ if(isset($_POST["reportpostid"])){
             </ul>
 
         </div>
+
+
     </div>
-    <?php
-    include_once 'paging.php';
-    ?>
 
 </div>
 <div id="modal-sections" uk-modal="center: true">
