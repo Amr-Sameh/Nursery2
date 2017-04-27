@@ -7,34 +7,44 @@
  */
 include_once 'static/db_connect.php';
 include_once 'static/header.php';
+include_once 'navbar.php';
 include_once 'static/TL_Queries.php';
 $my_tl = new TL_Queries($con);
 session_start();
 $_SESSION['id'] = 1;
 $id = $_SESSION['id'];
-$my_tl->insert_NewTl("2017-8-10 02:29:00", "Mega","ddddd d", 1);
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    //  $type_task=$_GET['action'];
-//     if($type_task=="newtask") {
-    //   $tldate = $_POST['tl_date'];
-    //      $my_tl->insert_NewTl($time, $_POST['headline'],$_POST['content'], $id);
-    // }
-    //   else if($type_task=="delete"){
-    //   if(isset($_GET['tl_id'])) {
-  //  $tl_id = $_GET['tl_id'];
-    //             $my_tl->delete_spTL($id, $_GET['tl_id']);
-    //   }
-    //   }
-    //if($type_task=="edit") {
-  //  $tldate = $_GET['tl_date'];
-//    $time = date("Y-m-d H:i:s", strtotime($tldate));
-  //  $my_tl->update_TL($time, $_GET['headline'], $_GET['content'], $id, $_GET['tl_id']);
- //   unset($_GET['$tldate']);
-  //  unset($_GET['headline']);
- //   unset($_GET['content']);
-  //  unset($_GET['tl_id']);
+//$my_tl->insert_NewTl("2017-8-10 02:29:00", "Mega", "ddddd d", 1);
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+       $type_task=$_GET['action'];
+       if($type_task=="newtask") {
+          if(isset($_POST['tl_date'])){
+              $tldate = $_POST['tl_date'];
+              $time = date("Y-m-d H:i:s", strtotime($tldate));
+              $my_tl->insert_NewTl($time, $_POST['headline'], $_POST['content'], $id);
+              unset($_POST['$tldate']);
+              unset($_POST['headline']);
+              unset($_POST['content']);
+          }
+      }
+   else if($type_task=="delete"){
+       if(isset($_POST['tl_id'])) {
+         $tl_id = $_POST['tl_id'];
+            $my_tl->delete_spTL($id, $_POST['tl_id']);
+           unset($_POST['tl_id']);
+         }
+  }
 
-//    }
+    else if ($type_task=="edit") {
+       if(isset($_POST['tl_date'])) {
+           $tldate = $_POST['tl_date'];
+           $time = date("Y-m-d H:i:s", strtotime($tldate));
+           $my_tl->update_TL($time, $_POST['headline'], $_POST['content'], $id, $_POST['tl_id']);
+           unset($_POST['$tldate']);
+           unset($_POST['headline']);
+           unset($_POST['content']);
+           unset($_POST['tl_id']);
+       }
+    }
 }
 ?>
 
@@ -49,10 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 <!-- show timeline contained-->
 
-
 <div class="container">
     <!-- new timeline -->
-
     <!-- show timeline contained-->
     <header class="page-header">
         <h1 style="">Timeline</h1>
@@ -85,8 +93,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         } ?>
 
         <?php if ($i % 2) { ?>
-
-
         <li>
             <div class="tl-circ"></div>
             <div class="timeline-panel">
@@ -97,8 +103,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
                         <li style=><a uk-icon="icon: trash" href="#remove" uk-toggle></a></li>
                         <!-- that for delete -->
-                        <form id="remove" uk-modal class="model" action="<?php echo $_SERVER['PHP_SELF'] ?>"
-                              method="get">
+                        <form id="remove" uk-modal class="model" action="<?php echo $_SERVER['PHP_SELF'] ?>?action=delete"
+                              method="post">
                             <input type="hidden" name="tl_id" value=<?php echo $rows['tl_id']; ?>>
                             <div class="uk-modal-dialog uk-modal-body"
                             ">
@@ -114,8 +120,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 <!-- end delete -->
 
                 <!-- start Edit -->
-                <form id="edit" uk-modal="center: true" class="model" action="<?php echo $_SERVER['PHP_SELF'] ?>"
-                      method="get">
+                <form id="edit" uk-modal="center: true" class="model" action="<?php echo $_SERVER['PHP_SELF'] ?>?action=edit"
+                      method="post">
                     <input type="hidden" name="tl_id" value=<?php echo $rows['tl_id']; ?>>
                     <div class="uk-modal-dialog">
                         <div class="uk-modal-body">
@@ -131,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             <div class="col-10">
                                 <textarea class="form-control" type="text" name="content" id="example-text-input"
                                           rows="3" style="font-size:18px;resize: none;"
-                                          autocomplete="off">"<?php echo $rows['content'] ?>"</textarea>
+                                          autocomplete="off"><?php echo $rows['content'] ?></textarea>
                             </div>
 
 
@@ -162,12 +168,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     </h4>
     <p style="margin: 5px;">
         <small class="text-muted" style="font-style: italic;font-family:bold;"><i style="margin:0 3px 0 0;"
-                                                                                  class="glyphicon glyphicon-time"></i><?php echo $rows['tldate'] ?>
+              class="glyphicon glyphicon-time"></i><?php echo $rows['tldate'] ?>
         </small>
     </
-</div>
+
 <div class="tl-body">
-    <p style="color: #9a2d12;font-size:18px;"><?php echo $rows['content'] ?></p>
+    <p style="color: #9a2d12;font-size:18px;margin: 0;"><?php echo $rows['content'] ?></p>
 </div>
 </div>
 <!-- end cart content not_invert -->
@@ -184,7 +190,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
                     <li style=><a uk-icon="icon: trash" href="#remove" uk-toggle></a></li>
                     <!-- that for delete -->
-                    <form id="remove" uk-modal class="model" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
+                    <form id="remove" uk-modal class="model" action="<?php echo $_SERVER['PHP_SELF'] ?>?action=delete" method="post">
                         <input type="hidden" name="tl_id" value=<?php echo $rows['tl_id']; ?>>
                         <div class="uk-modal-dialog uk-modal-body"
                         ">
@@ -197,9 +203,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     </form>
             </div>
             <!-- end delete -->
-            <!-- start Edit -->
-            <form id="edit" uk-modal="center: true" class="model" action="<?php echo $_SERVER['PHP_SELF'] ?>"
-                  method="get">
+            <!-- start Edit inverter card -->
+            <form id="edit" uk-modal="center: true" class="model" action="<?php echo $_SERVER['PHP_SELF'] ?>?action=edit"
+                  method="post">
                 <input type="hidden" name="tl_id" value=<?php echo $rows['tl_id']; ?>>
                 <div class="uk-modal-dialog">
                     <div class="uk-modal-body">
@@ -218,7 +224,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                         <div class="col-10">
                             <textarea class="form-control" type="text" name="content" id="example-text-input" rows="3"
                                       style="font-size:18px;resize: none;"
-                                      autocomplete="off"> <?php echo $rows['content'] ?> </textarea>
+                                      autocomplete="off"><?php echo $rows['content'] ?></textarea>
                         </div>
 
 
@@ -241,7 +247,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
                 </div>
             </form>
-            <!--  End edit -->
+            <!--  End edit inverter card -->
 
 
             <!-- start content inverter -->
@@ -265,9 +271,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 
 <!-- start new task -->
-
-<form id="newtask" uk-modal="center: true" class="model" action="<?php echo $_SERVER['PHP_SELF'] ?>?action=edit"
-      method="get">
+<div>
+<form id="newtask" uk-modal="center: true" class="model" action="<?php echo $_SERVER['PHP_SELF'] ?>?action=newtask"
+      method="post" style="display: none;">
     <div class="uk-modal-dialog">
         <div class="uk-modal-body">
             <label for="example-text-input" class="col-2 col-form-label" style="color: #0f6ecd;">Headline</label>
@@ -303,10 +309,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     </div>
 </form>
-<!--  new task -->
-
+</div>
+</div>
+<!--  end task -->
 <?php
-// include_once 'paging.php';
+
 include_once 'static/footer.php'
 ?>
 </body>

@@ -5,6 +5,9 @@ $(document).ready(function () {
     $('a').click(function () {
         $('.tl-circ').hide();
     });
+    $('.btn btn-success').click(function () {
+        $('.tl-circ').hide();
+    });
     $('.timeline').mouseenter(function () {
         $('.tl-circ').show();
     });
