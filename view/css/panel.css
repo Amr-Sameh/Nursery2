@@ -1,43 +1,50 @@
-.left-nav{
-    background-color: #c0392b;
 
-}
 .component{
-    background-color: #ecf0f1;
+
 
 }
 .panel-body{
     padding: 0;
+    background-color: #ecf0f1;
 }
 
 /**
 left nav css
  */
 
-div.left-nav{
-    padding-left: 0;
-}
-
-.left-nav div:first-child{
-    margin-top: 5vw;
-}
-.left-nav div{
-font-size: 2vw;
-    margin-bottom: 3vw;
-    padding-left: 0;
-}
-
-.left-nav div i{
-    margin-right: 2vw;
-    color: #cbbeb1;
-    padding: 1vw ;
-}
-.left-nav div a{
-    text-decoration: none;
+.push-left-nav{
+    position: fixed;
+    bottom:0;
     font-weight: bolder;
-    color: #eeeeee;
+    font-size: 3vw;
+    border: none;
+    background-color: rgba(34, 34, 34, 0.51);
+    border-radius: 0% 50% 50% 0%;
+    color: white;
+    max-width: 1px;
+    transition: .5s all ease-in-out;
+    -moz-transition: .5s all ease-in-out;
+    -o-transition: .5s all ease-in-out;
+    -webkit-transition: .5s all ease-in-out;
+    -ms-transition: 2s all ease-in-out;
+
+}
+.push-left-nav:hover{
+    background-color: #222;
+    color: white;
+
 }
 
+.left-nav-link{
+    margin-bottom: 2vw;
+    font-weight: bolder;
+}
+.uk-nav-primary>li>a{
+    font-size: 1.5vw;
+}
+.uk-nav-primary>li>a i{
+    margin-right: 9px;
+}
 
 
 /**
@@ -59,9 +66,15 @@ members part
  */
 
 .stu-box{
-    height: 70%;
-    margin-top: 7%;
-    background-color: #2b542c;
-}
+    max-height: 70%;
+    padding: 0;
 
+}
+.stu-box .stu-panel-pic{
+    padding: 0;
+}
+.stu-panel-link .stu-panel-pic:hover .stu-panel-link .lay{
+ min-height: 100%;
+    min-width: 100%;
+}
 
