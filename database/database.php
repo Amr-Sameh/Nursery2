@@ -11,7 +11,7 @@ class database
     private $host = "localhost";
     private $username = "root";
     private $password = "";
-    private $db_name = "cia";
+    private $db_name = "nursery";
     private $database_connection;
     private $dsn = 'mysql:host=localhost;dbname=cia';
 

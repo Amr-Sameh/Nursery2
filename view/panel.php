@@ -5,7 +5,7 @@
  * Date: 26/04/17
  * Time: 10:56 م
  */
-
+//TODO pop-up iframe window to view events
 
 function activ($currect_page){
     $url_array =  explode('/', $_SERVER['REQUEST_URI']) ;
@@ -14,7 +14,7 @@ function activ($currect_page){
     $url=explode('&',$url[1]);
     $url=array_shift($url);
     if($currect_page == $url){
-        echo 'active-navbar'; //class name in css
+        echo 'active-left-nav'; //class name in css
     }
 }
 
@@ -26,48 +26,19 @@ if(!isset($_GET['action']))
     $_GET['action']='members';
 
 ?>
-    <div class="uk-offcanvas-content" id="page" style="min-height: 100vh">
+<!--this div to push the page to right-->
+    <div class="uk-offcanvas-content" id="panel-page" >
+
+
 <div class="panel-body">
 
 
 
-    <!-- This is an anchor toggling the off-canvas sidebar -->
-    <a href="#my-id" data-uk-offcanvas>...</a>
-
-    <!-- This is a button toggling the off-canvas sidebar -->
-    <button class="uk-button" data-uk-offcanvas="{target:'#my-id'}">...</button>
-
-    <!-- This is the off-canvas sidebar -->
-    <div id="my-id" class="uk-offcanvas">
-        <div class="uk-offcanvas-bar">...</div>
-    </div>
-
-    <!--start left  nav-->
-
-    <div class="left-nav col-lg-3 ">
 
 
 
-        <div class="member-nav col-xs-12 "><i class="fa fa-users <?php activ('members');?>" aria-hidden="true"></i><a href="<?php echo $_SERVER['PHP_SELF'].'?action=members';?>">Members</a></div>
-
-
-       <div class="event-nav col-xs-12 "><i class="fa fa-calendar <?php activ('event');?>" aria-hidden="true"></i><a href="<?php echo $_SERVER['PHP_SELF'].'?action=event';?>">Event</a></div>
-
-
-        <div class="survay-nav col-xs-12"><i class="fa fa-tasks  <?php activ('survey');?>" aria-hidden="true"></i><a href="<?php echo $_SERVER['PHP_SELF'].'?action=survey';?>">Survey</a></div>
-
-
-        <div class="complain-nav col-xs-12 "><i class="fa fa-frown-o <?php activ('complain');?> " aria-hidden="true"></i><a href="<?php echo $_SERVER['PHP_SELF'].'?action=complain';?>">Complain</a></div>
-
-
-    </div>
-
-<!--end left nav -->
-
-
-
-
-    <div class="component col-lg-9" >
+<div class="container">
+    <div class="component col-xs-12" >
 
 
     <?php
@@ -75,8 +46,16 @@ if(!isset($_GET['action']))
 
 
         ?>
+            <a href="#" class="stu-panel-link">
+                    <div class="stu-box col-lg-6">
+                        <div class="lay"></div>
+                        <img src="images/stu-panel.jpg"class="img-responsive stu-panel-pic col-xs-12">
 
-        <div class="stu-box col-lg-4"></div>
+                    </div>
+            </a>
+
+
+        <div class="teacher-box col-lg-6"></div>
 
 
         <?php
@@ -97,7 +76,6 @@ if(!isset($_GET['action']))
     else if ($_GET['action']=='complain')
         echo '<h1>cpmplain</h1>';
     else
-        echo 'fuck you ';
 
     ?>
 
@@ -107,39 +85,71 @@ if(!isset($_GET['action']))
 
 
 
-<a   href="class.php">jfhslfkdlkjf</a>
 
 
 </div>
 
-        <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-push">Push</button>
+
+
+</div>
+<!-- continer ended-->
+
+
+
+
+
+<!--        left nav-->
+
+        <button class="uk-button uk-button-default uk-margin-small-right push-left-nav" type="button" uk-toggle="target: #offcanvas-push"><i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
 
         <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
             <div class="uk-offcanvas-bar uk-flex uk-flex-column">
 
                 <button class="uk-offcanvas-close" type="button" uk-close></button>
-                <div class="uk-width-1-2@s uk-margin-auto uk-nav-center uk-margin-auto-vertical" >
-                    <ul class="uk-nav-primary uk-nav-parent-icon " uk-nav>
-                        <li class="uk-active"><a href="#">Active</a></li>
-                        <li class="uk-parent">
-                            <a href="#">Parent</a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="#">Sub item</a></li>
-                                <li><a href="#">Sub item</a></li>
-                            </ul>
-                        </li>
-                        <li class="uk-parent">
-                            <a href="#">Parent</a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="#">Sub item</a></li>
-                                <li><a href="#">Sub item</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="class.php">Item</a></li>
+                <div class="uk-width-1-2@s uk-margin-auto uk-nav-center uk-margin-auto-vertical col-xs-12" >
+
+
+
+
+                    <ul class="uk-nav-primary uk-nav-parent-icon col-xs-12" uk-nav>
+
+
+
+
+                        <li class="left-nav-link uk-active col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=members';?>"><i class="fa fa-users <?php activ('members');?>" aria-hidden="true"></i> Members</a></li>
+                        <li class="left-nav-link uk-active col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=members&flag=student';?>">Students</a></li>
+                        <li class="left-nav-link uk-active col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=members&flag=teacher';?>">Teacher</a></li>
+
+
+
+
+
+
+                        <li class="left-nav-link uk-active"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=event';?>"><i class="fa fa-calendar <?php activ('event');?>" aria-hidden="true"></i>Event</a></li>
+                        <li class="left-nav-link uk-active"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=survey';?>"><i class="fa fa-tasks  <?php activ('survey');?>" aria-hidden="true"></i>Survey</a></li>
+                        <li class="left-nav-link uk-active"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=complain';?>"><i class="fa fa-frown-o <?php activ('complain');?> " aria-hidden="true"></i>Complain</a></li>
+
+
+
+                        <li class="left-nav-link uk-active col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=level';?>">Levels</a></li>
+                        <li class="left-nav-link uk-active col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=class';?>">Classes</a></li>
+
+
+
+
+
+
                     </ul>
+
+
+
+
+
+
                 </div>
             </div>
         </div>
     </div>
+
 <?php
 include_once 'static/footer.php';

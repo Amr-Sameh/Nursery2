@@ -1,0 +1,90 @@
+<?php
+
+/**
+ * Created by PhpStorm.
+ * User: meir
+ * Date: 28/04/17
+ * Time: 10:09 ص
+ */
+include_once 'database.php';
+class level_query
+{
+
+    private $db;
+
+
+    public function __construct()
+    {
+        $this->db= new database();
+    }
+
+
+    public function insert_level($stage,$name,$value){
+
+        $query="INSERT INTO level (val,stage,name)  VALUES ('$value','$stage','$name')";
+        $this->db->excute_query($query);
+
+    }
+
+
+    public function update_level($oldname,$stage,$name,$value){
+        $id=$this->get_level_id($oldname);
+        $query="UPDATE `level` SET `stage`='$stage ',`name`='$name' , `val`='$value' WHERE `id`=$id";
+        $this->db->excute_query($query);
+
+    }
+
+    /**
+     * @param array of subjects
+     * @param level name
+     */
+    public function insert_subject($level_name , $subjects_id){
+        $level_id=$this->get_level_id($level_name);
+        foreach ($subjects_id as $sub_id){
+            $query="INSERT INTO `level_to_sub` (`level_id`,`sub_id`) VALUES ('$level_id','$sub_id')";
+            $this->db->excute_query($query);
+
+        }
+
+    }
+
+
+
+
+    public function delete_level($level_name){
+        $query="DELETE FROM `level` WHERE `name`='$level_name'";
+        $this->db->excute_query($query);
+
+    }
+
+    public function delete_sub($level_name,$sub_id){
+        $level_id=$this->get_level_id($level_name);
+        $query="DELETE FROM `level_to_sub` WHERE `level_id`='$level_id' AND `sub_id`='$sub_id'";
+        $this->db->excute_query($query);
+    }
+
+    public function get_level_by_name($level_name){
+        $query="SELECT * FROM `level` WHERE `name`='$level_name'";
+        return  $this->db->excute_query($query)->fetch();
+    }
+    public function get_level_subjects(){
+        //TODO imlement this
+    }
+
+public function get_classes_num($level_id){
+        $query="SELECT * FROM `class` WHERE `level_id`='$level_id'";
+        return $this->db->excute_query($query)->rowCount();
+}
+
+private function get_level_id($name){
+        $query="SELECT `id` FROM level WHERE `name`='$name'";
+       $result= $this->db->excute_query($query)->fetch();
+        return$result['id'];
+
+}
+
+
+
+
+
+}
