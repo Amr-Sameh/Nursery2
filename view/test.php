@@ -10,22 +10,14 @@ if(isset($_POST['upload'])) {
 
 }
 include_once 'static/header.php' ;
-
+include_once '../database/class_query.php';
 ?>
-
-    <button class="btn-danger btn-lg"  type="button">login</button>
-<button>fdfd</button>
-<button>fdfd</button><br>
-<br>
-<button>fdfd</button>
-<button>fdfd</button>
-<button>fdfd</button>
-<button>fdfd</button>
-
-<h1>hasjfosfj</h1>
+<?php
+?>
 
 
 <?php
 include 'static/footer.php';
 ?>
+
 
