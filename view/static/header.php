@@ -15,7 +15,6 @@ $id='s';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
     <link rel="stylesheet" type="text/css" href="css/uikit-rtl.min.css">
-    <link rel="stylesheet" type="text/css" href="css/uikit.min.css">
     <link rel="stylesheet" href="css/bootstrap.css" >
     <link rel="stylesheet" href="css/bootstrap.css" >
     <link rel="stylesheet" href="css/animate.css" >
@@ -26,6 +25,7 @@ $id='s';
     <link rel="stylesheet" href="css/event.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/panel.css">
+    <link rel="stylesheet" href="css/profile.css">
 
 </head>
 <body>

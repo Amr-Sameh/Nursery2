@@ -31,13 +31,13 @@ if(isset($_POST["reportpostid"])){
 <head>
 <meta charset="utf-8">
     <link rel="stylesheet" href="css/uikit-rtl.min.css">
-    <link rel="stylesheet" href="css/uikit.min.css">
+
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/class.css">
 </head>
 <body style="min-height: 100vh" >
-<div class="uk-offcanvas-content" id="page" style="min-height: 100vh">
+<div class="uk-offcanvas-content" id="page" style="min-height: 100vh;overflow: hidden">
     <span id="hh"></span>
     <ul id="classAtrbiut" class="uk-switcher"style="min-height: 100vh">
         <div class="uk-container-expand post ">
@@ -61,6 +61,9 @@ if(isset($_POST["reportpostid"])){
                     <?php
                     foreach ($posts as $post){
                         $postuser=$class->getuser($post['user_id']);?>
+
+
+
                     <div class="uk-card uk-carde uk-card-default uk-width-2-3@m uk-visible-toggle"
                          id="<?php echo $post["post_id"]; ?>">
                         <div class="uk-card-header">
@@ -339,43 +342,40 @@ if(isset($_POST["reportpostid"])){
     <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
         <div class="uk-offcanvas-bar uk-flex uk-flex-column">
             <button class="uk-offcanvas-close" type="button" uk-close></button>
-            <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical" uk-switcher="connect: #classAtrbiut; animation: uk-animation-fade; toggle: > :not(.uk-nav-header)">
-                <li><a  >Home</a>
+            <div class="uk-width-1-2@s uk-margin-auto uk-nav-center uk-margin-auto-vertical" >
+                <ul class="uk-nav-primary" uk-nav  uk-switcher="connect: #classAtrbiut; animation: uk-animation-fade; toggle: > :not(.uk-nav-header)">
+                    <li class="uk-active"><a href="#">Home</a><p class="uk-heading-divider"></p></li>
+                    <li class="uk-parent">
 
-                    <p class="uk-heading-divider"></p></li>
-                <li class="uk-parent">
-
-                    <?php
-                    if($userid==1) {
-                        ?>
-                        <a   uk-toggle="target: #toggle-animation; animation: uk-animation-fade">Subjects</a>
-                        <ul class="uk-nav-sub" id="toggle-animation" hidden="hidden" aria-hidden="true"
-                            uk-switcher="connect: #subjects; animation: uk-animation-fade; toggle: > :not(.uk-nav-header)">
-                            <?php
-                            foreach ($listofsub as $value) {
-                                echo "<li><a href='#'>" . $value . "</a></li>";
-                            }
-                            ?>
-                        </ul>
                         <?php
-                    }else if($userid==0){
-                        ?>
-                        <a   uk-toggle="target: #toggle-animation; animation: uk-animation-fade">HomeWork</a>
-                        <ul class="uk-nav-sub" id="toggle-animation" hidden="hidden" aria-hidden="true"
-                            uk-switcher="connect: #subjects; animation: uk-animation-fade; toggle: > :not(.uk-nav-header)">
-                            <?php
-                            foreach ($listofHw as $value) {
-                                echo "<li><a href='#'>" . $value . "</a></li>";
-                            }
+                        if($userid==1) {
                             ?>
-                        </ul>
-                    <?php }?>
-                    <p class="uk-heading-divider"></p></li>
-                <li><a  >Students</a>
-                    <p class="uk-heading-divider"></p></li>
-                <li><a  >TimeTable</a></li>
-            </ul>
-
+                            <a href="#">Subjects</a>
+                            <ul class="uk-nav-sub" uk-switcher="connect: #subjects; animation: uk-animation-fade; toggle: > :not(.uk-nav-header)">
+                                <?php
+                                foreach ($listofsub as $value) {
+                                    echo "<li><a href='#'>" . $value . "</a></li>";
+                                }
+                                ?>
+                            </ul>
+                            <?php
+                        }else if($userid==0){
+                            ?>
+                            <a  href="#">HomeWork</a>
+                            <ul class="uk-nav-sub" uk-switcher="connect: #subjects; animation: uk-animation-fade; toggle: > :not(.uk-nav-header)">
+                                <?php
+                                foreach ($listofHw as $value) {
+                                    echo "<li><a href='#'>" . $value . "</a></li>";
+                                }
+                                ?>
+                            </ul>
+                        <?php }?>
+                        <p class="uk-heading-divider"></p></li>
+                    <li><a href="#">students</a><p class="uk-heading-divider"></p></li>
+                    <li><a href="panel.php">Timetable</a><p class="uk-heading-divider"></p></li>
+                </ul>
+            </div>
+<!-->
         </div>
 
 

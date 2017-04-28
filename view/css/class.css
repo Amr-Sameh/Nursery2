@@ -7,6 +7,8 @@ html{
     margin-right: 20px;
 
 }
+.container{overflow: hidden}
+
 .subject,.post,.students,.Timetable{
     background-image: url("../images/LTKzaRz5c.png");
     background-size: contain;

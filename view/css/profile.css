@@ -1,0 +1,10 @@
+.pic{
+    margin-top: -95px;
+}
+.ho{
+    background-image: url("../images/1918289_966799203377570_3884420336935265297_n.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid black;
+}
