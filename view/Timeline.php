@@ -5,15 +5,13 @@
  * Date: 4/18/2017
  * Time: 10:25 PM
  */
-include_once 'static/db_connect.php';
 include_once 'static/header.php';
 include_once 'navbar.php';
-include_once 'static/TL_Queries.php';
+include_once '../database/TL_Queries.php';
 $my_tl = new TL_Queries($con);
 session_start();
 $_SESSION['id'] = 1;
 $id = $_SESSION['id'];
-//$my_tl->insert_NewTl("2017-8-10 02:29:00", "Mega", "ddddd d", 1);
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
        $type_task=$_GET['action'];
        if($type_task=="newtask") {

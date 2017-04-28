@@ -1,4 +1,7 @@
+
 <?php
+/*
+?>
 <<<<<<< HEAD
 include_once 'database.php';
 class user_query
@@ -182,3 +185,4 @@ T
 
 >>>>>>> 3cccb8c86be8ffaa876f088a3444403206081716
 }
+*/
