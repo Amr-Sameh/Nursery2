@@ -8,6 +8,7 @@
  */
 include_once "database.php";
 include_once "user_query.php";
+include_once '../classes/subject.php';
 class class_query
 {
     private $db;
@@ -68,5 +69,17 @@ class class_query
         $userdp=new user_query();
         return $userdp->get_user_by_id($id);
     }
-
+    public function get_subjects(){
+        $query="SELECT * FROM `subject` ";
+        $ret=$this->db->excute_query($query);
+        $all_sub=array();
+        while($row=$ret->fetch()) {
+            echo $row['name'];
+            echo $row['level_id'];
+            echo $row['id'];
+            $sub=new subject($row['name'],$row['level_id'],$row['id']);
+            array_push($all_sub,$sub);
+        }
+        return $all_sub;
+    }
 }
