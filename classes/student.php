@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  * Created by PhpStorm.
@@ -20,9 +20,29 @@ class student extends user
 	private $iq_grade;
 	private $stage;
 	private $student_query;
+
 	public function __construct()
     {
         $this->student_query=new student_query();
+    }
+
+    
+    public function addStudent($stu_id,$class_id,$level_id,$emrg_person_name,$emrg_person_relation,$emrg_person_phone,$stage,$iq_grade){
+    	 if(!$this->student_query->check_exist($stu_id)){
+    		$this->student_query->insert_stu($stu_id,$class_id,$level_id,$emrg_person_name,$emrg_person_relation,$emrg_person_phone,$stage,$iq_grade);
+    	}
+    }
+
+    public function deleteStudent_StudentTable($stu_id){
+    	if($this->student_query->check_exist($stu_id)){
+    		$this->student_query->delete_stu_stuT($stu_id);
+    	}
+    }
+
+    public function deleteStudent_UserTable($user_id){
+    	if($this->student_query->check_exist($user_id)){
+    		$this->student_query->delete_stu_userT($user_id);
+    	}
     }
  	
  	public function setClass_id($classes){
