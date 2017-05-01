@@ -11,9 +11,9 @@ class database
     private $host = "localhost";
     private $username = "root";
     private $password = "";
-    private $db_name = "nursery";
+    private $db_name = "cia";
     private $database_connection;
-    private $dsn = 'mysql:host=localhost;dbname=nursery';
+    private $dsn = 'mysql:host=localhost;dbname=cia';
 
     private $option = array(
     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',

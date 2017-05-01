@@ -106,29 +106,6 @@ if(!isset($_GET['action']))
             <div class="uk-offcanvas-bar uk-flex uk-flex-column">
 
                 <button class="uk-offcanvas-close" type="button" uk-close></button>
-<<<<<<< HEAD
-                <!-->
-                <div class="uk-width-1-2@s uk-margin-auto uk-nav-center uk-margin-auto-vertical" >
-                    <ul class="uk-nav-primary" uk-nav>
-                        <li class="uk-active"><a href="#">Active</a></li>
-                        <li>
-                            <a href="#">Parent</a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="#">Sub item</a></li>
-                                <li><a href="#">Sub item</a></li>
-                            </ul>
-                        </li>
-                        <li class="uk-parent">
-                            <a href="#">Parent</a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="#">Sub item</a></li>
-                                <li><a href="#">Sub item</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="class.php">Item</a></li>
-=======
-                <div class="uk-width-1-2@s uk-margin-auto uk-nav-center uk-margin-auto-vertical col-xs-12" >
-
 
 
 
@@ -160,7 +137,6 @@ if(!isset($_GET['action']))
 
 
 
->>>>>>> 683d8dc4052e3dd695be9252224a45bb475aca58
                     </ul>
 
 
