@@ -53,6 +53,23 @@ $(document).ready(function () {
 
         }
     });
+    $('#login-form').submit(function (e) {
+        e.preventDefault();
+        var action ='login';
+        var username=$('#username').val();
+        var password=$('#password').val();
+        $.ajax({
+            url: "navbar.php",
+            method: "POST",
+            data: {action: action, username: username, password: password},
+            success: function (data) {
+                if (data == false) {
+                    alert('error');
+                }else { alert('goo');
+               location.href="homee.php";}
+            }
+        })
+    });
 
 
 

@@ -15,6 +15,18 @@ function active($currect_page){
     if($currect_page == $url){
         echo 'active-navbar'; //class name in css
     }
+}session_start();
+
+if($_SERVER['REQUEST_METHOD']=='POST'){
+
+    if(isset($_POST['action'])&&$_POST['action']=='login'){
+        include_once '../classes/user.php';
+        $user =new user();
+       $result = $user->login($_POST['username'],$_POST['password']);
+
+
+       return $result;
+    }
 }
 
 ?>
@@ -92,7 +104,7 @@ Settings</a></li>
 <div class="layer"></div>
 
 <div class=" login col-sm-4 col-sm-offset-4 text-center col-xs-12 ">
-    <form method="POST" class="logform form-group input-lg " >
+    <form method="POST" class="logform form-group input-lg " id="login-form">
         <img src="images/aTe64exyc.gif" class="img-responsive  log-img center-block">
         <span class="user-log">
     <input type="text" class="username  " name="username" id="username" placeholder="username" autocomplete="off" required >
@@ -107,7 +119,7 @@ Settings</a></li>
         <hr>
 
 
-        <input type="submit" value="login" class="btn-primary btn-login col-sm-6 col-sm-offset-3  col-xs-8 col-xs-offset-2">
+        <input type="submit" id="login-submit" value="login" class="btn-primary btn-login col-sm-6 col-sm-offset-3  col-xs-8 col-xs-offset-2">
     </form>
 </div>
 
