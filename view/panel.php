@@ -197,37 +197,9 @@ include_once 'navbar.php';
             <div class="uk-offcanvas-bar uk-flex uk-flex-column">
 
                 <button class="uk-offcanvas-close" type="button" uk-close></button>
-<<<<<<< HEAD
-||||||| merged common ancestors
-<<<<<<< HEAD
-                <!-->
-                <div class="uk-width-1-2@s uk-margin-auto uk-nav-center uk-margin-auto-vertical" >
+
+<div  class="uk-width-1-2@s uk-margin-auto uk-nav-center uk-margin-auto-vertical">
                     <ul class="uk-nav-primary" uk-nav>
-                        <li class="uk-active"><a href="#">Active</a></li>
-                        <li>
-                            <a href="#">Parent</a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="#">Sub item</a></li>
-                                <li><a href="#">Sub item</a></li>
-                            </ul>
-                        </li>
-                        <li class="uk-parent">
-                            <a href="#">Parent</a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="#">Sub item</a></li>
-                                <li><a href="#">Sub item</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="class.php">Item</a></li>
-=======
-                <div class="uk-width-1-2@s uk-margin-auto uk-nav-center uk-margin-auto-vertical col-xs-12" >
-
-=======
-                <div class="uk-width-1-2@s uk-margin-auto uk-nav-center uk-margin-auto-vertical col-xs-12" >
-
->>>>>>> 7a366f131d7a74b3196cc6d30aae2feee9cf0357
-
-                    <ul class="uk-nav-primary uk-nav-parent-icon col-xs-12" uk-nav>
 
 
                         <li class="left-nav-link uk-parent col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=members';?>"><i class="fa fa-users <?php activ('members');?>" aria-hidden="true"></i> Members</a>
@@ -246,31 +218,11 @@ include_once 'navbar.php';
                         <li class="left-nav-link col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=level';?>">Levels</a></li>
                         <li class="left-nav-link col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=class';?>">Classes</a></li>
 
-<<<<<<< HEAD
-                        <li class="left-nav-link uk-active col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=level';?>">Levels</a></li>
-                        <li class="left-nav-link uk-active col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=class';?>">Classes</a></li>
 
-
-
-
-
-
-||||||| merged common ancestors
-                        <li class="left-nav-link uk-active col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=level';?>">Levels</a></li>
-                        <li class="left-nav-link uk-active col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=class';?>">Classes</a></li>
-
-
-
-
-
-
->>>>>>> 683d8dc4052e3dd695be9252224a45bb475aca58
-=======
->>>>>>> 7a366f131d7a74b3196cc6d30aae2feee9cf0357
                     </ul>
 
 
-
+    </div>
 
 
 
