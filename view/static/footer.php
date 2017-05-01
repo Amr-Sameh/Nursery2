@@ -15,7 +15,6 @@
 <script src="js/uikit-icons.min.js"></script>
 <script src="js/nav.js"></script>
 <script src="js/class.php"></script>
-<script src="js/panel.js"></script>
 
 </body>
 </html>

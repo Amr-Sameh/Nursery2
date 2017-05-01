@@ -18,6 +18,8 @@ $(document).ready(function () {
                 });
             }
     });
+
+
     $(".removepost").click(function (e) {
         var id=this.id.substring(1);
           $('#yesdelet').click(function () {
@@ -106,6 +108,8 @@ $(document).ready(function () {
         });
 
     });
+
+
     $("#addnewpost").click(function (e) {
         var posttext=$('#klpa').val();
 
