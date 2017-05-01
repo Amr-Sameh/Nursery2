@@ -3,12 +3,21 @@
  */
 $(document).ready(function () {
 
-    
-    $(".layer").css("opacity","100");
-
-    $(".login").css({
-        "top":"10%",
-        "opacity":"100"
+    $('#login-btn').click(function () {
+        $(".layer").css("opacity","100");
+        $(".layer").css("z-index","5");
+        $(".login").css({
+            "top":"10%",
+            "opacity":"100"
+        });
+    });
+    $(".layer").click(function () {
+        $(".layer").css("opacity","0");
+        $(".layer").css("z-index","-5");
+        $(".login").css({
+            "top":"-100%",
+            "opacity":"0"
+        });
     });
     var mq = window.matchMedia( "(max-width: 768px)" );
     if (mq.matches){
@@ -43,6 +52,23 @@ $(document).ready(function () {
             $(".password").css("border","none");
 
         }
+    });
+    $('#login-form').submit(function (e) {
+        e.preventDefault();
+        var action ='login';
+        var username=$('#username').val();
+        var password=$('#password').val();
+        $.ajax({
+            url: "navbar.php",
+            method: "POST",
+            data: {action: action, username: username, password: password},
+            success: function (data) {
+                if (data == false) {
+                    alert('error');
+                }else { alert('goo');
+               location.href="homee.php";}
+            }
+        })
     });
 
 

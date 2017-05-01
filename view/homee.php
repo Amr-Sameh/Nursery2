@@ -6,7 +6,8 @@
  * Time: 11:01 ص
  */
 include_once 'static/header.php';
-include_once 'navbar.php'
+include_once 'navbar.php';
+print_r($_SESSION);
 ?>
 
 
@@ -120,6 +121,10 @@ include_once 'navbar.php'
 
 
 </div>
+
+
+
+
 
 <?php
 include_once 'paging.php';

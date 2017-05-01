@@ -15,6 +15,18 @@ function active($currect_page){
     if($currect_page == $url){
         echo 'active-navbar'; //class name in css
     }
+}session_start();
+
+if($_SERVER['REQUEST_METHOD']=='POST'){
+
+    if(isset($_POST['action'])&&$_POST['action']=='login'){
+        include_once '../classes/user.php';
+        $user =new user();
+       $result = $user->login($_POST['username'],$_POST['password']);
+
+
+       return $result;
+    }
 }
 
 ?>
@@ -49,7 +61,7 @@ function active($currect_page){
                 /*
                  * check if log in show user bord
                  */
-                if($id!='') {
+                if(isset($_SESSION['id'])&&$_SESSION['id']!=null&&$_SESSION['id']!='') {
 
                     echo ' <li class="dropdown nav-switch">
           <a href="" class="dropdown-toggle hvr-sweep-to-right" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Amr Sameh <span class="caret"></span></a>
@@ -66,7 +78,7 @@ Settings</a></li>
 
                 else {
 
-                    echo '<li ><button class="login-link nav-switch" > Login</button ></li >';
+                    echo '<li ><button class="login-link nav-switch" id="login-btn"> Login</button ></li >';
                 }
                 ?>
 
@@ -85,4 +97,32 @@ Settings</a></li>
     </div><!-- /.container-fluid -->
 </nav>
 <div class="start"></div>
+<!--    login part -->
+
+
+
+<div class="layer"></div>
+
+<div class=" login col-sm-4 col-sm-offset-4 text-center col-xs-12 ">
+    <form method="POST" class="logform form-group input-lg " id="login-form">
+        <img src="images/aTe64exyc.gif" class="img-responsive  log-img center-block">
+        <span class="user-log">
+    <input type="text" class="username  " name="username" id="username" placeholder="username" autocomplete="off" required >
+    </span>
+        <br>
+
+        <span class="user-log">
+    <input type="password" class="password " name="password" id="password" placeholder="password" autocomplete="new-password" required>
+    </span>
+        <br>
+        <input type="checkbox" class="remember" name="remember" id="remember">
+        <hr>
+
+
+        <input type="submit" id="login-submit" value="login" class="btn-primary btn-login col-sm-6 col-sm-offset-3  col-xs-8 col-xs-offset-2">
+    </form>
+</div>
+
+
+<!-- end login-->
 

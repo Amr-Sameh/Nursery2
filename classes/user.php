@@ -34,14 +34,15 @@ class user
     public function __construct()
     {
         $this->user_query=new user_query();
+        session_start();
     }
 
 
-    public function login($id , $pass){
+    public function login($username , $pass){
         //TODO clean the inputs
-        if($this->user_query->check_exist($id,$pass)){
+        if($this->user_query->check_exist($username,$pass)){
 
-            $user_info=$this->user_query->get_user_by_id($id);
+            $user_info=$this->user_query->get_user_by_id($username);
             $_SESSION['user_type']=$user_info['group_id'];
             $_SESSION['user_id']=$user_info['id'];
 
