@@ -3,12 +3,21 @@
  */
 $(document).ready(function () {
 
-    
-    $(".layer").css("opacity","100");
-
-    $(".login").css({
-        "top":"10%",
-        "opacity":"100"
+    $('#login-btn').click(function () {
+        $(".layer").css("opacity","100");
+        $(".layer").css("z-index","5");
+        $(".login").css({
+            "top":"10%",
+            "opacity":"100"
+        });
+    });
+    $(".layer").click(function () {
+        $(".layer").css("opacity","0");
+        $(".layer").css("z-index","-5");
+        $(".login").css({
+            "top":"-100%",
+            "opacity":"0"
+        });
     });
     var mq = window.matchMedia( "(max-width: 768px)" );
     if (mq.matches){

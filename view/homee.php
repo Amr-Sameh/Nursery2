@@ -121,6 +121,10 @@ include_once 'navbar.php'
 
 </div>
 
+
+
+
+
 <?php
 include_once 'paging.php';
 include_once 'static/footer.php';

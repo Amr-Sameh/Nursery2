@@ -1,5 +1,5 @@
 <?php
-$id='s';
+$id='';
 
 /**
  * Created by PhpStorm.
