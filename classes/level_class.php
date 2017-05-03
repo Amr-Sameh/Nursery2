@@ -64,8 +64,10 @@ class level_class
         return $this->level_query->get_all_levels();
     }
 
-
-
+    /**
+     * @return level_query
+     */
+   
 
 
 

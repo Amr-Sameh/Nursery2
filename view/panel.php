@@ -60,33 +60,33 @@ include_once 'navbar.php';
             <ul class="nav nav-tabs">
         <?php
         //TODO get levels name and id
-
+        include '../classes/level_class.php';
+        $level_class = new level_class();
+        $levels=$level_class->get_all_levels();
         foreach ($levels as $level){
             ?>
-                <li><a href="#tab<?php echo $level['levelid']?>" data-toggle="tab">Level <?php echo $level['levelname']?></a></li>
+                <li><a href="#tab<?php echo $level['id']?>" data-toggle="tab">Level <?php echo $level['name']?></a></li>
             <?php }?>
             </ul>
 
             <div class="tab-content">
-<
                 <?php foreach ($levels as $level){?>
-                    <div class="tab-pane" id="tab<?php echo $level['levelid']?>">
+                    <div class="tab-pane" id="tab<?php echo $level['id']?>">
                         <div class="tabbable"> <!-- Only required for left/right tabs -->
                             <ul class="nav nav-tabs">
                                 <?php
                                     //TODO get classes name and id of level $level['levelid']
-
+                                       $classes=$level_class->get_level_classes_by_level_id($level['id']);
                                         foreach ($classes as $class){
                                     ?>
-                                    <li><a href="#<?php echo $class['classid']?>" data-toggle="tab"><?php echo $class['classname']?><?php echo  $class_num+1?></a></li>
+                                    <li class="getstudent" id="<?php echo"A".$class['class_id']?>"><a href="#<?php echo $class['class_id']?>" data-toggle="tab"><?php echo"class"?></a></li>
                                 <?php }?>
                             </ul>
                             <div class="tab-content">
                                 <?php
-
                                 foreach ($classes as $class){// the classes number in the choosen level
                                     ?>
-                                    <div class="tab-pane" id="<?php echo $class['classid']?>">
+                                    <div class="tab-pane" id="<?php echo $class['class_id']?>">
                                         <div class="uk-width-4-5@m" style="margin: auto">
                                             <table class="uk-table uk-table-hover">
                                                 <thead>
@@ -98,28 +98,10 @@ include_once 'navbar.php';
                                                     <th >Delet</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody id="StudentsList">
-                                                <?php
-                                                for($k=0;$k<15;$k++){// class students number
-                                                    ?>
-                                                    <tr uk-toggle="target: #<?php echo $k?>; animation:  uk-animation-slide-left, uk-animation-slide-bottom">
-                                                        <td><div class=" uk-border-circle" style="width: 50px;height: 50px;overflow: hidden;padding: 0; ">
-                                                                <img class="" width="100%" height="100%" src="images/child-only.png">
-                                                            </div></td>
-                                                        <td >
-                                                            <a class="uk-link-reset"  >Mostafa saleh sopih mohamed</a>
-                                                        </td>
-                                                        <td>235664</td>
-                                                        <td><button class="uk-button uk-button-default" type="button">edit</button></td>
-                                                        <td><button class="uk-button uk-button-default" type="button">delete</button></td>
-                                                    </tr>
-                                                    <tr id="<?php echo $k?>" class="uk-card uk-card-default uk-card-body uk-margin-small" hidden="hidden" aria-hidden="true">
-                                                        <td ><div >aslkadsdjkalsdlkajskdljaskdjksajd dfklsdjfds fsdklfjsdkf dfkljsdlf dikfljsdkf diokfljsdkkf dklsfjsdlkfdkls;ad</div></td>
-                                                        <td ><div >aslkadsdjkalsdlkajskdljaskdjksajd dfklsdjfds fsdklfjsdkf dfkljsdlf dikfljsdkf diokfljsdkkf dklsfjsdlkfdkls;ad</div></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                <?php } ?>
+                                                <tbody id="<?php echo'StudentsList'.$class['class_id'];?>">
+
+
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -254,8 +236,6 @@ include_once 'navbar.php';
 
 
 
-
-
     </div>
 
 
@@ -292,7 +272,7 @@ include_once 'navbar.php';
 
         <li><a  href="<?php echo $_SERVER['PHP_SELF'].'?action=student';?>">Student</a></li>
         <li><a  href="<?php echo $_SERVER['PHP_SELF'].'?action=teacher';?>">Teacher</a></li>
-                            </ul></li>
+                     </ul></li>
 
 
                         <li class="left-nav-link "><a href="<?php echo $_SERVER['PHP_SELF'].'?action=event';?>"><i class="fa fa-calendar <?php activ('event');?>" aria-hidden="true"></i>Event</a></li>
@@ -302,20 +282,11 @@ include_once 'navbar.php';
 
                         <li class="left-nav-link col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=level';?>">Levels</a></li>
                         <li class="left-nav-link col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=class';?>">Classes</a></li>
-
-
                     </ul>
-
-
-    </div>
-
-
-
+                   </div>
                 </div>
-                <!-->
             </div>
         </div>
 <?php
 include_once 'static/footer.php';
-
 
