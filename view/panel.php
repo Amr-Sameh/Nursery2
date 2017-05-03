@@ -178,6 +178,8 @@ include_once 'navbar.php';
 
     else if ($_GET['action']=='complain')
         echo '<h1>cpmplain</h1>';
+
+
     else if($_GET['action']=='addTech'){ ?>
         <div class="container">
     <form action="" method="post">
@@ -222,7 +224,35 @@ include_once 'navbar.php';
 
 
 
-    <?php} ?>
+    <?php }
+    else if ($_GET['action']=='event'){
+        ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php } ?>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -285,5 +315,7 @@ include_once 'navbar.php';
                 <!-->
             </div>
         </div>
+<?php
+include_once 'static/footer.php';
 
 
