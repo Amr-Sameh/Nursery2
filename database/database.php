@@ -14,6 +14,7 @@ class database
     private $db_name = "nursery";
     private $database_connection;
     private $dsn = 'mysql:host=localhost;dbname=nursery';
+    private  static  $instance;
 
     private $option = array(
     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
@@ -28,10 +29,12 @@ class database
             die('failed to connect to DataBase' . $e->getMessage());
         }
     }
-
-
-
-
+    public  static function  get_instrance(){
+            if(!self::$instance){
+                self::$instance=new self();
+            }
+            return self::$instance;
+    }
 
 public function excute_query($query){
 
@@ -39,10 +42,6 @@ public function excute_query($query){
         $value->execute();
         return $value;
 }
-
-
-
-
 
 
 }

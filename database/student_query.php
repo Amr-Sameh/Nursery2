@@ -11,7 +11,7 @@ class student_qurey
 	
 	function __construct()
 	{
-		 $this->db= new database();
+		 $this->db=database::get_instrance();
 	}
 	
 	public function stu_exist($stu_id){
@@ -31,7 +31,7 @@ class student_qurey
     	level_id,
     	iq_grade) 
     	VALUES (
-    	'$stu_id',
+    	'NULL',
     	'$stage',
     	'$emrg_person_name',
     	'$emrg_person_relation',
@@ -39,7 +39,7 @@ class student_qurey
     	'$class_id',
     	'$level_id',
     	'$iq_grade')";
-    	$db->exec($query);
+    	$this->db->excute_query($query);
     }
 
     public function insert_general_user($id,$group_id,$username,$password,$first_name,$mid_name,$last_name,$gender,$email,$city,$country,$street,$birth_date){
@@ -65,7 +65,7 @@ class student_qurey
     	'$first_name',
     	'$mid_name',
     	'$last_name',
-    	'$geneder',
+    	'$gender',
     	'$email',
     	'$city',
     	'$country',
@@ -73,7 +73,7 @@ class student_qurey
     	'$birth_date'
     	);
     	INSERT INTO student (user_id) VALUES ('$user_id')";
-    	$db->exec($query);
+    	$this->db->excute_query($query);
 
     }
 
