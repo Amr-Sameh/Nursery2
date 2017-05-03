@@ -9,11 +9,7 @@
 include_once 'static/header.php';
 include_once 'navbar.php';
 
-<<<<<<< HEAD
-print_r($_SESSION);
-echo $_SESSION['user_type'];
-=======
->>>>>>> b04cb806d695e84093b902899f36fc1ed92b4080
+
 ?>
 
 

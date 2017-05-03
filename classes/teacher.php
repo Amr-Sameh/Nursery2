@@ -7,6 +7,7 @@
  * Time: 10:15 ص
  */
 include_once "../database/teacher_query.php";
+include_once "user.php";
 class teacher extends user
 {
 private $Teacherid;
@@ -28,6 +29,9 @@ public function addnewTeacher($tusername,$tfname,$tlname,$temail,$tpass,$tgender
     }
     public function deletteacher($teacherid){
         return $this->teacherquery->delete_teacher($teacherid);
+    }
+    public function get_all_teachers(){
+        return $this->teacherquery->get_all_teachers();
     }
 
     /**
