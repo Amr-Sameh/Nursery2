@@ -10,6 +10,10 @@ include_once "../database/class_query.php";
 
 class classs
 {
+    public $id ;
+    public $student_number ;
+    public $max_student_num ;
+    public $level_id ;
   private $classquery;
   public  function __construct()
   {
@@ -63,6 +67,61 @@ class classs
     public function reportpost($postid){
         return $this->classquery->report_post($postid);
     }
+
+    public function add_class($student_number,$max_student_num,$level_id){
+        $this->classquery->add_class($student_number,$max_student_num ,$level_id);
+    }
+
+    public function delete_class($id){
+        $this->classquery->delet_class($id);
+    }
+
+    public function update_class($id,$student_number,$max_student_num,$level_id){
+        $this->classquery->update_class($id,$student_number,$max_student_num,$level_id);
+    }
+
+    public function delet_student($student_id){
+        $this->classquery->delet_student($student_id) ;
+    }
+
+    public function add_student($id , $student_id){
+        $this->classquery->add_student($id,$student_id);
+
+    }
+    public function get_class_students($id){
+       return $this->classquery->get_class_students($id);
+    }
+
+
+    public function get_id(){
+        return $this->id;
+    }
+    public function get_student_number(){
+        return $this->student_number;
+    }
+    public function get_max_student_num(){
+        return $this->max_student_num;
+    }
+    public function get_level_id(){
+        return $this->level_id;
+    }
+    public function set_id($id){
+        $this->title=$id;
+    }
+
+    public function set_student_number($student_number){
+        $this->date=$student_number;}
+
+    public function set_max_student_num($max_student_num){
+        $this->place=$max_student_num;}
+
+    public function set_level_id($level_id){
+        $this->content=$level_id;}
+
+
+
+
+
 
 
 }

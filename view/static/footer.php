@@ -14,8 +14,12 @@
 <script src="js/uikit.min.js"></script>
 <script src="js/uikit-icons.min.js"></script>
 <script src="js/nav.js"></script>
+<<<<<<< HEAD
 
 <script src="js/class.php"></script>
+=======
+<script src="js/class.js"></script>
+>>>>>>> b04cb806d695e84093b902899f36fc1ed92b4080
 <script src="js/panel.js"></script>
 
 </body>

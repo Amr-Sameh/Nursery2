@@ -50,7 +50,7 @@ class student extends user
     }
 
     public function setLevel_id($level){
-    	$this->level_id = $level_id;
+    	$this->level_id = $level;
     }
 
     public function setStu_id($stu_id){

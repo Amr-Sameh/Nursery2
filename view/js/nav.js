@@ -33,9 +33,6 @@ $(document).ready(function () {
 
 
 
-    $(".login-link").click(function()
-    {
-        $("body").load("login.php");
-    });
+
 
 });

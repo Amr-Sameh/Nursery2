@@ -1,11 +1,11 @@
 <?php
-        session_start();
-        $_SESSION['userid']=2;
+session_start();
+
 include_once "../classes/classs.php";
 $class=new classs();
 $posts=$class->getpostsofclass(2);
 if(isset($_POST["posttext"])){
-  $class->addpost( $_SESSION['userid'],2,$_POST["posttext"]);
+    $class->addpost( $_SESSION['userid'],2,$_POST["posttext"]);
 }
 if(isset($_POST["commenttext"])){
     $class->addcomment( $_SESSION['userid'],$_POST["id"],$_POST["commenttext"]);
@@ -31,7 +31,7 @@ if(isset($_POST["reportpostid"])){
 <head>
 <meta charset="utf-8">
     <link rel="stylesheet" href="css/uikit-rtl.min.css">
-
+    <link rel="stylesheet" type="text/css" href="css/uikit.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/class.css">
@@ -42,7 +42,7 @@ if(isset($_POST["reportpostid"])){
     <ul id="classAtrbiut" class="uk-switcher"style="min-height: 100vh">
         <div class="uk-container-expand post ">
             <div class="container">
-                <li >
+                <li class="hlhl" >
                     <div class="uk-card uk-carde uk-card-default uk-width-2-3@m uk-visible-toggle" >
                         <div class="uk-card-header" style="background-color:  #f8f8f8">
                             <div class="uk-grid-small uk-flex-middle" uk-grid>
@@ -64,34 +64,34 @@ if(isset($_POST["reportpostid"])){
 
 
 
-                    <div class="uk-card uk-carde uk-card-default uk-width-2-3@m uk-visible-toggle"
-                         id="<?php echo $post["post_id"]; ?>">
-                        <div class="uk-card-header">
-                            <div class="uk-grid-small uk-flex-middle" uk-grid>
-                                <div class="uk-width-auto uk-border-circle"
-                                     style="width: 50px;height: 50px;overflow: hidden;padding: 0;margin-right: 5px ">
-                                    <img class="" width="100%" height="100%" src="images/child-only.png">
+                        <div class="uk-card uk-carde uk-card-default uk-width-2-3@m uk-visible-toggle"
+                             id="<?php echo $post["post_id"]; ?>">
+                            <div class="uk-card-header">
+                                <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                    <div class="uk-width-auto uk-border-circle"
+                                         style="width: 50px;height: 50px;overflow: hidden;padding: 0;margin-right: 5px ">
+                                        <img class="" width="100%" height="100%" src="images/child-only.png">
+                                    </div>
+                                    <div class="uk-width-expand">
+                                        <h3 class="uk-card-title uk-margin-remove-bottom"><?php echo $postuser['username']?></h3>
+                                        <p class="uk-text-meta uk-margin-remove-top">
+                                            <time datetime="2016-04-01T19:00"><?php echo $class->calculattime(strtotime($post["post_date"])) ?></time>
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="uk-width-expand">
-                                    <h3 class="uk-card-title uk-margin-remove-bottom"><?php echo $postuser['username']?></h3>
-                                    <p class="uk-text-meta uk-margin-remove-top">
-                                        <time datetime="2016-04-01T19:00"><?php echo $class->calculattime(strtotime($post["post_date"])) ?></time>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="uk-width-auto" style="float: right;">
-                                <ul class="uk-invisible-hover uk-iconnav">
-                                    <?php if ($_SESSION['userid'] == $post['user_id']) {
-                                    ?>
-                                    <li><a uk-icon="icon: pencil" href="#modal-sections" class="editpost" uk-toggle id="<?php echo 'y'.$post['post_id']?>"></a>
-                                    </li>
-                                    <li><a uk-icon="icon: trash" class="removepost" href="#remove" id="<?php echo 'g'.$post['post_id']?>" uk-toggle></a></li>
-                                    <?php
-                                    }else { ?>
-                                        <li><a uk-icon="icon: warning" class="reportpost" id="<?php echo 'x'.$post['post_id']?>"></a></li>
-                                        <?php
-                                    }
-                                    ?>
+                                <div class="uk-width-auto" style="float: right;">
+                                    <ul class="uk-invisible-hover uk-iconnav">
+                                        <?php if ($_SESSION['userid'] == $post['user_id']) {
+                                            ?>
+                                            <li><a uk-icon="icon: pencil" href="#modal-sections" class="editpost" uk-toggle id="<?php echo 'y'.$post['post_id']?>"></a>
+                                            </li>
+                                            <li><a uk-icon="icon: trash" class="removepost" href="#remove" id="<?php echo 'g'.$post['post_id']?>" uk-toggle></a></li>
+                                            <?php
+                                        }else { ?>
+                                            <li><a uk-icon="icon: warning" class="reportpost" id="<?php echo 'x'.$post['post_id']?>"></a></li>
+                                            <?php
+                                        }
+                                        ?>
                                     </ul>
                                 </div>
                             </div>
@@ -102,37 +102,39 @@ if(isset($_POST["reportpostid"])){
                                 <a   class="uk-button uk-button-text"  uk-toggle="target: #<?php echo 'A'.$post["post_id"]; ?>; animation:  uk-animation-slide-left, uk-animation-slide-bottom">comment</a>
                             </div>
                         </div>
-                        <div class="uk-card uk-carde uk-width-3-5@m" id="<?php echo 'A'.$post["post_id"]; ?>" hidden="hidden" aria-hidden="true">
-                            <?php
-                            $comments=$class->getcommentsofpost($post["post_id"]);
-                            foreach ($comments as $comment){
-                                $commentuser=$class->getuser($comment['user_id']);?>
-                                <article class="uk-comment uk-comment-primary comment uk-visible-toggle" id="<?php echo $comment["comment_id"].$post["post_id"];?>">
-                                    <header class="uk-comment-header uk-grid-small uk-flex-middle" uk-grid>
-                                        <div class="uk-width-auto uk-border-circle " style="width: 50px;height: 50px;overflow: hidden;padding: 0;margin-right: 5px ">
-                                            <img class="uk-comment-avatar " src="images/child-only.png" width="100%" height="100%" alt="">
+                        <div class="uk-card uk-carde uk-width-3-5@m " id="<?php echo 'A'.$post["post_id"]; ?>" hidden="hidden" aria-hidden="true">
+                            <div class="getcomments" id="<?php echo 'G'.$post["post_id"]; ?>">
+                                <?php
+                                $comments=$class->getcommentsofpost($post["post_id"]);
+                                foreach ($comments as $comment){
+                                    $commentuser=$class->getuser($comment['user_id']);?>
+                                    <article class="uk-comment uk-comment-primary comment uk-visible-toggle" id="<?php echo $comment["comment_id"].$post["post_id"];?>">
+                                        <header class="uk-comment-header uk-grid-small uk-flex-middle" uk-grid>
+                                            <div class="uk-width-auto uk-border-circle " style="width: 50px;height: 50px;overflow: hidden;padding: 0;margin-right: 5px ">
+                                                <img class="uk-comment-avatar " src="images/child-only.png" width="100%" height="100%" alt="">
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset"  ><?php echo $commentuser['username']?></a></h4>
+                                                <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
+                                                    <li><?php echo $class->calculattime(strtotime($comment["Ccomment_date"])) ?></li>
+                                                </ul>
+                                            </div>
+                                            <div class="uk-width-auto" style="float: right;">
+                                                <?php if ($_SESSION['userid'] == $comment['user_id']) {
+                                                    ?>
+                                                    <ul class="uk-invisible-hover uk-iconnav">
+                                                        <li><a   uk-icon="icon: pencil" href="#modal-sections" class="editcomment" uk-toggle id="<?php echo 'y'.$comment['comment_id']?>"></a></li>
+                                                        <li><a   uk-icon="icon: trash" class="removecomment" href="#remove" id="<?php echo 'k'.$comment['comment_id']?>" uk-toggle></a></li>
+                                                    </ul>
+                                                <?php } ?>
+                                            </div>
+                                        </header>
+                                        <div class="uk-comment-body">
+                                            <span class="wordwrap " id="<?php echo"h".$comment["comment_id"]; ?>"><?php echo $comment["comment_content"]?></span>
                                         </div>
-                                        <div class="uk-width-expand">
-                                            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset"  ><?php echo $commentuser['username']?></a></h4>
-                                            <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
-                                                <li><?php echo $class->calculattime(strtotime($comment["Ccomment_date"])) ?></li>
-                                            </ul>
-                                        </div>
-                                        <div class="uk-width-auto" style="float: right;">
-                                            <?php if ($_SESSION['userid'] == $post['user_id']) {
-                                            ?>
-                                            <ul class="uk-invisible-hover uk-iconnav">
-                                                <li><a   uk-icon="icon: pencil" href="#modal-sections" class="editcomment" uk-toggle id="<?php echo 'y'.$comment['comment_id']?>"></a></li>
-                                                <li><a   uk-icon="icon: trash" class="removecomment" href="#remove" id="<?php echo 'k'.$comment['comment_id']?>" uk-toggle></a></li>
-                                            </ul>
-                                            <?php } ?>
-                                        </div>
-                                    </header>
-                                    <div class="uk-comment-body">
-                                        <span class="wordwrap " id="<?php echo"h".$comment["comment_id"]; ?>"><?php echo $comment["comment_content"]?></span>
-                                    </div>
-                                </article>
-                            <?php }?>
+                                    </article>
+                                <?php }?>
+                            </div>
                             <article class="uk-comment uk-comment-primary comment uk-visible-toggle" style="border: 0px">
                                 <div class="uk-comment-body">
                                     <textarea class="newPost" id="<?php echo"c".$post['post_id'];?>" placeholder="Write some thing ..."></textarea>
@@ -140,7 +142,8 @@ if(isset($_POST["reportpostid"])){
                                 </div>
                             </article>
                         </div>
-                    <?php }?>
+
+                    <?php } ?>
                 </li>
             </div></div>
         <div class="uk-container-expand  subject">
@@ -210,11 +213,11 @@ if(isset($_POST["reportpostid"])){
                                                 <th >Answer</th>
                                                 <th >Grade</th>
                                                 <th >Comment</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <?php
-                                            for($k=0;$k<15;$k++){
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php
+                                                for($k=0;$k<15;$k++){
                                                 ?>
                                                 <tr>
                                                     <td><p>mostafa saleh sopih</p></td>
@@ -338,7 +341,6 @@ if(isset($_POST["reportpostid"])){
             </div></div>
     </ul>
     <button class="uk-button uk-margin-small-right cata uk-box-shadow-hover-xlarge "  type="button" uk-toggle="target: #offcanvas-push"><a   class="uk-slidenav-large" uk-slidenav-next></a></button>
-
     <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
         <div class="uk-offcanvas-bar uk-flex uk-flex-column">
             <button class="uk-offcanvas-close" type="button" uk-close></button>
@@ -356,17 +358,17 @@ if(isset($_POST["reportpostid"])){
                                 foreach ($listofsub as $value) {
                                     echo "<li><a href='#'>" . $value . "</a></li>";
                                 }
-                                ?>
-                            </ul>
-                            <?php
-                        }else if($userid==0){
-                            ?>
-                            <a  href="#">HomeWork</a>
-                            <ul class="uk-nav-sub" uk-switcher="connect: #subjects; animation: uk-animation-fade; toggle: > :not(.uk-nav-header)">
-                                <?php
-                                foreach ($listofHw as $value) {
-                                    echo "<li><a href='#'>" . $value . "</a></li>";
-                                }
+                                    ?>
+                                    </ul>
+                                    <?php
+                                    }else if($userid==0){
+                                    ?>
+                                    <a  href="#">HomeWork</a>
+                                    <ul class="uk-nav-sub" uk-switcher="connect: #subjects; animation: uk-animation-fade; toggle: > :not(.uk-nav-header)">
+                                    <?php
+                                    foreach ($listofHw as $value) {
+                                        echo "<li><a href='#'>" . $value . "</a></li>";
+                                    }
                                 ?>
                             </ul>
                         <?php }?>
@@ -375,7 +377,7 @@ if(isset($_POST["reportpostid"])){
                     <li><a href="panel.php">Timetable</a><p class="uk-heading-divider"></p></li>
                 </ul>
             </div>
-<!-->
+            <!-->
         </div>
 
 
@@ -411,9 +413,6 @@ if(isset($_POST["reportpostid"])){
     <script src="js/uikit.min.js"></script>
     <script src="js/uikit-icons.min.js"></script>
     <script src="js/class.js"></script>
-    <script type="text/javascript">
-
-    </script>
 </footer>
 </div>
 

@@ -19,9 +19,9 @@ public function __construct()
 }
 
 
-public function check_exist($id , $pass){
+public function check_exist($username , $pass){
 
-    $query = "SELECT * FROM general_user WHERE id='$id' and password='$pass' LIMIT 1";
+    $query = "SELECT * FROM general_user WHERE username='$username' and password='$pass' LIMIT 1";
     $check = $this->db->excute_query($query);
     return ($check->rowCount() == 0) ? false : true;
 
@@ -29,8 +29,8 @@ public function check_exist($id , $pass){
 }
 
 
-public function get_user_by_id($id){
-    $query="SELECT * FROM  general_user WHERE id='$id' LIMIT 1";
+public function get_user_by_username($username){
+    $query="SELECT * FROM  general_user WHERE username='$username' LIMIT 1";
     $row =$this->db->excute_query($query);
     return $row->fetch();
 }

@@ -82,4 +82,61 @@ class class_query
         }
         return $all_sub;
     }
+
+
+
+
+    public function add_class($student_number,$max_student_num,$level_id) {
+        $query="INSERT INTO class (student_num,max_student_num,level_id) VALUES ($student_number,$max_student_num,$level_id)" ;
+
+        //TODO CALL FAUNCTION EXCUTE
+        $this ->db ->excute_query($query);
+    }
+
+    public function delet_class($id){
+        $query="DELETE FROM class WHERE id=$id";
+
+        //TODO CALL FAUNCTION EXCUTE
+        $this->db->excute_query($query);
+    }
+
+    public function update_class($class_id,$student_number,$max_student_num,$level_id){
+        $query="UPDATE class SET student_number=$student_number , max_student_num=$max_student_num, level_id=$level_id WHERE id=$class_id";
+
+        //TODO CALL FAUNCTION EXCUTE
+        $this->db->excute_query($query);
+    }
+
+    public function add_student($class_id , $stu_id){
+        $query="UPDATE `student` SET `class_id`='$class_id' WHERE `stu_id`='$stu_id' ";
+
+        //TODO CALL FAUNCTION EXCUTE
+        $this->db->excute_query($query);
+        $stu_num=$this->stu_num($class_id)+1;
+        $query=" UPDATE `class` SET `students_num`=$stu_num";
+        $this->db->excute_query($query);
+    }
+
+    public function stu_num ($class_id){
+        $query="SELECT students_num FROM class WHERE class_id=$class_id" ;
+       return $this->db->excute_query($query)->fetch()['students_num'];
+
+    }
+
+    public function delet_student($class_id , $stu_id){
+        $query="UPDATE `student` SET `class_id`=NULL  WHERE `stu_id`='$stu_id' " ;
+
+        //TODO CALL FAUNCTION EXCUTE
+        $this->db->excute_query($query)  ;
+        $stu_num=$this->stu_num($class_id)-1;
+        $query=" UPDATE `class` SET `students_num`=$stu_num";
+        $this->db->excute_query($query);
+
+    }
+
+    public function get_class_students($class_id){
+        $query="SELECT * FROM `student` WHERE `class_id`='$class_id'";
+       return $this->db->excute_query($query)->fetchAll();
+    }
+
 }
