@@ -65,7 +65,7 @@ include_once 'navbar.php';
         $levels=$level_class->get_all_levels();
         foreach ($levels as $level){
             ?>
-                <li><a href="#tab<?php echo $level['id']?>" data-toggle="tab">Level <?php echo $level['name']?></a></li>
+                <li class="getstudentfromlevel"  id="<?php echo "AB".$level['id']?>"><a href="#tab<?php echo $level['id']?>" data-toggle="tab">Level <?php echo $level['name']?></a></li>
             <?php }?>
             </ul>
 
