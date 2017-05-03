@@ -83,7 +83,16 @@ private function get_level_id($name){
 
 }
 
+public function get_level_classes_by_level_id($level_id){
+    $query="SELECT * FROM `class` WHERE `level_id`='$level_id'";
+    return $this->db->excute_query($query)->fetchAll();
 
+}
+
+public function get_all_levels(){
+    $query="SELECT * FROM level ";
+   return $this->db->excute_query($query)->fetchAll();
+}
 
 
 

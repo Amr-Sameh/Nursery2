@@ -1,6 +1,7 @@
-body {
+.put
+{
     background-image: url("../images/tl.jpg");
-	background-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
@@ -36,7 +37,7 @@ body {
     font-weight: normal;
     line-height: 1.42857143;
     background: crimson;
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
 

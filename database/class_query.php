@@ -135,7 +135,7 @@ class class_query
     }
 
     public function get_class_students($class_id,$level_id){
-        $query="SELECT * FROM `student`,`general_user` WHERE student.user_id=general_user.id AND level_id=$level_id AND class_id=$class_id";
+        $query="SELECT * FROM `student`,`general_user` WHERE student.user_id=general_user.id AND level_id='$level_id' AND class_id='$class_id'";
        return $this->db->excute_query($query)->fetchAll();
     }
 
