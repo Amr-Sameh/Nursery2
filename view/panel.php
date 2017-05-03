@@ -60,27 +60,43 @@ include_once 'navbar.php';
             <ul class="nav nav-tabs">
         <?php
         //TODO get levels name and id
+<<<<<<< HEAD
+        foreach ($levels->$level as $level){
+=======
         foreach ($levels as $level){
+>>>>>>> 5608b4e9c7cfde78066bed795a2bcf25ee0c408e
             ?>
                 <li><a href="#tab<?php echo $level['levelid']?>" data-toggle="tab">Level <?php echo $level['levelname']?></a></li>
             <?php }?>
             </ul>
 
             <div class="tab-content">
+<<<<<<< HEAD
+                <?php foreach ($levels->$level as $level){?>
+=======
                 <?php foreach ($levels as $level){?>
+>>>>>>> 5608b4e9c7cfde78066bed795a2bcf25ee0c408e
                     <div class="tab-pane" id="tab<?php echo $level['levelid']?>">
                         <div class="tabbable"> <!-- Only required for left/right tabs -->
                             <ul class="nav nav-tabs">
                                 <?php
                                     //TODO get classes name and id of level $level['levelid']
+<<<<<<< HEAD
+                                        foreach ($classes->$class as $class){
+=======
                                         foreach ($classes as $class){
+>>>>>>> 5608b4e9c7cfde78066bed795a2bcf25ee0c408e
                                     ?>
-                                    <li><a href="#<?php echo $class['classid']?>" data-toggle="tab"><?php echo $class['classname']?><?php echo $class_num+1?></a></li>
+                                    <li><a href="#<?php echo $class['classid']?>" data-toggle="tab"><?php echo $class['classname']?><?php echo  $class_num+1?></a></li>
                                 <?php }?>
                             </ul>
                             <div class="tab-content">
                                 <?php
+<<<<<<< HEAD
+                                foreach ($classes->$class as $class){// the classes number in the choosen level
+=======
                                 foreach ($classes as $class){// the classes number in the choosen level
+>>>>>>> 5608b4e9c7cfde78066bed795a2bcf25ee0c408e
                                     ?>
                                     <div class="tab-pane" id="<?php echo $class['classid']?>">
                                         <div class="uk-width-4-5@m" style="margin: auto">
@@ -174,9 +190,52 @@ include_once 'navbar.php';
 
     else if ($_GET['action']=='complain')
         echo '<h1>cpmplain</h1>';
-    else
+    else if($_GET['action']=='addTech'){ ?>
+        <div class="container">
+    <form action="" method="post">
+        <label for="name" class="col-xs-4">FirstName</label>
+        <label for="name" class="col-xs-4">MidName</label>
+        <label for="name" class="col-xs-4">LastName</label>
+        <input type="text" class="col-xs-4"name="FirstName">
+        <input type="text" class="col-xs-4"name="MidName">
+        <input type="text" class="col-xs-4"name="LastName">
 
-    ?>
+        <label for="county" class="col-xs-4">Country</label>
+        <label for="county" class="col-xs-4">City</label>
+        <label for="county" class="col-xs-4">Street</label>
+        <input type="text" class="col-xs-4"name="Countr">
+        <input type="text" class="col-xs-4"name="City">
+        <input type="text" class="col-xs-4"name="Street">
+
+
+        <label for="level" class="col-xs-4">level</label>
+        <label for="class" class="col-xs-4">class</label>
+        <label for="subjects"class="col-xs-4">Subjects</label>
+        <select class="from-control col-xs-4">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <select class="from-control col-xs-4">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <select class="from-control col-xs-4">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </form>
+
+</div>
+
+
+
+
+
+    <?php} ?>
+
 
 
     </div>
@@ -240,5 +299,3 @@ include_once 'navbar.php';
         </div>
 
 
-<?php
-include_once 'static/footer.php';
