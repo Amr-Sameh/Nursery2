@@ -6,7 +6,7 @@ $(document).ready(function () {
 $.ajax({
   url:"../classes/panel_action.php",
     method:"POST",
-    data:{action:'GwtClassStudents',class_id:1},
+    data:{action:'GwtClassStudents',class_id:1,level_id:1},
     success:function (data) {
     alert(data);
   $('#StudentsList').html(data);
