@@ -22,7 +22,7 @@ $(document).ready(function () {
         $.ajax({
             url: "../classes/panel_action.php",
             method: "POST",
-            data: {action: 'showteacher'},
+            data: {action: 'showteacherss'},
             success: function (data) {
                 alert(data);
                 $('#teachers').html(data);

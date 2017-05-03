@@ -223,7 +223,7 @@ include_once 'navbar.php';
     <ul class="uk-nav-sub">
 
         <li><a  href="<?php echo $_SERVER['PHP_SELF'].'?action=student';?>">Student</a></li>
-        <li><a  href="<?php echo $_SERVER['PHP_SELF'].'?action=teacher';?>" id="showteasher">Teacher</a></li>
+        <li id="showteasher"><a  href="<?php echo $_SERVER['PHP_SELF'].'?action=teacher';?>" >Teacher</a></li>
                      </ul></li>
 
 
