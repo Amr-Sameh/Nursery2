@@ -55,6 +55,14 @@ class level_class
     public function classes_num(){
         return $this->level_query->get_classes_num($this->id);
     }
+    public function get_level_classes_by_level_id($level_id){
+     return $this->level_query->get_level_classes_by_level_id($level_id);
+    }
+
+    public function get_all_levels(){
+
+        return $this->level_query->get_all_levels();
+    }
 
 
 
