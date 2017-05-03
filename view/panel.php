@@ -128,28 +128,8 @@ include_once 'navbar.php';
                     <th >Delet</th>
                 </tr>
                 </thead>
-                <tbody>
-                <?php
-                for($k=0;$k<15;$k++){
-                    ?>
-                    <tr uk-toggle="target: #<?php echo $k?>; animation:  uk-animation-slide-left, uk-animation-slide-bottom">
-                        <td><div class=" uk-border-circle" style="width: 50px;height: 50px;overflow: hidden;padding: 0; ">
-                                <img class="" width="100%" height="100%" src="images/child-only.png">
-                            </div></td>
-                        <td >
-                            <a class="uk-link-reset"  >Mostafa saleh sopih mohamed</a>
-                        </td>
-                        <td>235664</td>
-                        <td><button class="uk-button uk-button-primary" type="button">edit</button></td>
-                        <td><button class="uk-button uk-button-danger" type="button">delete</button></td>
-                    </tr>
-                    <tr id="<?php echo $k?>" class="uk-card uk-card-default uk-card-body uk-margin-small" hidden="hidden" aria-hidden="true">
-                        <td ><div >aslkadsdjkalsdlkajskdljaskdjksajd dfklsdjfds fsdklfjsdkf dfkljsdlf dikfljsdkf diokfljsdkkf dklsfjsdlkfdkls;ad</div></td>
-                        <td ><div >aslkadsdjkalsdlkajskdljaskdjksajd dfklsdjfds fsdklfjsdkf dfkljsdlf dikfljsdkf diokfljsdkkf dklsfjsdlkfdkls;ad</div></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                <?php } ?>
+                <tbody id="teachers">
+
                 </tbody>
             </table>
         </div>
@@ -310,7 +290,7 @@ else if ($_GET['action']=='level') {
     <ul class="uk-nav-sub">
 
         <li><a  href="<?php echo $_SERVER['PHP_SELF'].'?action=student';?>">Student</a></li>
-        <li><a  href="<?php echo $_SERVER['PHP_SELF'].'?action=teacher';?>">Teacher</a></li>
+        <li><a  href="<?php echo $_SERVER['PHP_SELF'].'?action=teacher';?>" id="showteasher">Teacher</a></li>
                      </ul></li>
 
 
