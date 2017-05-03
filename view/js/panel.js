@@ -36,7 +36,7 @@ $(document).ready(function () {
     }
 
 
-    $("#showteasher").click(function (e) {
+    if($("#teachers").length != 0) {
         $.ajax({
             url: "../classes/panel_action.php",
             method: "POST",
@@ -47,5 +47,5 @@ $(document).ready(function () {
 
             }
         });
-    });
+    }
 });

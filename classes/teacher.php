@@ -7,6 +7,7 @@
  * Time: 10:15 ص
  */
 include_once "../database/teacher_query.php";
+include_once "user.php";
 class teacher extends user
 {
 private $Teacherid;

@@ -42,7 +42,10 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
             exit();
 
 
-        }else if ($_POST['action'] == 'showteacher') {
+        }
+
+
+        if ($_POST['action'] == 'showteacherss') {
 
 
             include_once 'teacher.php';
