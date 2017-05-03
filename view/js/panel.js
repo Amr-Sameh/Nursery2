@@ -7,9 +7,8 @@ $(document).ready(function () {
         $.ajax({
           url: "../classes/panel_action.php",
           method: "POST",
-          data: {action: 'GwtClassStudents', class_id: id, level_id: 1},
+          data: {action: 'GwtClassStudents', class_id: id},
           success: function (data) {
-              alert(data);
               $('#StudentsList'.concat(id)).html(data);
 
           }

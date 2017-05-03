@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
         if ($_POST['action'] = 'GetClassStudents') {
             include_once 'classs.php';
             $class = new classs();
-            $studentsList = $class->get_class_students($_POST['class_id'],$_POST['level_id']);
+            $studentsList = $class->get_class_students($_POST['class_id']);
             $studentAsTable ='';
             foreach ($studentsList as $student) {
                 $studentAsTable .= ' <tr uk-toggle="target: #'.$student['stu_id'].' animation:  uk-animation-slide-left, uk-animation-slide-bottom">';
