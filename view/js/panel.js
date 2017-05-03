@@ -18,4 +18,16 @@ $(document).ready(function () {
             });
         });
     });
+    $("#showteasher").click(function (e) {
+        $.ajax({
+            url: "../classes/panel_action.php",
+            method: "POST",
+            data: {action: 'showteacher'},
+            success: function (data) {
+                alert(data);
+                $('#teachers').html(data);
+
+            }
+        });
+    });
 });

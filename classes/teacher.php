@@ -29,6 +29,9 @@ public function addnewTeacher($tusername,$tfname,$tlname,$temail,$tpass,$tgender
     public function deletteacher($teacherid){
         return $this->teacherquery->delete_teacher($teacherid);
     }
+    public function get_all_teachers(){
+        return $this->teacherquery->get_all_teachers();
+    }
 
     /**
      * @return mixed

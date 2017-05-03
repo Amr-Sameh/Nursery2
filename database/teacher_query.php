@@ -32,4 +32,9 @@ public function add_new_Teacher($tusername,$tfname,$tlname,$temail,$tpass,$tgend
         $query="";
         //query must delete to table teacher
     }
+    public function get_all_teachers(){
+        $query="SELECT * FROM `teacher`,`general_user` WHERE teacher.user_id=general_user.id";
+        return $this->db->excute_query($query)->fetchAll();
+    }
+
 }
