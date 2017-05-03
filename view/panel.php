@@ -88,7 +88,7 @@ include_once 'navbar.php';
                                                     <th >Delet</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody id="StudentsList">
                                                 <?php
                                                 for($k=0;$k<15;$k++){// class students number
                                                     ?>

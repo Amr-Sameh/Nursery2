@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
         if ($_POST['action'] = 'GetClassStudents') {
             include_once 'classs.php';
             $class = new classs();
-            $studentsList = $class->get_class_students($_POST['class_id']);
+            $studentsList = $class->get_class_students($_POST['class_id'],$_POST['level_id']);
             $studentAsTable ='';
             foreach ($studentsList as $student) {
                 $studentAsTable .= ' <tr uk-toggle="target: #'.$student['stu_id'].' animation:  uk-animation-slide-left, uk-animation-slide-bottom">';
@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
                 $studentAsTable .= ' <img class="" width="100%" height="100%" src="images/child-only.png">';
                 $studentAsTable.=' </div></td>
                                                         <td >';
-                $studentAsTable .= ' <a class="uk-link-reset"  >' .'df' . '</a>';//grap the name from user table
+                $studentAsTable .= ' <a class="uk-link-reset"  >' .$student['first_name']." ".$student['mid_name']." ".$student['last_name']. '</a>';//grap the name from user table
                 $studentAsTable .= '</td><td>' . $student['stu_id'] . '</td>';
                 $studentAsTable .= ' <td><button class="uk-button uk-button-default" type="button">edit</button></td>
                         <td><button class="uk-button uk-button-default" type="button">delete</button></td>';

@@ -88,8 +88,8 @@ class classs
         $this->classquery->add_student($id,$student_id);
 
     }
-    public function get_class_students($id){
-       return $this->classquery->get_class_students($id);
+    public function get_class_students($id,$level_id){
+       return $this->classquery->get_class_students($id,$level_id);
     }
 
 
