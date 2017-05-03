@@ -65,7 +65,7 @@ include_once 'navbar.php';
         $levels=$level_class->get_all_levels();
         foreach ($levels as $level){
             ?>
-                <li><a href="#tab<?php echo $level['id']?>" data-toggle="tab">Level <?php echo $level['name']?></a></li>
+                <li class="getstudentfromlevel"  id="<?php echo "AB".$level['id']?>"><a href="#tab<?php echo $level['id']?>" data-toggle="tab">Level <?php echo $level['name']?></a></li>
             <?php }?>
             </ul>
 
@@ -223,11 +223,50 @@ include_once 'navbar.php';
 
 
 
-<?php } ?>
+<?php }
+else if ($_GET['action']=='level') {
+    ?>
+
+
+    <button class=" btn-lg btn-primary"> Add Level <i class="fa fa-plus-circle" aria-hidden="true"></i> </button>
 
 
 
 
+
+
+
+
+
+
+
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Level Name</th>
+            <th>Level ID</th>
+        </tr>
+        </thead>
+        <tbody id="levelTable">
+
+
+        </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+    <?php
+}
+    ?>
 
 
 
