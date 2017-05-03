@@ -5,9 +5,12 @@
  * Date: 13/04/17
  * Time: 11:01 ص
  */
+
 include_once 'static/header.php';
 include_once 'navbar.php';
+
 print_r($_SESSION);
+echo $_SESSION['user_type'];
 ?>
 
 

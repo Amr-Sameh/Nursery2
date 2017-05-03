@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 /**
  * Created by PhpStorm.
  * User: meir
@@ -34,25 +34,25 @@ class user
     public function __construct()
     {
         $this->user_query=new user_query();
-        session_start();
+
     }
 
 
     public function login($username , $pass){
         //TODO clean the inputs
-        if($this->user_query->check_exist($username,$pass)){
+        if($this->user_query->check_exist($username,$pass)==1){
 
-            $user_info=$this->user_query->get_user_by_id($username);
+            $user_info=$this->user_query->get_user_by_username($username);
             $_SESSION['user_type']=$user_info['group_id'];
             $_SESSION['user_id']=$user_info['id'];
 
 
             //TODO decide what's better cockies or sessien
             //TODO Move to app main page
-            return true;
+            return $user_info['group_id'];
 
         }
-        return false;
+        return "555555555555";
 
 
     }

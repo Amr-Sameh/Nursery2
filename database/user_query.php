@@ -23,7 +23,11 @@ public function check_exist($username , $pass){
 
     $query = "SELECT * FROM general_user WHERE username='$username' and password='$pass' LIMIT 1";
     $check = $this->db->excute_query($query);
-    return ($check->rowCount() == 0) ? false : true;
+    if ($check->rowCount() == 0) {
+        return false;
+    }else{
+        return true;
+    }
 
 
 }

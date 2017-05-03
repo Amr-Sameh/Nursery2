@@ -6,7 +6,7 @@
  * Time: 11:36 م
  */
 
-
+session_start();
 function active($currect_page){
     $url_array =  explode('/', $_SERVER['REQUEST_URI']) ;
     $url = end($url_array);
@@ -15,7 +15,7 @@ function active($currect_page){
     if($currect_page == $url){
         echo 'active-navbar'; //class name in css
     }
-}session_start();
+}
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
 
@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         $user =new user();
        $result = $user->login($_POST['username'],$_POST['password']);
 
-
+        echo $result;
        return $result;
     }
 }

@@ -10,16 +10,7 @@
  */
 
 
-if($_SERVER['REQUEST_METHOD']=='POST'){
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-   include_once '../classes/user.php';
-   $user=new user();
-   $user->login($username,$password);
-
-}
 include_once 'static/header.php';
 
 ?>

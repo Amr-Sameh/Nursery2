@@ -67,7 +67,7 @@ class class_query
     }
     public function get_user($id){
         $userdp=new user_query();
-        return $userdp->get_user_by_id($id);
+        return $userdp->get_user_by_username($id);
     }
     public function get_subjects(){
         $query="SELECT * FROM `subject` ";
