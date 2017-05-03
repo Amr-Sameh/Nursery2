@@ -60,27 +60,27 @@ include_once 'navbar.php';
             <ul class="nav nav-tabs">
         <?php
         //TODO get levels name and id
-        foreach ($levels->$level){
+        foreach ($levels as $level){
             ?>
                 <li><a href="#tab<?php echo $level['levelid']?>" data-toggle="tab">Level <?php echo $level['levelname']?></a></li>
             <?php }?>
             </ul>
 
             <div class="tab-content">
-                <?php foreach ($levels->$level){?>
+                <?php foreach ($levels as $level){?>
                     <div class="tab-pane" id="tab<?php echo $level['levelid']?>">
                         <div class="tabbable"> <!-- Only required for left/right tabs -->
                             <ul class="nav nav-tabs">
                                 <?php
                                     //TODO get classes name and id of level $level['levelid']
-                                        foreach ($classes->$class){
+                                        foreach ($classes as $class){
                                     ?>
                                     <li><a href="#<?php echo $class['classid']?>" data-toggle="tab"><?php echo $class['classname']?><?php echo $class_num+1?></a></li>
                                 <?php }?>
                             </ul>
                             <div class="tab-content">
                                 <?php
-                                foreach ($classes->$class){// the classes number in the choosen level
+                                foreach ($classes as $class){// the classes number in the choosen level
                                     ?>
                                     <div class="tab-pane" id="<?php echo $class['classid']?>">
                                         <div class="uk-width-4-5@m" style="margin: auto">
@@ -215,7 +215,7 @@ include_once 'navbar.php';
 
         <li><a  href="<?php echo $_SERVER['PHP_SELF'].'?action=student';?>">Student</a></li>
         <li><a  href="<?php echo $_SERVER['PHP_SELF'].'?action=teacher';?>">Teacher</a></li>
-                            </ul></li>
+                     </ul></li>
 
 
                         <li class="left-nav-link "><a href="<?php echo $_SERVER['PHP_SELF'].'?action=event';?>"><i class="fa fa-calendar <?php activ('event');?>" aria-hidden="true"></i>Event</a></li>
@@ -225,17 +225,9 @@ include_once 'navbar.php';
 
                         <li class="left-nav-link col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=level';?>">Levels</a></li>
                         <li class="left-nav-link col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=class';?>">Classes</a></li>
-
-
                     </ul>
-
-
-    </div>
-
-
-
+                   </div>
                 </div>
-                <!-->
             </div>
         </div>
 

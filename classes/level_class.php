@@ -56,8 +56,10 @@ class level_class
         return $this->level_query->get_classes_num($this->id);
     }
 
-
-
+    /**
+     * @return level_query
+     */
+   
 
 
 
