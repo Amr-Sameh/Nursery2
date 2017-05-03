@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['userid']=1;
+
 include_once "../classes/classs.php";
 $class=new classs();
 $posts=$class->getpostsofclass(2);
@@ -213,11 +213,11 @@ if(isset($_POST["reportpostid"])){
                                                 <th >Answer</th>
                                                 <th >Grade</th>
                                                 <th >Comment</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <?php
-                                            for($k=0;$k<15;$k++){
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php
+                                                for($k=0;$k<15;$k++){
                                                 ?>
                                                 <tr>
                                                     <td><p>mostafa saleh sopih</p></td>
@@ -358,17 +358,17 @@ if(isset($_POST["reportpostid"])){
                                 foreach ($listofsub as $value) {
                                     echo "<li><a href='#'>" . $value . "</a></li>";
                                 }
-                                ?>
-                            </ul>
-                            <?php
-                        }else if($userid==0){
-                            ?>
-                            <a  href="#">HomeWork</a>
-                            <ul class="uk-nav-sub" uk-switcher="connect: #subjects; animation: uk-animation-fade; toggle: > :not(.uk-nav-header)">
-                                <?php
-                                foreach ($listofHw as $value) {
-                                    echo "<li><a href='#'>" . $value . "</a></li>";
-                                }
+                                    ?>
+                                    </ul>
+                                    <?php
+                                    }else if($userid==0){
+                                    ?>
+                                    <a  href="#">HomeWork</a>
+                                    <ul class="uk-nav-sub" uk-switcher="connect: #subjects; animation: uk-animation-fade; toggle: > :not(.uk-nav-header)">
+                                    <?php
+                                    foreach ($listofHw as $value) {
+                                        echo "<li><a href='#'>" . $value . "</a></li>";
+                                    }
                                 ?>
                             </ul>
                         <?php }?>

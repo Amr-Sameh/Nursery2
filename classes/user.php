@@ -34,7 +34,6 @@ class user
     public function __construct()
     {
         $this->user_query=new user_query();
-
     }
 
 
@@ -45,6 +44,7 @@ class user
             $user_info=$this->user_query->get_user_by_username($username);
             $_SESSION['user_type']=$user_info['group_id'];
             $_SESSION['user_id']=$user_info['id'];
+
 
 
             //TODO decide what's better cockies or sessien

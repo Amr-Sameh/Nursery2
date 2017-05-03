@@ -24,8 +24,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         $user =new user();
        $result = $user->login($_POST['username'],$_POST['password']);
 
-        echo $result;
-       return $result;
+       echo $result;
+        exit();
     }
 }
 
@@ -61,7 +61,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                 /*
                  * check if log in show user bord
                  */
-                if(isset($_SESSION['id'])&&$_SESSION['id']!=null&&$_SESSION['id']!='') {
+                if(isset($_SESSION['user_id'])&&$_SESSION['user_id']!=null&&$_SESSION['user_id']!='') {
 
                     echo ' <li class="dropdown nav-switch">
           <a href="" class="dropdown-toggle hvr-sweep-to-right" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Amr Sameh <span class="caret"></span></a>

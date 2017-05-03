@@ -22,4 +22,7 @@ $level =new level_class();
 
 $l=new level_query();
 //$l->update_level("level 5",6,"level 9",6);
-$l->get_level_by_name("level 9");
+include_once 'classs.php';
+$f=new classs();
+$
+

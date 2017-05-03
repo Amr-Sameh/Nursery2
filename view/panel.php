@@ -58,23 +58,31 @@ include_once 'navbar.php';
     }else if ($_GET['action']=='student'){ ?>
         <div class="tabbable"> <!-- Only required for left/right tabs -->
             <ul class="nav nav-tabs">
-        <?php $v=50;$z=50;$y=0;$u=0; for ($x=0;$x<2;$x++){?>
-                <li><a href="#tab<?php $y=$y+1; echo $y;?>" data-toggle="tab">Level <?php echo $x+1?></a></li>
+        <?php
+        //TODO get levels name and id
+        foreach ($levels->$level){
+            ?>
+                <li><a href="#tab<?php echo $level['levelid']?>" data-toggle="tab">Level <?php echo $level['levelname']?></a></li>
             <?php }?>
             </ul>
 
             <div class="tab-content">
-                <?php for ($x=0;$x<2;$x++){?>
-                    <div class="tab-pane" id="tab<?php $u=$u+1; echo $u;?>">
+                <?php foreach ($levels->$level){?>
+                    <div class="tab-pane" id="tab<?php echo $level['levelid']?>">
                         <div class="tabbable"> <!-- Only required for left/right tabs -->
                             <ul class="nav nav-tabs">
-                                <?php for ($f=0;$f<2;$f++){?>
-                                    <li><a href="#<?php $v=$v+1; echo $v.$f;?>" data-toggle="tab">Class <?php echo $f+1?></a></li>
+                                <?php
+                                    //TODO get classes name and id of level $level['levelid']
+                                        foreach ($classes->$class){
+                                    ?>
+                                    <li><a href="#<?php echo $class['classid']?>" data-toggle="tab"><?php echo $class['classname']?><?php echo $class_num+1?></a></li>
                                 <?php }?>
                             </ul>
                             <div class="tab-content">
-                                <?php for ($f=0;$f<2;$f++){?>
-                                    <div class="tab-pane" id="<?php $z=$z+1; echo $z.$f;?>">
+                                <?php
+                                foreach ($classes->$class){// the classes number in the choosen level
+                                    ?>
+                                    <div class="tab-pane" id="<?php echo $class['classid']?>">
                                         <div class="uk-width-4-5@m" style="margin: auto">
                                             <table class="uk-table uk-table-hover">
                                                 <thead>
@@ -88,7 +96,7 @@ include_once 'navbar.php';
                                                 </thead>
                                                 <tbody>
                                                 <?php
-                                                for($k=0;$k<15;$k++){
+                                                for($k=0;$k<15;$k++){// class students number
                                                     ?>
                                                     <tr uk-toggle="target: #<?php echo $k?>; animation:  uk-animation-slide-left, uk-animation-slide-bottom">
                                                         <td><div class=" uk-border-circle" style="width: 50px;height: 50px;overflow: hidden;padding: 0; ">
