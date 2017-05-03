@@ -140,6 +140,8 @@ include_once 'navbar.php';
 
     else if ($_GET['action']=='complain')
         echo '<h1>cpmplain</h1>';
+
+
     else if($_GET['action']=='addTech'){ ?>
         <div class="container">
     <form action="" method="post">
@@ -184,7 +186,72 @@ include_once 'navbar.php';
 
 
 
-    <?php } ?>
+    <?php }
+    else if ($_GET['action']=='event'){
+        ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php }
+else if ($_GET['action']=='level') {
+    ?>
+
+
+    <button class=" btn-lg btn-primary"> Add Level <i class="fa fa-plus-circle" aria-hidden="true"></i> </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Level Name</th>
+            <th>Level ID</th>
+        </tr>
+        </thead>
+        <tbody id="levelTable">
+
+
+        </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+    <?php
+}
+    ?>
+
+
+
+
+
 
 
 
@@ -239,8 +306,6 @@ include_once 'navbar.php';
                 </div>
             </div>
         </div>
-
-
 <?php
-include "static/footer.php";
-?>
+include_once 'static/footer.php';
+
