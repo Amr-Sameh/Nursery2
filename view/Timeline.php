@@ -10,7 +10,7 @@ include_once 'navbar.php';
 include_once '../database/TL_Queries.php';
 $my_tl = new TL_Queries();
 session_start();
-$_SESSION['id'] = 1;
+$_SESSION['id'] = 1; // that will be stored in
 $id = $_SESSION['id'];
 $page=1;
 $page_num=0;
@@ -47,17 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 ?>
 
-
-<!DOCTYPE html>
-<div>
-<head>
-    <meta charset="utf-8">
-
-</head>
-<div>
-
 <!-- show timeline contained-->
-
+<div class="put">
 <div class="container">
     <!-- new timeline -->
     <!-- show timeline contained-->
@@ -324,6 +315,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <footer class="page-header"></footer>
 
 </div>
+
 <?php } ?>
 <!--  end task -->
 <?php
@@ -333,6 +325,7 @@ if($page_num>1) {
 include_once 'static/footer.php'
 ?>
 <div class="editpading"style="margin-top: 4px">.</div>
+</div>
 </body>
 </html>
 
