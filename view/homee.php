@@ -7,7 +7,7 @@
  */
 include_once 'static/header.php';
 include_once 'navbar.php';
-print_r($_SESSION);
+
 ?>
 
 

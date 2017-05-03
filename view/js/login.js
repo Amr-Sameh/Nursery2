@@ -63,10 +63,13 @@ $(document).ready(function () {
             method: "POST",
             data: {action: action, username: username, password: password},
             success: function (data) {
-                if (data == false) {
-                    alert('error');
-                }else { alert('goo');
-               location.href="homee.php";}
+
+                if (data == 1) {
+
+                    location.href="homee.php";
+
+                }else {  //TODO add validate part to tell the user that the data not right
+                     }
             }
         })
     });
