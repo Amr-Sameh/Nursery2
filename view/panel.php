@@ -60,27 +60,43 @@ include_once 'navbar.php';
             <ul class="nav nav-tabs">
         <?php
         //TODO get levels name and id
+<<<<<<< HEAD
         foreach ($levels->$level as $level){
+=======
+        foreach ($levels as $level){
+>>>>>>> 5608b4e9c7cfde78066bed795a2bcf25ee0c408e
             ?>
                 <li><a href="#tab<?php echo $level['levelid']?>" data-toggle="tab">Level <?php echo $level['levelname']?></a></li>
             <?php }?>
             </ul>
 
             <div class="tab-content">
+<<<<<<< HEAD
                 <?php foreach ($levels->$level as $level){?>
+=======
+                <?php foreach ($levels as $level){?>
+>>>>>>> 5608b4e9c7cfde78066bed795a2bcf25ee0c408e
                     <div class="tab-pane" id="tab<?php echo $level['levelid']?>">
                         <div class="tabbable"> <!-- Only required for left/right tabs -->
                             <ul class="nav nav-tabs">
                                 <?php
                                     //TODO get classes name and id of level $level['levelid']
+<<<<<<< HEAD
                                         foreach ($classes->$class as $class){
+=======
+                                        foreach ($classes as $class){
+>>>>>>> 5608b4e9c7cfde78066bed795a2bcf25ee0c408e
                                     ?>
                                     <li><a href="#<?php echo $class['classid']?>" data-toggle="tab"><?php echo $class['classname']?><?php echo  $class_num+1?></a></li>
                                 <?php }?>
                             </ul>
                             <div class="tab-content">
                                 <?php
+<<<<<<< HEAD
                                 foreach ($classes->$class as $class){// the classes number in the choosen level
+=======
+                                foreach ($classes as $class){// the classes number in the choosen level
+>>>>>>> 5608b4e9c7cfde78066bed795a2bcf25ee0c408e
                                     ?>
                                     <div class="tab-pane" id="<?php echo $class['classid']?>">
                                         <div class="uk-width-4-5@m" style="margin: auto">
