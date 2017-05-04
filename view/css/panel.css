@@ -95,4 +95,21 @@ add teacher
     margin-top: 3%;
     opacity:2;
 
+<<<<<<< HEAD
 }
+=======
+.level_info{
+    position: fixed;
+    border-radius: 15px;
+    top:15%;
+    height: 60%;
+    background-color: rgba(238, 238, 238, 0.75);
+    border: 2px dotted #3b79b1;
+    display: none;
+    overflow-y: scroll;
+
+}
+.level_info_Table{
+    background: none;
+}
+>>>>>>> 0957ae2604218c682edcc5d4fbc7013b2ea7d7ae

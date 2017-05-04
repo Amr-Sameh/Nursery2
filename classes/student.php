@@ -6,7 +6,7 @@
  * Date: 26/04/17
  * Time: 10:15 ص
  */
-include "student_query.php"
+include "student_query.php";
 
 class student extends user 
 {
@@ -27,9 +27,9 @@ class student extends user
     }
 
     
-    public function addStudent($stu_id,$class_id,$level_id,$emrg_person_name,$emrg_person_relation,$emrg_person_phone,$stage,$iq_grade){
+    public function addStudent($stu_id){
     	 if(!$this->student_query->check_exist($stu_id)){
-    		$this->student_query->insert_stu($stu_id,$class_id,$level_id,$emrg_person_name,$emrg_person_relation,$emrg_person_phone,$stage,$iq_grade);
+    		$this->student_query->insert_stu(this->stu_id,this->class_id,this->level_id,this->emrg_person_name,this->emrg_person_relation,this->emrg_person_phone,this->stage,this->iq_grade);
     	}
     }
 
@@ -43,6 +43,12 @@ class student extends user
     	if($this->student_query->check_exist($user_id)){
     		$this->student_query->delete_stu_userT($user_id);
     	}
+    }
+
+    public function update_student_info($stu_id){
+    if($this->student_query->check_exist($user_id)){
+    		$this->student_query->edit_stu_info($user_id,$stu_id,$class_id,$level_id,$emrg_person_name,$emrg_person_relation,$emrg_person_phone,$iq_grade,$stage);
+    	}	
     }
  	
  	public function setClass_id($classes){
@@ -103,6 +109,4 @@ class student extends user
     public function getIq_grade(){
     	return $this->iq_grade;
     }
-
-
 }

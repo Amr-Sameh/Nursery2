@@ -24,6 +24,6 @@ $l=new level_query();
 //$l->update_level("level 5",6,"level 9",6);
 include_once 'classs.php';
 $f=new class_query();
-print_r($f->get_class_students(1,1));
+print_r($level->get_level_subjects(9));
 
 

@@ -60,29 +60,33 @@ include_once 'navbar.php';
             <ul class="nav nav-tabs">
         <?php
         //TODO get levels name and id
+        include '../classes/level_class.php';
+        $level_class = new level_class();
+        $levels=$level_class->get_all_levels();
         foreach ($levels as $level){
             ?>
-                <li><a href="#tab<?php echo $level['levelid']?>" data-toggle="tab">Level <?php echo $level['levelname']?></a></li>
+                <li class="getstudentfromlevel"  id="<?php echo "AB".$level['id']?>"><a href="#tab<?php echo $level['id']?>" data-toggle="tab">Level <?php echo $level['name']?></a></li>
             <?php }?>
             </ul>
 
             <div class="tab-content">
                 <?php foreach ($levels as $level){?>
-                    <div class="tab-pane" id="tab<?php echo $level['levelid']?>">
+                    <div class="tab-pane" id="tab<?php echo $level['id']?>">
                         <div class="tabbable"> <!-- Only required for left/right tabs -->
                             <ul class="nav nav-tabs">
                                 <?php
                                     //TODO get classes name and id of level $level['levelid']
+                                       $classes=$level_class->get_level_classes_by_level_id($level['id']);
                                         foreach ($classes as $class){
                                     ?>
-                                    <li><a href="#<?php echo $class['classid']?>" data-toggle="tab"><?php echo $class['classname']?><?php echo $class_num+1?></a></li>
+                                    <li class="getstudent" id="<?php echo"A".$class['class_id']?>"><a href="#<?php echo $class['class_id']?>" data-toggle="tab"><?php echo"class"?></a></li>
                                 <?php }?>
                             </ul>
                             <div class="tab-content">
                                 <?php
                                 foreach ($classes as $class){// the classes number in the choosen level
                                     ?>
-                                    <div class="tab-pane" id="<?php echo $class['classid']?>">
+                                    <div class="tab-pane" id="<?php echo $class['class_id']?>">
                                         <div class="uk-width-4-5@m" style="margin: auto">
                                             <table class="uk-table uk-table-hover">
                                                 <thead>
@@ -94,28 +98,10 @@ include_once 'navbar.php';
                                                     <th >Delet</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody id="StudentsList">
-                                                <?php
-                                                for($k=0;$k<15;$k++){// class students number
-                                                    ?>
-                                                    <tr uk-toggle="target: #<?php echo $k?>; animation:  uk-animation-slide-left, uk-animation-slide-bottom">
-                                                        <td><div class=" uk-border-circle" style="width: 50px;height: 50px;overflow: hidden;padding: 0; ">
-                                                                <img class="" width="100%" height="100%" src="images/child-only.png">
-                                                            </div></td>
-                                                        <td >
-                                                            <a class="uk-link-reset"  >Mostafa saleh sopih mohamed</a>
-                                                        </td>
-                                                        <td>235664</td>
-                                                        <td><button class="uk-button uk-button-default" type="button">edit</button></td>
-                                                        <td><button class="uk-button uk-button-default" type="button">delete</button></td>
-                                                    </tr>
-                                                    <tr id="<?php echo $k?>" class="uk-card uk-card-default uk-card-body uk-margin-small" hidden="hidden" aria-hidden="true">
-                                                        <td ><div >aslkadsdjkalsdlkajskdljaskdjksajd dfklsdjfds fsdklfjsdkf dfkljsdlf dikfljsdkf diokfljsdkkf dklsfjsdlkfdkls;ad</div></td>
-                                                        <td ><div >aslkadsdjkalsdlkajskdljaskdjksajd dfklsdjfds fsdklfjsdkf dfkljsdlf dikfljsdkf diokfljsdkkf dklsfjsdlkfdkls;ad</div></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                <?php } ?>
+                                                <tbody id="<?php echo'StudentsList'.$class['class_id'];?>">
+
+
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -142,28 +128,8 @@ include_once 'navbar.php';
                     <th >Delet</th>
                 </tr>
                 </thead>
-                <tbody>
-                <?php
-                for($k=0;$k<15;$k++){
-                    ?>
-                    <tr uk-toggle="target: #<?php echo $k?>; animation:  uk-animation-slide-left, uk-animation-slide-bottom">
-                        <td><div class=" uk-border-circle" style="width: 50px;height: 50px;overflow: hidden;padding: 0; ">
-                                <img class="" width="100%" height="100%" src="images/child-only.png">
-                            </div></td>
-                        <td >
-                            <a class="uk-link-reset"  >Mostafa saleh sopih mohamed</a>
-                        </td>
-                        <td>235664</td>
-                        <td><button class="uk-button uk-button-primary" type="button">edit</button></td>
-                        <td><button class="uk-button uk-button-danger" type="button">delete</button></td>
-                    </tr>
-                    <tr id="<?php echo $k?>" class="uk-card uk-card-default uk-card-body uk-margin-small" hidden="hidden" aria-hidden="true">
-                        <td ><div >aslkadsdjkalsdlkajskdljaskdjksajd dfklsdjfds fsdklfjsdkf dfkljsdlf dikfljsdkf diokfljsdkkf dklsfjsdlkfdkls;ad</div></td>
-                        <td ><div >aslkadsdjkalsdlkajskdljaskdjksajd dfklsdjfds fsdklfjsdkf dfkljsdlf dikfljsdkf diokfljsdkkf dklsfjsdlkfdkls;ad</div></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                <?php } ?>
+                <tbody id="teachers">
+
                 </tbody>
             </table>
         </div>
@@ -174,9 +140,77 @@ include_once 'navbar.php';
 
     else if ($_GET['action']=='complain')
         echo '<h1>cpmplain</h1>';
+<<<<<<< HEAD
     else if($_GET['action']=='add_tech'){
+=======
+>>>>>>> 0957ae2604218c682edcc5d4fbc7013b2ea7d7ae
 
+
+    else if($_GET['action']=='addTech'){ ?>
+        <div class="container">
+    <form action="" method="post">
+        <label for="name" class="col-xs-4">FirstName</label>
+        <label for="name" class="col-xs-4">MidName</label>
+        <label for="name" class="col-xs-4">LastName</label>
+        <input type="text" class="col-xs-4"name="FirstName">
+        <input type="text" class="col-xs-4"name="MidName">
+        <input type="text" class="col-xs-4"name="LastName">
+
+        <label for="county" class="col-xs-4">Country</label>
+        <label for="county" class="col-xs-4">City</label>
+        <label for="county" class="col-xs-4">Street</label>
+        <input type="text" class="col-xs-4"name="Countr">
+        <input type="text" class="col-xs-4"name="City">
+        <input type="text" class="col-xs-4"name="Street">
+
+
+        <label for="level" class="col-xs-4">level</label>
+        <label for="class" class="col-xs-4">class</label>
+        <label for="subjects"class="col-xs-4">Subjects</label>
+        <select class="from-control col-xs-4">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <select class="from-control col-xs-4">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <select class="from-control col-xs-4">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </form>
+
+</div>
+
+
+
+
+
+    <?php }
+    else if ($_GET['action']=='event'){
+        ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php }
+else if ($_GET['action']=='level') {
     ?>
+<<<<<<< HEAD
         <div class="add_teach">
         <form class="form-group" method="post"action="">
 
@@ -266,6 +300,71 @@ include_once 'navbar.php';
 
 
         <?php } ?>
+=======
+<br>
+<br>
+<input class="input-lg panel_add_level_input col-xs-6" placeholder="Level Name" id="panel_add_level_input">
+    <button class=" btn-lg btn-primary col-xs-offset-2" id="add_level"> Add Level <i class="fa fa-plus-circle" aria-hidden="true"></i> </button>
+<br>
+    <br>
+
+<div class="col-xs-6 col-xs-offset-2 level_info" id="level_info" >
+
+<!--    get values form ajax-->
+
+</div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Level Name</th>
+            <th>Level ID</th>
+        </tr>
+        </thead>
+        <tbody id="levelTable">
+
+
+        </tbody>
+    </table>
+    <?php
+}
+
+        else if ($_GET['action']=='class') {
+        ?>
+        <br>
+        <br>
+        <input class="input-lg panel_add_class_input col-xs-3" placeholder="Level Name" id="panel_add_level_input">
+            <input class="input-lg panel_add_max_number_input col-xs-3" placeholder="Max Number" id="panel_add_max_number_input">
+
+        <button class=" btn-lg btn-primary col-xs-offset-2" id="add_class"> Add Class <i class="fa fa-plus-circle" aria-hidden="true"></i> </button>
+        <br>
+        <br>
+
+        <div class="col-xs-6 col-xs-offset-2 class_info" id="class_info" >
+
+            <!--    get values form ajax-->
+
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Class Name</th>
+                <th>Class ID</th>
+                <th>Level ID</th>
+            </tr>
+            </thead>
+            <tbody id="classTable">
+
+
+            </tbody>
+        </table>
+        <?php
+        }?>
+
+
+
+>>>>>>> 0957ae2604218c682edcc5d4fbc7013b2ea7d7ae
 
 
 
@@ -307,8 +406,8 @@ include_once 'navbar.php';
     <ul class="uk-nav-sub">
 
         <li><a  href="<?php echo $_SERVER['PHP_SELF'].'?action=student';?>">Student</a></li>
-        <li><a  href="<?php echo $_SERVER['PHP_SELF'].'?action=teacher';?>">Teacher</a></li>
-                            </ul></li>
+        <li id="showteasher"><a  href="<?php echo $_SERVER['PHP_SELF'].'?action=teacher';?>" >Teacher</a></li>
+                     </ul></li>
 
 
                         <li class="left-nav-link "><a href="<?php echo $_SERVER['PHP_SELF'].'?action=event';?>"><i class="fa fa-calendar <?php activ('event');?>" aria-hidden="true"></i>Event</a></li>
@@ -318,20 +417,11 @@ include_once 'navbar.php';
 
                         <li class="left-nav-link col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=level';?>">Levels</a></li>
                         <li class="left-nav-link col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=class';?>">Classes</a></li>
-
-
                     </ul>
-
-
-    </div>
-
-
-
+                   </div>
                 </div>
-                <!-->
             </div>
         </div>
-
-
 <?php
 include_once 'static/footer.php';
+
