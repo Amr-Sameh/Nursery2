@@ -40,8 +40,10 @@ $(document).ready(function () {
     });
 
 
+
     $('#add_level').click(function () {
-        var level_name=$('#panel_add_level_input').val();
+            var level_name = $('#panel_add_level_input').val();
+
         $.ajax({
             url: "../classes/panel_action.php",
             method: "POST",
