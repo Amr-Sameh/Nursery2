@@ -100,7 +100,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
                 $levelAsTable.='<th scope="row">'.$i.'</th>';
                 $levelAsTable.=' <td>'.$singleLevel['name'].'</td>';
                 $levelAsTable.=' <td>'.$singleLevel['id'].'</td>';
-                $levelAsTable.='<td><button class="btn-lg btn-success panel_edit_level" id="edit_level'.$singleLevel['id'].'">Edit</button></td>';
+                $levelAsTable.='<td><button class="btn-lg btn-success panel_edit_level" name="'.$singleLevel['name'].'" id="edit_level'.$singleLevel['id'].'" data-toggle="modal" data-target="#myModal"  >Edit</button></td>';
                 $levelAsTable.='<td><button class="btn-lg btn-danger panel_delete_level" id="delete_level'.$singleLevel['id'].'">Delete</button></td>';
                 $levelAsTable.='<td><button class="btn-lg btn-primary panel_view_level" id="View_level'.$singleLevel['id'].'">View <i class="fa fa-eye" aria-hidden="true"></i></button></td>';
                 $levelAsTable.='</tr>';
@@ -170,32 +170,96 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
             echo $subinfo;
             exit();
         }
-       /*
-       if ($_POST['action'] =='getClasses') {
 
-            include_once 'class_class.php';
-            $level = new class_class();
-            $levelList=$level->get_all_classes();
-            $levelAsTable='';
-            $i=1;
-            foreach ($classlList as $singleClass){
-                $levelAsTable.='<tr>';
-                $levelAsTable.='<th scope="row">'.$i.'</th>';
-                $levelAsTable.=' <td>'.$singleClass['class_name'].'</td>';
-                $levelAsTable.=' <td>'.$singleClass['class_id'].'</td>';
-                $levelAsTable.=' <td>'.$singleClass['students_num'].'</td>';
-                $levelAsTable.=' <td>'.$singleClass['max_student_num'].'</td>';
-                $levelAsTable.=' <td>'.$singleClass['level_id'].'</td>';
-                $levelAsTable.='<td><button class="btn-lg btn-success panel_edit_class" id="edit_level'.$singleLevel['id'].'">Edit</button></td>';
-                $levelAsTable.='<td><button class="btn-lg btn-danger panel_delete_class" id="delete_level'.$singleLevel['id'].'">Delete</button></td>';
-                $levelAsTable.='<td><button class="btn-lg btn-primary panel_view_class" id="View_level'.$singleLevel['id'].'">View <i class="fa fa-eye" aria-hidden="true"></i></button></td>';
-                $levelAsTable.='</tr>';
-
-                $i++;
-
+        if ($_POST['action'] =='Leveledit_getAllSub') {
+            include_once '../classes/subject.php';
+            include_once '../classes/level_class.php';
+            $level=new level_class();
+            $level_id=$level->get_level_id($_POST['level']);
+            $subject=new subject();
+            $subList=$subject->get_all_subjects_not_in_level($level_id);
+            foreach ($subList as $sub){
+                $suboption.='<option value="'.$sub['id'].'">'.$sub['name'].'</option>';
             }
-            echo $levelAsTable;
+
+                echo $suboption;
             exit();
-       */
+        }
+        if ($_POST['action'] =='update_level') {
+            include_once '../classes/level_class.php';
+            include_once '../classes/subject.php';
+            $level=new level_class();
+            $sub =new subject();
+            $level_id=$level->get_level_id($_POST['level']);
+            $level->edit_level($_POST['level'],$_POST['newlevel']);
+            if(isset($_POST['sub'])){
+            $sub_id_list=$_POST['sub'];
+            $level->add_subject($level_id,$sub_id_list);}
+            echo 'true';
+            exit();
+
+        }
+
+
+
+
+
+            /*
+            if ($_POST['action'] =='getClasses') {
+
+                 include_once 'class_class.php';
+                 $level = new class_class();
+                 $levelList=$level->get_all_classes();
+                 $levelAsTable='';
+                 $i=1;
+                 foreach ($classlList as $singleClass){
+                     $levelAsTable.='<tr>';
+                     $levelAsTable.='<th scope="row">'.$i.'</th>';
+                     $levelAsTable.=' <td>'.$singleClass['class_name'].'</td>';
+                     $levelAsTable.=' <td>'.$singleClass['class_id'].'</td>';
+                     $levelAsTable.=' <td>'.$singleClass['students_num'].'</td>';
+                     $levelAsTable.=' <td>'.$singleClass['max_student_num'].'</td>';
+                     $levelAsTable.=' <td>'.$singleClass['level_id'].'</td>';
+                     $levelAsTable.='<td><button class="btn-lg btn-success panel_edit_class" id="edit_level'.$singleLevel['id'].'">Edit</button></td>';
+                     $levelAsTable.='<td><button class="btn-lg btn-danger panel_delete_class" id="delete_level'.$singleLevel['id'].'">Delete</button></td>';
+                     $levelAsTable.='<td><button class="btn-lg btn-primary panel_view_class" id="View_level'.$singleLevel['id'].'">View <i class="fa fa-eye" aria-hidden="true"></i></button></td>';
+                     $levelAsTable.='</tr>';
+
+                     $i++;
+
+                 }
+                 echo $levelAsTable;
+                 exit();
+            */
+
+
+
+
+
+
+
+        if ($_POST['action'] =='addStudent') {
+
+
+            echo 'true';
+            exit();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

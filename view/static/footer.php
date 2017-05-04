@@ -17,6 +17,9 @@
 <script src="js/nav.js"></script>
 <script src="js/class.js"></script>
 <script src="js/panel.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
+
 
 </body>
 </html>

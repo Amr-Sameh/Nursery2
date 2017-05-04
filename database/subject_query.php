@@ -23,7 +23,10 @@ class subject_query
     	return $this->db->excute_query($query)->fetchAll();
     }
 
-
+public function get_all_sub_not_in_level($level_id){
+    $query = "SELECT * FROM subject WHERE subject.id NOT IN (SELECT sub_id FROM level_to_sub WHERE level_id=$level_id)";
+    return $this->db->excute_query($query)->fetchAll();
+}
 
 
 }

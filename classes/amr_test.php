@@ -24,6 +24,6 @@ $l=new level_query();
 //$l->update_level("level 5",6,"level 9",6);
 include_once 'subject.php';
 $f=new subject_query();
-print_r($f->get_subject_hw_by_id(1));
+print_r($f->get_all_sub_not_in_level(9));
 
 

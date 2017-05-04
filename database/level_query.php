@@ -27,9 +27,9 @@ class level_query
     }
 
 
-    public function update_level($oldname,$stage,$name,$value){
+    public function update_level($oldname,$name){
         $id=$this->get_level_id($oldname);
-        $query="UPDATE `level` SET `stage`='$stage ',`name`='$name' , `val`='$value' WHERE `id`=$id";
+        $query="UPDATE `level` SET `name`='$name'  WHERE `id`=$id";
         $this->db->excute_query($query);
 
     }
@@ -38,8 +38,8 @@ class level_query
      * @param array of subjects
      * @param level name
      */
-    public function insert_subject($level_name , $subjects_id){
-        $level_id=$this->get_level_id($level_name);
+    public function insert_subject($id , $subjects_id){
+        $level_id=$id;
         foreach ($subjects_id as $sub_id){
             $query="INSERT INTO `level_to_sub` (`level_id`,`sub_id`) VALUES ('$level_id','$sub_id')";
             $this->db->excute_query($query);

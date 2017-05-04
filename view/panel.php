@@ -192,10 +192,10 @@ else if ($_GET['action']=='add_tech') {
     ?>
           <!-- add student -->
             <div class="add_stud">
-                <form class="form-group" method="post"action="">
+                <form class="form-group" method="post" id="panel_add_stu">
 
                     <label for="firstName" class="col-xs-12"style="color: #0e6dcd;font-size:17px;">FirstName <small class="glyphicon glyphicon-asterisk" style="color: #de0000"></small></label>
-                    <input type="text" name="first_name" class="col-xs-12"autocomplete="off" style="margin-left: 8px;"required>
+                    <input  type="text" name="first_name" class="col-xs-12"autocomplete="off" style="margin-left: 8px;"required>
                     <label for="MidName" class="col-xs-12"style="color: #de0000;font-size:17px;margin-top: 2%">MidName <small class="glyphicon glyphicon-asterisk"style="color: #de0000;margin-left:1.2% "></small> </label>
                     <input type="text" name="mid_name" class="col-xs-12"autocomplete="off" style="margin-left: 8px;"required>
 
@@ -269,6 +269,52 @@ else if ($_GET['action']=='add_tech') {
 
                 </tbody>
             </table>
+
+
+
+
+
+
+
+
+
+            <!-- Edit Level  Modal -->
+            <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close close_level_edit" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">j</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" id="level_new_name" disabled class="col-xs-6 ">
+                            <button class="col-xs-3 col-xs-offset-1  btn-primary" id="level_new_name_toogle">Edit</button>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <label>Subjects : </label>
+
+                            <select multiple id="edit_level_multilist" >
+
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default close_level_edit" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="update_level">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
             <?php
         }
         else if ($_GET['action']=='class') {
@@ -301,6 +347,9 @@ else if ($_GET['action']=='add_tech') {
 
             </tbody>
         </table>
+
+
+
         <?php
         }?>
 
