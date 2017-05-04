@@ -218,14 +218,6 @@ else if ($_GET['action']=='level') {
 <!--    get values form ajax-->
 
 </div>
-
-
-
-
-
-
-
-
     <table class="table">
         <thead>
         <tr>
@@ -239,18 +231,41 @@ else if ($_GET['action']=='level') {
 
         </tbody>
     </table>
-
-
-
-
-
-
-
-
-
     <?php
 }
-    ?>
+
+        else if ($_GET['action']=='class') {
+        ?>
+        <br>
+        <br>
+        <input class="input-lg panel_add_class_input col-xs-3" placeholder="Level Name" id="panel_add_level_input">
+            <input class="input-lg panel_add_max_number_input col-xs-3" placeholder="Max Number" id="panel_add_max_number_input">
+
+        <button class=" btn-lg btn-primary col-xs-offset-2" id="add_class"> Add Class <i class="fa fa-plus-circle" aria-hidden="true"></i> </button>
+        <br>
+        <br>
+
+        <div class="col-xs-6 col-xs-offset-2 class_info" id="class_info" >
+
+            <!--    get values form ajax-->
+
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Class Name</th>
+                <th>Class ID</th>
+                <th>Level ID</th>
+            </tr>
+            </thead>
+            <tbody id="classTable">
+
+
+            </tbody>
+        </table>
+        <?php
+        }?>
 
 
 
