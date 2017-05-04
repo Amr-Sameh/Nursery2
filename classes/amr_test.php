@@ -22,8 +22,8 @@ $level =new level_class();
 
 $l=new level_query();
 //$l->update_level("level 5",6,"level 9",6);
-include_once 'subject.php';
-$f=new subject_query();
-print_r($f->get_subject_hw_by_id(1));
+include_once '../database/class_query.php';
+$f=new class_query();
+print_r($f->insert_class('omer','5','Level 9'));
 
 
