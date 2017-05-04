@@ -91,14 +91,15 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
             $level = new level_class();
             $levelList=$level->get_all_levels();
             $levelAsTable='';
-            $i=0;
+            $i=1;
             foreach ($levelList as $singleLevel){
             $levelAsTable.='<tr>';
                 $levelAsTable.='<th scope="row">'.$i.'</th>';
                 $levelAsTable.=' <td>'.$singleLevel['name'].'</td>';
                 $levelAsTable.=' <td>'.$singleLevel['id'].'</td>';
-                $levelAsTable.='<td><button class="btn-lg btn-success">Edit</button></td>';
-                $levelAsTable.='<td><button class="btn-lg btn-danger">Delete</button></td>';
+                $levelAsTable.='<td><button class="btn-lg btn-success panel_edit_level" id="edit_level'.$singleLevel['id'].'">Edit</button></td>';
+                $levelAsTable.='<td><button class="btn-lg btn-danger panel_delete_level" id="delete_level'.$singleLevel['id'].'">Delete</button></td>';
+                $levelAsTable.='<td><button class="btn-lg btn-primary panel_view_level" id="View_level'.$singleLevel['id'].'">View <i class="fa fa-eye" aria-hidden="true"></i></button></td>';
                 $levelAsTable.='</tr>';
 
                 $i++;
@@ -113,10 +114,61 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
         }
 
 
+        if ($_POST['action'] =='addLevel') {
+
+            include_once 'level_class.php';
+            $level=new level_class();
+            $level->add_level($_POST['name']);
+
+            echo 'true';
+            exit();
+
+        }
 
 
+        if ($_POST['action'] =='deleteLevel') {
+            include_once 'level_class.php';
+            $level=new level_class();
+            $level->remove_level($_POST['id']);
 
+            echo 'true';
+            exit();
 
+        }
+
+        if ($_POST['action'] =='getLevelInfo') {
+            include_once 'level_class.php';
+            $level=new level_class();
+            $level_info=$level->get_level_by_id($_POST['id']);
+            $subList=$level->get_level_subjects($_POST['id']);
+            $subinfo='   <h1 class="text-center text-primary" id="level_info_name">'.$level_info['name'].'</h1>';
+            $subinfo.='
+    <table class="table level_info_Table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Subject Name</th>
+
+        </tr>
+        </thead>
+        <tbody id="level_info_Table">';
+            $i=1;
+            foreach ($subList as $singlesub){
+                $subinfo.='<tr>';
+                $subinfo.='<th scope="row">'.$i.'</th>';
+                $subinfo.='<td>'.$singlesub['name'].'</td>';
+                $subinfo.='</tr>';
+                $i++;
+            }
+
+            $subinfo.=' </tbody>
+    </table>
+<button class="btn-danger btn-lg col-xs-4 col-xs-offset-4" id="level_info_Table_close">Close</button>';
+
+            echo $subinfo;
+            exit();
+
+        }
 
 
 

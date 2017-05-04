@@ -25,8 +25,8 @@ class level_class
 
 
 
-    public function add_level(){
-        $this->level_query->insert_level($this->stage,$this->name,$this->value);
+    public function add_level($name){
+        $this->level_query->insert_level($name);
 
     }
     public function edit_level($name,$stage,$value){
@@ -36,8 +36,8 @@ class level_class
     public function add_subject($subjects_id){
         $this->level_query->insert_subject($this->name,$subjects_id);
     }
-    public function remove_level(){
-        $this->level_query->delete_level($this->name);
+    public function remove_level($id){
+        $this->level_query->delete_level($id);
     }
     public function remove_sub($sub_id){
         $this->level_query->delete_sub($this->name,$sub_id);
@@ -52,6 +52,13 @@ class level_class
         $this->id=$info['id'];
 
     }
+
+
+    public function get_level_by_id($id){
+        return $this->level_query->level_by_id($id);
+
+    }
+
     public function classes_num(){
         return $this->level_query->get_classes_num($this->id);
     }
@@ -63,6 +70,12 @@ class level_class
 
         return $this->level_query->get_all_levels();
     }
+
+
+    public function get_level_subjects($id){
+        return $this->level_query->get_level_subjects_by_id($id);
+    }
+
 
     /**
      * @return level_query

@@ -63,14 +63,7 @@ $(document).ready(function () {
             method: "POST",
             data: {action: action, username: username, password: password},
             success: function (data) {
-<<<<<<< HEAD
-                alert(data);
-                if (data == true) {
-                    alert('goo');
-                }else {
-                    alert('error');
-                 }
-=======
+
 
                 if (data == 1) {
 
@@ -78,7 +71,6 @@ $(document).ready(function () {
 
                 }else {  //TODO add validate part to tell the user that the data not right
                      }
->>>>>>> b04cb806d695e84093b902899f36fc1ed92b4080
             }
         })
     });

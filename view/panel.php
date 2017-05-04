@@ -206,14 +206,18 @@ include_once 'navbar.php';
 <?php }
 else if ($_GET['action']=='level') {
     ?>
+<br>
+<br>
+<input class="input-lg panel_add_level_input col-xs-6" placeholder="Level Name" id="panel_add_level_input">
+    <button class=" btn-lg btn-primary col-xs-offset-2" id="add_level"> Add Level <i class="fa fa-plus-circle" aria-hidden="true"></i> </button>
+<br>
+    <br>
 
+<div class="col-xs-6 col-xs-offset-2 level_info" id="level_info" >
 
-    <button class=" btn-lg btn-primary"> Add Level <i class="fa fa-plus-circle" aria-hidden="true"></i> </button>
+<!--    get values form ajax-->
 
-
-
-
-
+</div>
 
 
 

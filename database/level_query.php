@@ -19,9 +19,9 @@ class level_query
     }
 
 
-    public function insert_level($stage,$name,$value){
+    public function insert_level($name){
 
-        $query="INSERT INTO level (val,stage,name)  VALUES ('$value','$stage','$name')";
+        $query="INSERT INTO level (name)  VALUES ('$name')";
         $this->db->excute_query($query);
 
     }
@@ -51,8 +51,8 @@ class level_query
 
 
 
-    public function delete_level($level_name){
-        $query="DELETE FROM `level` WHERE `name`='$level_name'";
+    public function delete_level($level_id){
+        $query="DELETE FROM `level` WHERE `level`.`id` = $level_id";
         $this->db->excute_query($query);
 
     }
@@ -92,6 +92,19 @@ public function get_level_classes_by_level_id($level_id){
 public function get_all_levels(){
     $query="SELECT * FROM level ";
    return $this->db->excute_query($query)->fetchAll();
+}
+
+public function get_level_subjects_by_id($id){
+    $query="SELECT * FROM `subject`,`level_to_sub` WHERE `id`=`sub_id` AND `level_id`='$id'";
+    return $this->db->excute_query($query)->fetchAll();
+
+
+}
+
+public function level_by_id($id){
+    $query="SELECT * FROM `level` WHERE `id`='$id'";
+    return $this->db->excute_query($query)->fetch();
+
 }
 
 

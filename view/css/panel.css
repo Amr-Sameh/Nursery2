@@ -80,3 +80,17 @@ members part
     min-width: 100%;
 }
 
+.level_info{
+    position: fixed;
+    border-radius: 15px;
+    top:15%;
+    height: 60%;
+    background-color: rgba(238, 238, 238, 0.75);
+    border: 2px dotted #3b79b1;
+    display: none;
+    overflow-y: scroll;
+
+}
+.level_info_Table{
+    background: none;
+}
