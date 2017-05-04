@@ -24,12 +24,12 @@
     text-shadow: 3px 1px 0 #e42d51;
 }
 
-.btn-success {
+.put .btn-success {
 
     float: right;
     font-size: 22px;
 }
-.btn {
+.put .btn {
     display: inline-block;
     padding: 7px 48px;
     margin-bottom: 0;

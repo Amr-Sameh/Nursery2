@@ -17,6 +17,11 @@ class subject_query
         $this->db = new database();
     }
 
+    public function get_subject_hw_by_id($id)
+    {
+    	$query = "SELECT * FROM hw WHERE sub_id ='$id'";
+    	return $this->db->excute_query($query)->fetchAll();
+    }
 
 
 

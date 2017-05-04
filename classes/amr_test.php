@@ -22,8 +22,8 @@ $level =new level_class();
 
 $l=new level_query();
 //$l->update_level("level 5",6,"level 9",6);
-include_once 'classs.php';
-$f=new class_query();
-print_r($l->get_level_classes_by_level_id(2));
+include_once 'subject.php';
+$f=new subject_query();
+print_r($f->get_subject_hw_by_id(1));
 
 

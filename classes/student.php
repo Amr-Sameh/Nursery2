@@ -27,14 +27,14 @@ class student extends user
     }
 
     
-    public function addStudent($stu_id,$class_id,$level_id,$emrg_person_name,$emrg_person_relation,$emrg_person_phone,$stage,$iq_grade){
-    	 if(!$this->student_query->check_exist($stu_id)){
-    		$this->student_query->insert_stu($stu_id,$class_id,$level_id,$emrg_person_name,$emrg_person_relation,$emrg_person_phone,$stage,$iq_grade);
+    public function addStudent(){
+    	 if(!$this->student_query->check_exist($this->stu_id)){
+    		$this->student_query->insert_stu(this->stu_id,this->class_id,this->level_id,this->emrg_person_name,this->emrg_person_relation,this->emrg_person_phone,this->stage,this->iq_grade);
     	}
     }
 
-    public function deleteStudent_StudentTable($stu_id){
-    	if($this->student_query->check_exist($stu_id)){
+    public function deleteStudent_StudentTable(){
+    	if($this->student_query->check_exist($this->stu_id)){
     		$this->student_query->delete_stu_stuT($stu_id);
     	}
     }
@@ -43,6 +43,12 @@ class student extends user
     	if($this->student_query->check_exist($user_id)){
     		$this->student_query->delete_stu_userT($user_id);
     	}
+    }
+
+    public function update_student_info($stu_id){
+    if($this->student_query->check_exist($user_id)){
+    		$this->student_query->edit_stu_info($user_id,$stu_id,this->class_id,this->level_id,this->emrg_person_name,this->emrg_person_relation,this->emrg_person_phone,this->iq_grade,this->stage);
+    	}	
     }
  	
  	public function setClass_id($classes){
@@ -103,6 +109,4 @@ class student extends user
     public function getIq_grade(){
     	return $this->iq_grade;
     }
-
-
 }

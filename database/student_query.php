@@ -20,7 +20,7 @@ class student_qurey
     	return ($check->rowCount() == 0) ? false : true;
     }
     
-    public function insert_stu($stu_id,$class_id,$level_id,$stage,$emrg_person_name,$emrg_person_phone,$emrg_person_relation,$iq_grade){
+    public function insert_stu($class_id,$level_id,$stage,$emrg_person_name,$emrg_person_phone,$emrg_person_relation,$iq_grade){
     	$query = "INSERT INTO student (
     	stu_id,
     	stage,
@@ -42,7 +42,7 @@ class student_qurey
     	$this->db->excute_query($query);
     }
 
-    public function insert_general_user($id,$group_id,$username,$password,$first_name,$mid_name,$last_name,$gender,$email,$city,$country,$street,$birth_date){
+    public function insert_general_user($group_id,$username,$password,$first_name,$mid_name,$last_name,$gender,$email,$city,$country,$street,$birth_date){
     	$query = "INSERT INTO general_user (
     	id,
     	group_id,
@@ -58,7 +58,7 @@ class student_qurey
     	street,
     	birth_date)
     	VALUES (
-    	'$id',
+    	'NULL',
     	'$group_id',
     	'$username',
     	'$password',
@@ -72,22 +72,23 @@ class student_qurey
     	'$street',
     	'$birth_date'
     	);
-    	INSERT INTO student (user_id) VALUES ('$user_id')";
+    	INSERT INTO student (user_id) SELECT user_id FROM general_user";
     	$this->db->excute_query($query);
 
     }
 
     public function delete_stu_stuT($stu_id){
     	$query = "DELETE FROM student where stu_id = '$stu_id'";
-    	$db->exec($query);
+    	$db->excute_query($query);
     }
 
     public function delete_stu_userT($user_id){
     	$query = "DELETE FROM general_user where user_id = '$user_id'";
-    	$db->exec($query);
+    	$db->excute_query($query);
     }
-    public function edit_stu_info($user_id,$stu_id,$class_id,$level_id,$emrg_person_name,$emrg_person_relation,$emrg_person_phone,$iq_grade,$stage){
-    	$query = "UPDATE student SET stu_id = '$stu_id',stage = '$stage',emrg_persone_name = '$emrg_persone_name',emrg_persone_relation = '$emrg_persone_relation',emrg_persone_phone = '$emrg_persone_phone',class_id = '$class_id',level_id = '$level_id',iq_grade = '$iq_grade' WHERE user_id = '$user_id'";
-    	$db->exec($query);
+    public function edit_stu_info($stu_id,$class_id,$level_id,$emrg_person_name,$emrg_person_relation,$emrg_person_phone,$iq_grade,$stage){
+        $stu_id = $this->get_
+    	$query = "UPDATE student SET stage = '$stage',emrg_persone_name = '$emrg_persone_name',emrg_persone_relation = '$emrg_persone_relation',emrg_persone_phone = '$emrg_persone_phone',class_id = '$class_id',level_id = '$level_id',iq_grade = '$iq_grade' WHERE user_id = '$user_id'";
+    	$db->excute_query($query);
     }
 }

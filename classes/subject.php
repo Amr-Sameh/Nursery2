@@ -6,6 +6,8 @@
  * Date: 4/28/2017
  * Time: 8:23 PM
  */
+include '../database/subject_query.php';
+
 class subject
 {
  private $name;

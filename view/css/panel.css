@@ -77,6 +77,35 @@ members part
 }
 .stu-panel-link .stu-panel-pic:hover .stu-panel-link .lay{
  min-height: 100%;
-    min-width: 100%;
+ min-width: 100%;
 }
+/**
+add teacher
+*/
 
+.add_teach{
+ width: 50%;
+ margin-left: 25%;
+ margin-top: 3%;
+ opacity:2;
+}
+.add_stud{
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 3%;
+    opacity:2;
+}
+.level_info{
+    position: fixed;
+    border-radius: 15px;
+    top:15%;
+    height: 60%;
+    background-color: rgba(238, 238, 238, 0.75);
+    border: 2px dotted #3b79b1;
+    display: none;
+    overflow-y: scroll;
+
+}
+.level_info_Table{
+    background: none;
+}

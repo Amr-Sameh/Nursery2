@@ -138,5 +138,9 @@ class class_query
         $query="SELECT * FROM `student`,`general_user` WHERE student.user_id=general_user.id  AND class_id='$class_id'";
        return $this->db->excute_query($query)->fetchAll();
     }
+    public function get_class_subjects_by_id($id){
+    $query="SELECT * FROM `class`,`subject`,`level_to_sub` WHERE `class_id`='$id' AND level_to_sub.level_id = class.level_id AND id = level_to_sub.sub_id ";
+    return $this->db->excute_query($query)->fetchAll();
+}
 
 }
