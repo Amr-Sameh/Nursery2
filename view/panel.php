@@ -140,57 +140,6 @@ include_once 'navbar.php';
 
     else if ($_GET['action']=='complain')
         echo '<h1>cpmplain</h1>';
-<<<<<<< HEAD
-    else if($_GET['action']=='add_tech'){
-=======
->>>>>>> 0957ae2604218c682edcc5d4fbc7013b2ea7d7ae
-
-
-    else if($_GET['action']=='addTech'){ ?>
-        <div class="container">
-    <form action="" method="post">
-        <label for="name" class="col-xs-4">FirstName</label>
-        <label for="name" class="col-xs-4">MidName</label>
-        <label for="name" class="col-xs-4">LastName</label>
-        <input type="text" class="col-xs-4"name="FirstName">
-        <input type="text" class="col-xs-4"name="MidName">
-        <input type="text" class="col-xs-4"name="LastName">
-
-        <label for="county" class="col-xs-4">Country</label>
-        <label for="county" class="col-xs-4">City</label>
-        <label for="county" class="col-xs-4">Street</label>
-        <input type="text" class="col-xs-4"name="Countr">
-        <input type="text" class="col-xs-4"name="City">
-        <input type="text" class="col-xs-4"name="Street">
-
-
-        <label for="level" class="col-xs-4">level</label>
-        <label for="class" class="col-xs-4">class</label>
-        <label for="subjects"class="col-xs-4">Subjects</label>
-        <select class="from-control col-xs-4">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
-        <select class="from-control col-xs-4">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
-        <select class="from-control col-xs-4">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
-    </form>
-
-</div>
-
-
-
-
-
-    <?php }
     else if ($_GET['action']=='event'){
         ?>
 
@@ -200,17 +149,10 @@ include_once 'navbar.php';
 
 
 
-
-
-
-
-
-
-
 <?php }
-else if ($_GET['action']=='level') {
+else if ($_GET['action']=='add_tech') {
     ?>
-<<<<<<< HEAD
+
         <div class="add_teach">
         <form class="form-group" method="post"action="">
 
@@ -281,7 +223,6 @@ else if ($_GET['action']=='level') {
                         <option value="3">3</option>
 
                     </select>
-
                     <button class="uk-button uk-button-primary " type="submit"style="margin-top: 8%;margin-left: 4%;float: right">Confirm</button>
                     <button class="uk-button uk-button-default " type="reset"style="margin-top: 8%;margin-left: 4%;float: right;">Cancel</button>
 
@@ -299,36 +240,37 @@ else if ($_GET['action']=='level') {
 
 
 
-        <?php } ?>
-=======
-<br>
-<br>
-<input class="input-lg panel_add_level_input col-xs-6" placeholder="Level Name" id="panel_add_level_input">
-    <button class=" btn-lg btn-primary col-xs-offset-2" id="add_level"> Add Level <i class="fa fa-plus-circle" aria-hidden="true"></i> </button>
-<br>
-    <br>
+        <?php }
+        else if($_GET['action']=='level') { ?>
+            <br>
+            <br>
+            <input class="input-lg panel_add_level_input col-xs-6" placeholder="Level Name" id="panel_add_level_input">
+            <button class=" btn-lg btn-primary col-xs-offset-2" id="add_level"> Add Level <i class="fa fa-plus-circle"
+                                                                                             aria-hidden="true"></i>
+            </button>
+            <br>
+            <br>
 
-<div class="col-xs-6 col-xs-offset-2 level_info" id="level_info" >
+            <div class="col-xs-6 col-xs-offset-2 level_info" id="level_info">
 
-<!--    get values form ajax-->
+                <!--    get values form ajax-->
 
-</div>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Level Name</th>
-            <th>Level ID</th>
-        </tr>
-        </thead>
-        <tbody id="levelTable">
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Level Name</th>
+                    <th>Level ID</th>
+                </tr>
+                </thead>
+                <tbody id="levelTable">
 
 
-        </tbody>
-    </table>
-    <?php
-}
-
+                </tbody>
+            </table>
+            <?php
+        }
         else if ($_GET['action']=='class') {
         ?>
         <br>
@@ -362,9 +304,6 @@ else if ($_GET['action']=='level') {
         <?php
         }?>
 
-
-
->>>>>>> 0957ae2604218c682edcc5d4fbc7013b2ea7d7ae
 
 
 

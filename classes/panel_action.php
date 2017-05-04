@@ -141,11 +141,11 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 
         if ($_POST['action'] =='getLevelInfo') {
             include_once 'level_class.php';
-            $level=new level_class();
-            $level_info=$level->get_level_by_id($_POST['id']);
-            $subList=$level->get_level_subjects($_POST['id']);
-            $subinfo='   <h1 class="text-center text-primary" id="level_info_name">'.$level_info['name'].'</h1>';
-            $subinfo.='
+            $level = new level_class();
+            $level_info = $level->get_level_by_id($_POST['id']);
+            $subList = $level->get_level_subjects($_POST['id']);
+            $subinfo = '   <h1 class="text-center text-primary" id="level_info_name">' . $level_info['name'] . '</h1>';
+            $subinfo .= '
     <table class="table level_info_Table">
         <thead>
         <tr>
@@ -155,22 +155,23 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
         </tr>
         </thead>
         <tbody id="level_info_Table">';
-            $i=1;
-            foreach ($subList as $singlesub){
-                $subinfo.='<tr>';
-                $subinfo.='<th scope="row">'.$i.'</th>';
-                $subinfo.='<td>'.$singlesub['name'].'</td>';
-                $subinfo.='</tr>';
+            $i = 1;
+            foreach ($subList as $singlesub) {
+                $subinfo .= '<tr>';
+                $subinfo .= '<th scope="row">' . $i . '</th>';
+                $subinfo .= '<td>' . $singlesub['name'] . '</td>';
+                $subinfo .= '</tr>';
                 $i++;
             }
-            $subinfo.=' </tbody>
+            $subinfo .= ' </tbody>
     </table>
 <button class="btn-danger btn-lg col-xs-4 col-xs-offset-4" id="level_info_Table_close">Close</button>';
 
             echo $subinfo;
             exit();
         }
-       /* if ($_POST['action'] =='getClasses') {
+       /*
+       if ($_POST['action'] =='getClasses') {
 
             include_once 'class_class.php';
             $level = new class_class();
@@ -196,33 +197,5 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
             echo $levelAsTable;
             exit();
        */
-
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
