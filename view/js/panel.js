@@ -207,7 +207,6 @@ function getlevels() {
 
     }
 
-<<<<<<< HEAD
 function getallsubjects(level) {
     $.ajax({
         url: "../classes/panel_action.php",
@@ -215,8 +214,7 @@ function getallsubjects(level) {
         data: {action: 'Leveledit_getAllSub',level:level},
         success: function (data) {
             $('#edit_level_multilist').html(data);
-||||||| merged common ancestors
-=======
+
     $(document).on('click','.panel_delete_class',function () {
 
     var class_id=this.id;
@@ -268,7 +266,6 @@ getClasses();
         })
     }
 
->>>>>>> a7a098a0ef886e840ebf5bccca33f73e872d4e8f
 
         }
     });
