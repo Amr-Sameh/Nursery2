@@ -170,7 +170,17 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
             echo $subinfo;
             exit();
         }
+        /*
+<<<<<<< HEAD
+||||||| merged common ancestors
+       /*
+       if ($_POST['action'] =='getClasses') {
+=======
+       
+       if ($_POST['action'] =='getClasses') {
+>>>>>>> a7a098a0ef886e840ebf5bccca33f73e872d4e8f
 
+<<<<<<< HEAD
         if ($_POST['action'] =='Leveledit_getAllSub') {
             include_once '../classes/subject.php';
             include_once '../classes/level_class.php';
@@ -181,10 +191,46 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
             foreach ($subList as $sub){
                 $suboption.='<option value="'.$sub['id'].'">'.$sub['name'].'</option>';
             }
+||||||| merged common ancestors
+            include_once 'class_class.php';
+            $level = new class_class();
+            $levelList=$level->get_all_classes();
+            $levelAsTable='';
+            $i=1;
+            foreach ($classlList as $singleClass){
+                $levelAsTable.='<tr>';
+                $levelAsTable.='<th scope="row">'.$i.'</th>';
+                $levelAsTable.=' <td>'.$singleClass['class_name'].'</td>';
+                $levelAsTable.=' <td>'.$singleClass['class_id'].'</td>';
+                $levelAsTable.=' <td>'.$singleClass['students_num'].'</td>';
+                $levelAsTable.=' <td>'.$singleClass['max_student_num'].'</td>';
+                $levelAsTable.=' <td>'.$singleClass['level_id'].'</td>';
+                $levelAsTable.='<td><button class="btn-lg btn-success panel_edit_class" id="edit_level'.$singleLevel['id'].'">Edit</button></td>';
+                $levelAsTable.='<td><button class="btn-lg btn-danger panel_delete_class" id="delete_level'.$singleLevel['id'].'">Delete</button></td>';
+                $levelAsTable.='<td><button class="btn-lg btn-primary panel_view_class" id="View_level'.$singleLevel['id'].'">View <i class="fa fa-eye" aria-hidden="true"></i></button></td>';
+                $levelAsTable.='</tr>';
+=======
+            include_once 'classs.php';
+            $class = new classs();
+            $classList=$class->get_all_class();
+            $classAsTable='';
+            $i=1;
+            foreach ($classList as $singleClass){
+                $classAsTable.='<tr>';
+                $classAsTable.='<th scope="row">'.$i.'</th>';
+                $classAsTable.=' <td>'.$singleClass['class_name'].'</td>';
+                $classAsTable.=' <td>'.$singleClass['students_num'].'</td>';
+                $classAsTable.=' <td>'.$singleClass['max_student_num'].'</td>';
+                $classAsTable.=' <td>'.$singleClass['level_id'].'</td>';
+                $classAsTable.='<td><button class="btn-lg btn-success panel_edit_class" id="edit_class'.$singleClass['class_id'].'">Edit</button></td>';
+                $classAsTable.='<td><button class="btn-lg btn-danger panel_delete_class" id="delete_class'.$singleClass['class_id'].'">Delete</button></td>';
+                $classAsTable.='<td><button class="btn-lg btn-primary panel_view_class" id="View_class'.$singleClass['class_id'].'">View <i class="fa fa-eye" aria-hidden="true"></i></button></td>';
+                $classAsTable.='</tr>';
+>>>>>>> a7a098a0ef886e840ebf5bccca33f73e872d4e8f
 
                 echo $suboption;
             exit();
-        }
+        }*/
         if ($_POST['action'] =='update_level') {
             include_once '../classes/level_class.php';
             include_once '../classes/subject.php';
@@ -197,6 +243,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
             $level->add_subject($level_id,$sub_id_list);}
             echo 'true';
             exit();
+
 
         }
 
@@ -242,7 +289,16 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 
 
             echo 'true';
+
+            }
+            /*
+            echo $levelAsTable;
+=======
+            }
+            echo $classAsTable;
+>>>>>>> a7a098a0ef886e840ebf5bccca33f73e872d4e8f
             exit();
+<<<<<<< HEAD
         }
 
 
@@ -261,5 +317,33 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 
 
 
+||||||| merged common ancestors
+
+=======
+>>>>>>> a7a098a0ef886e840ebf5bccca33f73e872d4e8f
+        */
     }
+    if ($_POST['action'] =='deleteClass') {
+            include_once 'classs.php';
+            $classs=new classs();
+            $classs->delete_class($_POST['class_id']);
+
+            echo 'true';
+            exit();
+
+        }
+   /* if ($_POST['action'] =='addClass') {
+
+            include_once 'classs.php';
+            $level=new classs();
+            $level->add_class($_POST['class_name'],$_POST[]);
+
+            echo 'true';
+            exit();
+
+        }
+
+
+
+} */
 }

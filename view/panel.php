@@ -321,8 +321,9 @@ else if ($_GET['action']=='add_tech') {
         ?>
         <br>
         <br>
-        <input class="input-lg panel_add_class_input col-xs-3" placeholder="Level Name" id="panel_add_level_input">
-            <input class="input-lg panel_add_max_number_input col-xs-3" placeholder="Max Number" id="panel_add_max_number_input">
+        <input class="input-lg panel_add_class_input col-xs-2" style="margin-right: 15px" placeholder="Class - Name" id="panel_add_class_input">
+        <input class="input-lg panel_add_max_number_input col-xs-2" style="margin-right: 15px" placeholder="Max -  Number" id="panel_add_max_number_input">
+         <input class="input-lg panel_add_level_number_input col-xs-2" placeholder="Level - Name" id="panel_add_leve_number_input">
 
         <button class=" btn-lg btn-primary col-xs-offset-2" id="add_class"> Add Class <i class="fa fa-plus-circle" aria-hidden="true"></i> </button>
         <br>
@@ -333,16 +334,17 @@ else if ($_GET['action']=='add_tech') {
             <!--    get values form ajax-->
 
         </div>
-        <table class="table">
+        <table class="table" style="text-align: center">
             <thead>
             <tr>
                 <th>#</th>
-                <th>Class Name</th>
-                <th>Class ID</th>
+                <th>Class - Name</th>
+                <th>Max - Student</th>
+                <th>Student - Number</th>
                 <th>Level ID</th>
             </tr>
             </thead>
-            <tbody id="classTable">
+            <tbody id="classTable" >
 
 
             </tbody>

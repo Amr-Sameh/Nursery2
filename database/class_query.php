@@ -20,6 +20,13 @@ class class_query
 
     }
 
+
+    public function insert_class($name,$level_name,$max_student_num){
+        $query="INSERT INTO class (level_id,class_name,max_student_num) SELECT id FROM level WHERE level_name = '$level_name','$name','$max_student_num'";
+        $this->db->excute_query($query);
+
+    }
+
     /**
      * @param $id
      * @return array
@@ -142,5 +149,16 @@ class class_query
     $query="SELECT * FROM `class`,`subject`,`level_to_sub` WHERE `class_id`='$id' AND level_to_sub.level_id = class.level_id AND id = level_to_sub.sub_id ";
     return $this->db->excute_query($query)->fetchAll();
 }
+   public function class_by_id($id){
+    $query="SELECT * FROM `class` WHERE `class_id`='$id'";
+    return $this->db->excute_query($query)->fetch();
+
+}
+
+public function get_all_classes(){
+    $query="SELECT * FROM class";
+   return $this->db->excute_query($query)->fetchAll();
+}
+
 
 }

@@ -139,10 +139,15 @@ public function get_class_sub()
 
     public function set_level_id($level_id){
         $this->content=$level_id;}
+        public function get_all_class(){
+          return $this->classquery->get_all_classes();
+        }
 
+    /*public function add_class($name,$level_name,$max_student_number){
+        $this->classquery->insert_class($name,$level_name,$max_student_number);
 
-
-
+    }
+    */
 
 
 
