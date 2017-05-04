@@ -86,8 +86,9 @@ class student_qurey
     	$query = "DELETE FROM general_user where user_id = '$user_id'";
     	$db->excute_query($query);
     }
-    public function edit_stu_info($user_id,$stu_id,$class_id,$level_id,$emrg_person_name,$emrg_person_relation,$emrg_person_phone,$iq_grade,$stage){
-    	$query = "UPDATE student SET stu_id = '$stu_id',stage = '$stage',emrg_persone_name = '$emrg_persone_name',emrg_persone_relation = '$emrg_persone_relation',emrg_persone_phone = '$emrg_persone_phone',class_id = '$class_id',level_id = '$level_id',iq_grade = '$iq_grade' WHERE user_id = '$user_id'";
+    public function edit_stu_info($stu_id,$class_id,$level_id,$emrg_person_name,$emrg_person_relation,$emrg_person_phone,$iq_grade,$stage){
+        $stu_id = $this->get_
+    	$query = "UPDATE student SET stage = '$stage',emrg_persone_name = '$emrg_persone_name',emrg_persone_relation = '$emrg_persone_relation',emrg_persone_phone = '$emrg_persone_phone',class_id = '$class_id',level_id = '$level_id',iq_grade = '$iq_grade' WHERE user_id = '$user_id'";
     	$db->excute_query($query);
     }
 }

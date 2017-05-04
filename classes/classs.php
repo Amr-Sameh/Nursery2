@@ -14,7 +14,9 @@ class classs
     public $student_number ;
     public $max_student_num ;
     public $level_id ;
-  private $classquery;
+    private $classquery;
+
+
   public  function __construct()
   {
       $this->classquery=new class_query();
@@ -42,6 +44,26 @@ class classs
       }
 
   }
+
+
+
+
+public function get_class_sub()
+{
+  $this->student_query->get_class_subject($this->level_id);
+  
+}
+
+
+
+
+
+
+
+
+
+
+
   public function getuser($id){
       return $this->classquery->get_user($id);
   }

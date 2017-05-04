@@ -97,8 +97,6 @@ public function get_all_levels(){
 public function get_level_subjects_by_id($id){
     $query="SELECT * FROM `subject`,`level_to_sub` WHERE `id`=`sub_id` AND `level_id`='$id'";
     return $this->db->excute_query($query)->fetchAll();
-
-
 }
 
 public function level_by_id($id){
