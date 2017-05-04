@@ -174,12 +174,105 @@ include_once 'navbar.php';
 
     else if ($_GET['action']=='complain')
         echo '<h1>cpmplain</h1>';
-    else
+    else if($_GET['action']=='add_tech'){
 
     ?>
+        <div class="add_teach">
+        <form class="form-group" method="post"action="">
+
+             <label for="firstName" class="col-xs-12"style="color: #0e6dcd;font-size:17px;">FirstName <small class="glyphicon glyphicon-asterisk" style="color: #de0000"></small></label>
+             <input type="text" name="first_name" class="col-xs-12"autocomplete="off" style="margin-left: 8px;"required>
+            <label for="MidName" class="col-xs-12"style="color: #de0000;font-size:17px;margin-top: 2%">MidName <small class="glyphicon glyphicon-asterisk"style="color: #de0000;margin-left:1.2% "></small> </label>
+            <input type="text" name="mid_name" class="col-xs-12"autocomplete="off" style="margin-left: 8px;"required>
+
+            <label for="lastName" class="col-xs-12" style="color:#9bcc2e;font-size:17px;margin-top: 2%">LastName <small class="glyphicon glyphicon-asterisk"style="color: #de0000;"></small></label>
+            <input type="text" name="last_name" class="col-xs-12"autocomplete="off"style="margin-left: 8px;"required>
+
+            <label for="gender"class="col-xs-12"style="color: #0e6dcd;font-size:19px;margin-top: 2%"> <small class="glyphicon glyphicon-user"style="color: black"></small> Gender</label>
+            <input type="radio" name="gender" value="male" style="margin-left: 12px;"> <span style="color: #de0000;font-size:17px;font-weight: bold;margin-left:1.5% "> Male </span> <br>
+            <input type="radio" name="gender" value="female"style="margin-left: 12px;margin-bottom: 5%"><span style="color: #0e6dcd;font-size:17px;font-weight: bold;margin-left:1.5%"> Female </span><br>
+
+
+            <label for="subject" class="col-xs-12"style="color:#9bcc2e;font-size:17px;font-weight: bold">Subject</label>
+
+
+            <select class="col-xs-3"name="subject"style="margin-top:1.5%;margin-left:1.6%;" >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+
+            </select>
+            <button class="uk-button uk-button-primary " type="submit"style="margin-top: 8%;margin-left: 4%;float: right">Confirm</button>
+            <button class="uk-button uk-button-default " type="reset"style="margin-top: 8%;margin-left: 4%;float: right;">Cancel</button>
+
+
+        </form>
+        </div>
+
+
+
+        <?php }
+        else if($_GET['action']=='add_stud'){
+    ?>
+          <!-- add student -->
+            <div class="add_stud">
+                <form class="form-group" method="post"action="">
+
+                    <label for="firstName" class="col-xs-12"style="color: #0e6dcd;font-size:17px;">FirstName <small class="glyphicon glyphicon-asterisk" style="color: #de0000"></small></label>
+                    <input type="text" name="first_name" class="col-xs-12"autocomplete="off" style="margin-left: 8px;"required>
+                    <label for="MidName" class="col-xs-12"style="color: #de0000;font-size:17px;margin-top: 2%">MidName <small class="glyphicon glyphicon-asterisk"style="color: #de0000;margin-left:1.2% "></small> </label>
+                    <input type="text" name="mid_name" class="col-xs-12"autocomplete="off" style="margin-left: 8px;"required>
+
+                    <label for="lastName" class="col-xs-12" style="color:#9bcc2e;font-size:17px;margin-top: 2%">LastName <small class="glyphicon glyphicon-asterisk"style="color: #de0000;"></small></label>
+                    <input type="text" name="last_name" class="col-xs-12"autocomplete="off"style="margin-left: 8px;"required>
+
+                    <label for="gender"class="col-xs-12"style="color: #0e6dcd;font-size:19px;margin-top: 2%"> <small class="glyphicon glyphicon-user"style="color: black"></small> Gender</label>
+                    <input type="radio" name="gender" value="male" style="margin-left: 12px;"> <span style="color: #de0000;font-size:17px;font-weight: bold;margin-left:1.5% "> Male </span> <br>
+                    <input type="radio" name="gender" value="female"style="margin-left: 12px;margin-bottom: 5%"><span style="color: #0e6dcd;font-size:17px;font-weight: bold;margin-left:1.5%"> Female </span><br>
+
+
+                    <label for="class" class="col-xs-5"style="color:#0e6dcd;font-size:17px;font-weight: bold">Level</label>
+                    <label for="class" class="col-xs-5"style="color:#de0000;font-size:17px;margin-left: 13%;font-weight: bold">Class</label>
+                    <select class="col-xs-5" name="level"  style="margin-left: 3%;margin-top:1.5%">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+
+                    </select>
+
+
+                    <select class="col-xs-5"name="class" style="margin-left: 10%;margin-top:1.5%">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+
+                    </select>
+
+                    <button class="uk-button uk-button-primary " type="submit"style="margin-top: 8%;margin-left: 4%;float: right">Confirm</button>
+                    <button class="uk-button uk-button-default " type="reset"style="margin-top: 8%;margin-left: 4%;float: right;">Cancel</button>
+
+
+                </form>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+        <?php } ?>
+
+
+
 
 
     </div>
+
 
 
 
