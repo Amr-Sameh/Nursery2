@@ -99,7 +99,7 @@ if(isset($_POST["reportpostid"])){
                                 <span class="wordwrap " id="<?php echo"b".$post["post_id"]; ?>"><?php echo $post["post_content"]?></span>
                             </div>
                             <div class="uk-card-footer">
-                                <a   class="uk-button uk-button-text"  uk-toggle="target: #<?php echo 'A'.$post["post_id"]; ?>; animation:  uk-animation-slide-left, uk-animation-slide-bottom">comment</a>
+                                <a   class="uk-button uk-button-text krkr" id="<?php echo 'KL'.$post["post_id"];  ?>" uk-toggle="target: #<?php echo 'A'.$post["post_id"];  ?>; animation:  uk-animation-slide-left, uk-animation-slide-bottom">comment</a>
                             </div>
                         </div>
                         <div class="uk-card uk-carde uk-width-3-5@m " id="<?php echo 'A'.$post["post_id"]; ?>" hidden="hidden" aria-hidden="true">
@@ -138,7 +138,7 @@ if(isset($_POST["reportpostid"])){
                             <article class="uk-comment uk-comment-primary comment uk-visible-toggle" style="border: 0px">
                                 <div class="uk-comment-body">
                                     <textarea class="newPost" id="<?php echo"c".$post['post_id'];?>" placeholder="Write some thing ..."></textarea>
-                                    <button class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom huhu" id="<?php echo"d".$post['post_id'];?>" onclick="commentpost(this.id)" style="margin-top: 10px;background-color: white">Comment</button>
+                                    <button class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom huhu" id="<?php echo"d".$post['post_id'];?>" style="margin-top: 10px;background-color: white">Comment</button>
                                 </div>
                             </article>
                         </div>
@@ -391,17 +391,16 @@ if(isset($_POST["reportpostid"])){
             <textarea class="newPost" id="edit"></textarea>
         </div>
         <div class="uk-modal-footer uk-text-right">
-            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-default uk-modal-close" type="button" id="noedit">Cancel</button>
             <button class="uk-button uk-button-primary  uk-modal-close" type="button" id="yesedit" >Save</button>
         </div>
     </div>
 </div>
 <div id="remove" uk-modal>
-
     <div class="uk-modal-dialog uk-modal-body">
         <p>are you sure that you want delete it.</p>
         <p class="uk-text-right">
-            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-default uk-modal-close" type="button" id="nodelet">Cancel</button>
             <button class="uk-button uk-button-primary uk-modal-close" id="yesdelet" type="button">Confirm</button>
         </p>
     </div>
