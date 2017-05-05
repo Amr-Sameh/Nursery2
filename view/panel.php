@@ -189,7 +189,7 @@ else if ($_GET['action']=='add_tech') {
                 <form class="form-group" method="post"id="panel_add_stud">
 
                     <label for="firstName" class="col-xs-12"style="color: #0e6dcd;font-size:17px;">FirstName <small class="glyphicon glyphicon-asterisk" style="color: #de0000"></small></label>
-                    <input type="text" name="first_name" class="col-xs-12"autocomplete="off" style="margin-left: 8px;"required>
+                    <input  type="text" name="first_name" class="col-xs-12"autocomplete="off" style="margin-left: 8px;"required>
                     <label for="MidName" class="col-xs-12"style="color: #de0000;font-size:17px;margin-top: 2%">MidName <small class="glyphicon glyphicon-asterisk"style="color: #de0000;margin-left:1.2% "></small> </label>
                     <input type="text" name="mid_name" class="col-xs-12"autocomplete="off" style="margin-left: 8px;"required>
 
@@ -263,14 +263,61 @@ else if ($_GET['action']=='add_tech') {
 
                 </tbody>
             </table>
+
+
+
+
+
+
+
+
+
+            <!-- Edit Level  Modal -->
+            <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close close_level_edit" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">j</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" id="level_new_name" disabled class="col-xs-6 ">
+                            <button class="col-xs-3 col-xs-offset-1  btn-primary" id="level_new_name_toogle">Edit</button>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <label>Subjects : </label>
+
+                            <select multiple id="edit_level_multilist" >
+
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default close_level_edit" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="update_level">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
             <?php
         }
         else if ($_GET['action']=='class') {
         ?>
         <br>
         <br>
-        <input class="input-lg panel_add_class_input col-xs-3" placeholder="Level Name" id="panel_add_level_input">
-            <input class="input-lg panel_add_max_number_input col-xs-3" placeholder="Max Number" id="panel_add_max_number_input">
+        <input class="input-lg panel_add_class_input col-xs-2" style="margin-right: 15px" placeholder="Class - Name" id="panel_add_class_input">
+        <input class="input-lg panel_add_max_number_input col-xs-2" style="margin-right: 15px" placeholder="Max -  Number" id="panel_add_max_number_input">
+         <input class="input-lg panel_add_level_number_input col-xs-2" placeholder="Level - Name" id="panel_add_leve_number_input">
 
         <button class=" btn-lg btn-primary col-xs-offset-2" id="add_class"> Add Class <i class="fa fa-plus-circle" aria-hidden="true"></i> </button>
         <br>
@@ -281,20 +328,24 @@ else if ($_GET['action']=='add_tech') {
             <!--    get values form ajax-->
 
         </div>
-        <table class="table">
+        <table class="table" style="text-align: center">
             <thead>
             <tr>
                 <th>#</th>
-                <th>Class Name</th>
-                <th>Class ID</th>
+                <th>Class - Name</th>
+                <th>Max - Student</th>
+                <th>Student - Number</th>
                 <th>Level ID</th>
             </tr>
             </thead>
-            <tbody id="classTable">
+            <tbody id="classTable" >
 
 
             </tbody>
         </table>
+
+
+
         <?php
         }?>
 
