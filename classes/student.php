@@ -51,7 +51,7 @@ class student extends user
     	}	
     }
  	
- 	public function setClass_id($classes){
+ 	public function setClass_id($class_id){
     	$this->class_id = $class_id;
     }
 

@@ -39,6 +39,31 @@ $(document).ready(function () {
         });
     });
 
+  /*
+  *  add stud
+  * */
+  var panel_add_stud= $('#panel_add_stud');
+   panel_add_stud.submit(function (event) {
+      event.preventDefault();
+       $.ajax({
+          url:"../classes/panel_action.php",
+          method:"POST",
+          data:panel_add_stud.serialize()+"&action=AddStud",
+           success:function (data) {
+               if(data=="Operation Success"){
+                   alert(data);
+               }
+           }
+
+       });
+
+
+    });
+
+
+
+
+
 
 
     $('#add_level').click(function () {

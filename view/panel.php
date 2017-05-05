@@ -143,18 +143,12 @@ include_once 'navbar.php';
     else if ($_GET['action']=='event'){
         ?>
 
-
-
-
-
-
-
 <?php }
 else if ($_GET['action']=='add_tech') {
     ?>
 
         <div class="add_teach">
-        <form class="form-group" method="post"action="">
+        <form class="form-group" method="post">
 
              <label for="firstName" class="col-xs-12"style="color: #0e6dcd;font-size:17px;">FirstName <small class="glyphicon glyphicon-asterisk" style="color: #de0000"></small></label>
              <input type="text" name="first_name" class="col-xs-12"autocomplete="off" style="margin-left: 8px;"required>
@@ -192,7 +186,7 @@ else if ($_GET['action']=='add_tech') {
     ?>
           <!-- add student -->
             <div class="add_stud">
-                <form class="form-group" method="post"action="">
+                <form class="form-group" method="post"id="panel_add_stud">
 
                     <label for="firstName" class="col-xs-12"style="color: #0e6dcd;font-size:17px;">FirstName <small class="glyphicon glyphicon-asterisk" style="color: #de0000"></small></label>
                     <input type="text" name="first_name" class="col-xs-12"autocomplete="off" style="margin-left: 8px;"required>
