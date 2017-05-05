@@ -61,6 +61,9 @@ class user
         session_destroy();
 
     }
+    public  function  insert_user($first_name,$mid_name,$last_name,$gender,$group_id){
+        return $this->user_query->insert_user($first_name,$mid_name,$last_name,$gender,$group_id);
+    }
 
 
 
