@@ -263,54 +263,55 @@ function getallsubjects(level) {
 }
             $(document).on('click','.panel_delete_class',function () {
 
-                var class_id=this.id;
-                class_id=class_id.substr(class_id.lastIndexOf('c')+1);
+                var class_id = this.id;
+                class_id = class_id.substr(class_id.lastIndexOf('c') + 1);
 
 
                 $.ajax({
                     url: "../classes/panel_action.php",
                     method: "POST",
-                    data: {action: 'deleteClass',class_id:class_id},
+                    data: {action: 'deleteClass', class_id: class_id},
                     success: function (data) {
 
                         getClasses();
-
-
                     }
                 });
-
             });
 
+$(document).on('click','.panel_delete_class',function () {
 
-            /* $('#add_class').click(function () {
-             var class_name = $('#panel_add_class_input').val();
-             var max_number = $('#panal_add_max_number_input').val();
-             var level_name = $('#panal_add_level_name_input').val();
+    var class_id=this.class_id;
+    class_id=class_id.substr(class_id.lastIndexOf('s')+1);
 
-             $.ajax({
-             url: "../classes/panel_action.php",
-             method: "POST",
-             data: {action: 'addClass',class_name:class_name, level_name:level_name, max_student_number:max_number},
-             success: function (data) {
-             if(data=='true'){
-             getClasses();
 
-             }
+    $.ajax({
+        url: "../classes/panel_action.php",
+        method: "POST",
+        data: {action: 'deleteClass',id:class_id},
+        success: function (data) {
 
-             }
-             });
-             });
-             */
-            function getClasses(){
+            getClasses();
+
+
+        }
+    });
+
+});
+
+            function getClasses() {
                 $.ajax({
-                    url:"../classes/panel_action.php",
-                    method:"POST",
-                    data: {action:'getClasses'},
-                    success: function(data){
+                    url: "../classes/panel_action.php",
+                    method: "POST",
+                    data: {action: 'getClasses'},
+                    success: function (data) {
                         $('#classTable').html(data);
                     }
                 });
             }
+
+
+
+
 
 
 
