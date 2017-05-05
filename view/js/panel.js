@@ -165,7 +165,7 @@ add_stud.submit(function (event) {
 });
 if($("#panel_add_tech").length != 0) {
 
-getallsubjects(1);
+//TODO call function return all system subject in <option> tag with sub_id as value
 }
 
 
