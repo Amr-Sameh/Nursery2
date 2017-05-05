@@ -1,14 +1,20 @@
 <?php
+//TODO but class id in $classid
+//and user id in $user id
+//and gropid in $gropid
+$classid=2;
+    $userid=1;
+        $gropid=1;
 session_start();
 
 include_once "../classes/classs.php";
 $class=new classs();
-$posts=$class->getpostsofclass(2);
+$posts=$class->getpostsofclass($classid);
 if(isset($_POST["posttext"])){
-    $class->addpost( $_SESSION['userid'],2,$_POST["posttext"]);
+    $class->addpost( $userid,2,$_POST["posttext"]);
 }
 if(isset($_POST["commenttext"])){
-    $class->addcomment( $_SESSION['userid'],$_POST["id"],$_POST["commenttext"]);
+    $class->addcomment( $userid,$_POST["id"],$_POST["commenttext"]);
 }
 if(isset($_POST["removepost"])){
     $class->removepst($_POST['removepost']);
@@ -63,7 +69,6 @@ if(isset($_POST["reportpostid"])){
                         $postuser=$class->getuser($post['user_id']);?>
 
 
-
                         <div class="uk-card uk-carde uk-card-default uk-width-2-3@m uk-visible-toggle"
                              id="<?php echo $post["post_id"]; ?>">
                             <div class="uk-card-header">
@@ -81,7 +86,7 @@ if(isset($_POST["reportpostid"])){
                                 </div>
                                 <div class="uk-width-auto" style="float: right;">
                                     <ul class="uk-invisible-hover uk-iconnav">
-                                        <?php if ($_SESSION['userid'] == $post['user_id']) {
+                                        <?php if ($userid == $post['user_id']||$gropid==1) {
                                             ?>
                                             <li><a uk-icon="icon: pencil" href="#modal-sections" class="editpost" uk-toggle id="<?php echo 'y'.$post['post_id']?>"></a>
                                             </li>
@@ -120,7 +125,7 @@ if(isset($_POST["reportpostid"])){
                                                 </ul>
                                             </div>
                                             <div class="uk-width-auto" style="float: right;">
-                                                <?php if ($_SESSION['userid'] == $comment['user_id']) {
+                                                <?php if ($userid == $comment['user_id']||$gropid==1) {
                                                     ?>
                                                     <ul class="uk-invisible-hover uk-iconnav">
                                                         <li><a   uk-icon="icon: pencil" href="#modal-sections" class="editcomment" uk-toggle id="<?php echo 'y'.$comment['comment_id']?>"></a></li>
@@ -148,13 +153,15 @@ if(isset($_POST["reportpostid"])){
             </div></div>
         <div class="uk-container-expand  subject">
             <div class="container">
-                <?php  $userid=1;
-                if($userid==1){
+                <?php
+                if($userid==3){
                     ?>
                     <li>
                         <ul id="subjects" class="uk-switcher">
                             <?php
-                            $listofsub = array("Arabic","English","Math","Art","Funny","Qran");
+                            include "../classes/subject.php";
+                            $sub=new subject();
+                            $listofsub=$sub->get_all_subjects();
                             foreach ($listofsub as $value){
                                 ?>
                                 <li>
@@ -171,7 +178,10 @@ if(isset($_POST["reportpostid"])){
                                             </thead>
                                             <tbody>
                                             <?php
-                                            for($k=0;$k<15;$k++){
+                                            include "../classes/hw_class.php";
+                                            $hw=new hw_class();
+                                            $listofHw=0;
+                                            foreach ($listofhw as $value){
                                                 ?>
                                                 <tr>
                                                     <td><?php echo"HW".$k;?></td>
@@ -384,23 +394,23 @@ if(isset($_POST["reportpostid"])){
     </div>
 
 </div>
-<div id="modal-sections" uk-modal="center: true">
+<div class="tryy" id="modal-sections" uk-modal>
     <div class="uk-modal-dialog">
         <label class="uk-label-danger"></label>
         <div class="uk-modal-body" >
             <textarea class="newPost" id="edit"></textarea>
         </div>
         <div class="uk-modal-footer uk-text-right">
-            <button class="uk-button uk-button-default uk-modal-close" type="button" id="noedit">Cancel</button>
+            <button class="uk-button uk-button-default uk-modal-close tryy" type="button" id="noedit">Cancel</button>
             <button class="uk-button uk-button-primary  uk-modal-close" type="button" id="yesedit" >Save</button>
         </div>
     </div>
 </div>
-<div id="remove" uk-modal>
+<div class="try" id="remove" uk-modal>
     <div class="uk-modal-dialog uk-modal-body">
         <p>are you sure that you want delete it.</p>
         <p class="uk-text-right">
-            <button class="uk-button uk-button-default uk-modal-close" type="button" id="nodelet">Cancel</button>
+            <button class="uk-button uk-button-default uk-modal-close try" type="button" id="nodelet">Cancel</button>
             <button class="uk-button uk-button-primary uk-modal-close" id="yesdelet" type="button">Confirm</button>
         </p>
     </div>

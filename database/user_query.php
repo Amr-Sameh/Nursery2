@@ -31,7 +31,11 @@ public function check_exist($username , $pass){
 
 
 }
-
+    public function get_user_by_id($id){
+        $query="SELECT * FROM  general_user WHERE id='$id' LIMIT 1";
+        $row =$this->db->excute_query($query);
+        return $row->fetch();
+    }
 
 public function get_user_by_username($username){
     $query="SELECT * FROM  general_user WHERE username='$username' LIMIT 1";
