@@ -166,7 +166,7 @@ else if ($_GET['action']=='add_tech') {
             <label for="subject" class="col-xs-12"style="color:#9bcc2e;font-size:17px;font-weight: bold">Subject</label>
 
 
-            <select class="col-xs-3"name="subject"style="margin-top:1.5%;margin-left:1.6%;" id="edit_level_multilist">
+            <select class="col-xs-3"name="subject"style="margin-top:1.5%;margin-left:1.6%;" id="add_tech_sub">
 
             </select>
             <button class="uk-button uk-button-primary " type="submit"style="margin-top: 8%;margin-left: 4%;float: right">Confirm</button>

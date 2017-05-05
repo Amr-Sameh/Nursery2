@@ -137,7 +137,7 @@ add_stud.submit(function (event) {
         method:"POST",
         data:add_stud.serialize()+"&action=addStudent",
         success: function(data){
-            alert(data);
+
             if(data=="Operation Success"){
                 alert(data);
             }
@@ -156,7 +156,7 @@ add_stud.submit(function (event) {
         method:"POST",
         data:add_stud.serialize()+"&action=addTeacher",
         success: function(data){
-            alert(data);
+           
             if(data=="Operation Success"){
                 alert(data);
             }
@@ -166,6 +166,7 @@ add_stud.submit(function (event) {
 if($("#panel_add_tech").length != 0) {
 
 //TODO call function return all system subject in <option> tag with sub_id as value
+    get_all_system_sub();
 }
 
 
@@ -256,7 +257,7 @@ function getallsubjects(level) {
         method: "POST",
         data: {action: 'Leveledit_getAllSub', level: level},
         success: function (data) {
-            alert(data);
+
             $('#edit_level_multilist').html(data);
         }
     });
@@ -310,7 +311,16 @@ $(document).on('click','.panel_delete_class',function () {
             }
 
 
-
+function get_all_system_sub() {
+    $.ajax({
+        url: "../classes/panel_action.php",
+        method: "POST",
+        data: {action: 'all_system_sub_asSelect'},
+        success: function (data) {
+            $('#add_tech_sub').html(data);
+        }
+    });
+}
 
 
 

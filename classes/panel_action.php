@@ -265,6 +265,20 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
             echo "Operation Success";
             exit();
         }
+
+if ($_POST['action'] == 'all_system_sub_asSelect'){
+            include_once '../classes/subject.php';
+    $subject = new subject();
+    $subList = $subject->get_all_subjects();
+    $suboption='';
+    foreach ($subList as $sub) {
+        $suboption .= '<option value="' . $sub['id'] . '">' . $sub['name'] . '</option>';
+    }
+    echo $suboption;
+    exit();
+}
+
+
     }
 }
 
