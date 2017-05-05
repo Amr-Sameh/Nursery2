@@ -125,6 +125,49 @@ $(document).on('click','.panel_delete_class',function () {
     });
 
 });
+/*
+ *
+ *  add_stud
+ * */
+var add_stud=$('#panel_add_stud');
+add_stud.submit(function (event) {
+    event.preventDefault();
+    $.ajax({
+        url:"../classes/panel_action.php",
+        method:"POST",
+        data:add_stud.serialize()+"&action=addStudent",
+        success: function(data){
+            alert(data);
+            if(data=="Operation Success"){
+                alert(data);
+            }
+        }
+    });
+});
+/*
+*  add tech
+* */
+
+var add_stud=$('#panel_add_tech');
+add_stud.submit(function (event) {
+    event.preventDefault();
+    $.ajax({
+        url:"../classes/panel_action.php",
+        method:"POST",
+        data:add_stud.serialize()+"&action=addTeacher",
+        success: function(data){
+            alert(data);
+            if(data=="Operation Success"){
+                alert(data);
+            }
+        }
+    });
+});
+if($("#panel_add_tech").length != 0) {
+
+getallsubjects(1);
+}
+
 
 
 $(document).on('click','.panel_view_level',function () {
@@ -157,12 +200,11 @@ $('#level_new_name_toogle').click(function () {
 
 });
 
-$('#edit_level_multilist').on(function () {
-    alert($('#multilist').val());
-});
+
 
 
 $('#update_level').click(function () {
+
     $.ajax({
         url: "../classes/panel_action.php",
         method: "POST",
@@ -208,13 +250,17 @@ function getlevelinfo(id) {
 }
 
 function getallsubjects(level) {
+
     $.ajax({
         url: "../classes/panel_action.php",
         method: "POST",
-        data: {action: 'Leveledit_getAllSub',level:level},
+        data: {action: 'Leveledit_getAllSub', level: level},
         success: function (data) {
+            alert(data);
             $('#edit_level_multilist').html(data);
-
+        }
+    });
+}
             $(document).on('click','.panel_delete_class',function () {
 
                 var class_id=this.id;
@@ -263,10 +309,10 @@ function getallsubjects(level) {
                     success: function(data){
                         $('#classTable').html(data);
                     }
-                })
+                });
             }
 
 
-        }
-    });
-}
+
+
+
