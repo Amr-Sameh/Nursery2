@@ -27,6 +27,14 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
        echo $result;
         exit();
     }
+if(isset($_POST['action'])&&$_POST['action']=='logout'){
+    include_once '../classes/user.php';
+    $user =new user();
+   $user->logout();
+
+    echo 'true';
+    exit();
+}
 }
 
 ?>
@@ -64,14 +72,14 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                 if(isset($_SESSION['user_id'])&&$_SESSION['user_id']!=null&&$_SESSION['user_id']!='') {
 
                     echo ' <li class="dropdown nav-switch">
-          <a href="" class="dropdown-toggle hvr-sweep-to-right" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Amr Sameh <span class="caret"></span></a>
+          <a href="" class="dropdown-toggle hvr-sweep-to-right" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$_SESSION['first_name'].'<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a class="hvr-sweep-to-right" href="#"><i class="fa fa-user" aria-hidden="true"></i>
+            <li><a class="hvr-sweep-to-right" href="#'.$_SESSION['user_id'].'"><i class="fa fa-user" aria-hidden="true"></i>
 Profile</a></li>
             <li><a class="hvr-sweep-to-right" href="#"><i class="fa fa-cogs" aria-hidden="true"></i>
 Settings</a></li>
             <li role="separator" class="divider"></li>
-            <li><a  class="hvr-sweep-to-right" href="#"><i class="fa fa-lock" aria-hidden="true"></i>  Logout </a></li>
+            <li><a id="logout" class="hvr-sweep-to-right" href="#"><i class="fa fa-lock" aria-hidden="true"></i>  Logout </a></li>
           </ul>
         </li>';
                 }

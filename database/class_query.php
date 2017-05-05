@@ -101,7 +101,7 @@ class class_query
     }
 
     public function delet_class($id){
-        $query="DELETE FROM class WHERE id=$id";
+        $query="DELETE FROM class WHERE class_id=$id";
 
         //TODO CALL FAUNCTION EXCUTE
         $this->db->excute_query($query);

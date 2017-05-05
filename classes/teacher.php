@@ -21,8 +21,8 @@ public function __construct()
     $this->teacherquery =new teacher_query();
 }
 
-public function addnewTeacher($tusername,$tfname,$tlname,$temail,$tpass,$tgender,$tsup,$tclassid){
-  return $this->teacherquery->add_new_Teacher($tusername,$tfname,$tlname,$temail,$tpass,$tgender,$tsup,$tclassid);
+public function addnewTeacher($user_id,$sub_id){
+  $this->teacherquery->add_new_Teacher($user_id,$sub_id);
 }
     public function editteacher($teacherid,$tusername,$tfname,$tmname,$tlname,$temail,$tpass,$tcity,$tcontry,$tstreet,$tbirthdate,$tsup,$tclassid){
         return $this->teacherquery->edit_Teacher($teacherid,$tusername,$tfname,$tmname,$tlname,$temail,$tpass,$tcity,$tcontry,$tstreet,$tbirthdate,$tsup,$tclassid);

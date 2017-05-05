@@ -44,6 +44,7 @@ class user
             $user_info=$this->user_query->get_user_by_username($username);
             $_SESSION['user_type']=$user_info['group_id'];
             $_SESSION['user_id']=$user_info['id'];
+            $_SESSION['first_name']=$user_info['first_name'];
 
 
 
@@ -52,9 +53,16 @@ class user
             return $user_info['group_id'];
 
         }
-        return "555555555555";
 
 
+
+    }
+    public function logout(){
+        session_destroy();
+
+    }
+    public  function  insert_user($first_name,$mid_name,$last_name,$gender,$group_id){
+        return $this->user_query->insert_user($first_name,$mid_name,$last_name,$gender,$group_id);
     }
 
 

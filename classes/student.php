@@ -6,7 +6,7 @@
  * Date: 26/04/17
  * Time: 10:15 ص
  */
-include "student_query.php";
+include "../database/student_query.php";
 
 class student extends user 
 {
@@ -29,13 +29,23 @@ class student extends user
     
     public function addStudent(){
     	 if(!$this->student_query->check_exist($this->stu_id)){
-    		$this->student_query->insert_stu(this->stu_id,this->class_id,this->level_id,this->emrg_person_name,this->emrg_person_relation,this->emrg_person_phone,this->stage,this->iq_grade);
+    		$this->student_query->insert_stu($this->stu_id,$this->class_id,$this->level_id,$this->emrg_person_name,$this->emrg_person_relation,$this->emrg_person_phone,$this->stage,$this->iq_grade);
     	}
     }
 
+    /*
+     *  insert new student michael edit
+     * */
+    public  function insert_student($user_id,$level_id,$class_id){
+        $this->student_query->insert_student($user_id,$level_id,$class_id);
+    }
+
+
+
+
     public function deleteStudent_StudentTable(){
     	if($this->student_query->check_exist($this->stu_id)){
-    		$this->student_query->delete_stu_stuT($stu_id);
+    		$this->student_query->delete_stu_stuT($this->stu_id);
     	}
     }
 
@@ -46,8 +56,8 @@ class student extends user
     }
 
     public function update_student_info($stu_id){
-    if($this->student_query->check_exist($user_id)){
-    		$this->student_query->edit_stu_info($user_id,$stu_id,this->class_id,this->level_id,this->emrg_person_name,this->emrg_person_relation,this->emrg_person_phone,this->iq_grade,this->stage);
+    if($this->student_query->check_exist($this->user_id)){
+    		$this->student_query->edit_stu_info($this->user_id,$stu_id,$this->class_id,$this->level_id,$this->emrg_person_name,$this->emrg_person_relation,$this->emrg_person_phone,$this->iq_grade,$this->stage);
     	}	
     }
  	
@@ -79,7 +89,7 @@ class student extends user
     }
 
     public function setIq_grade($iq_grade){
-    	$this->emrg_person_name = $emrg_person_name;
+    	$this->emrg_person_name = $this->emrg_person_name;
     }
     
     public function getClass_id(){
