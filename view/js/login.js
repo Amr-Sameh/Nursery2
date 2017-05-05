@@ -72,9 +72,23 @@ $(document).ready(function () {
                 }else {  //TODO add validate part to tell the user that the data not right
                      }
             }
-        })
+        });
     });
+    $('#logout').click(function () {
+        $.ajax({
+            url: "navbar.php",
+            method: "POST",
+            data: {action: 'logout'},
+            success: function (data) {
 
+                if (data == 'true') {
+
+                    location.href="homee.php";
+
+                }
+            }
+        });
+    });
 
 
 
