@@ -218,7 +218,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
        if ($_POST['action'] =='getClasses') {
 >>>>>>> a7a098a0ef886e840ebf5bccca33f73e872d4e8f
 
-<<<<<<< HEAD*/
+<<<<<<< HEAD
         if ($_POST['action'] =='Leveledit_getAllSub') {
             include_once '../classes/subject.php';
             include_once '../classes/level_class.php';
@@ -229,9 +229,6 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
             foreach ($subList as $sub){
                 $suboption.='<option value="'.$sub['id'].'">'.$sub['name'].'</option>';
             }
-            echo $suboption;
-            exit();
-        }/*
 ||||||| merged common ancestors
             include_once 'class_class.php';
             $level = new class_class();
@@ -269,7 +266,8 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
                 $classAsTable.='</tr>';
 >>>>>>> a7a098a0ef886e840ebf5bccca33f73e872d4e8f
 
-
+                echo $suboption;
+            exit();
         }*/
         if ($_POST['action'] =='update_level') {
             include_once '../classes/level_class.php';
