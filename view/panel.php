@@ -43,7 +43,7 @@ include_once 'navbar.php';
             <a href="#" class="stu-panel-link">
                     <div class="stu-box col-lg-6">
                         <div class="lay"></div>
-                        <img src="images/stu-panel.jpg"class="img-responsive stu-panel-pic col-xs-12">
+                        <img src="images/stu-panel.jpg" class="img-responsive stu-panel-pic col-xs-12">
 
                     </div>
             </a>
@@ -54,7 +54,99 @@ include_once 'navbar.php';
 
 
     } else if ($_GET['action']=='event') {
-        echo "ldkasdklasl";
+
+
+
+?>
+
+
+
+        <br>
+        <br>
+        <input class="input-lg panel_add_event_input col-xs-3" placeholder="Event Title" id="panel_add_event_title">
+        <input type="date" class="input-lg panel_add_event_input col-xs-3 col-xs-offset-1" id="panel_add_event_date">
+        <input type="text" class="input-lg panel_add_event_input col-xs-3 col-xs-offset-1" placeholder="Place" id="panel_add_event_place">
+        <br>
+        <br>
+        <br>
+        <br>
+        <textarea class="input-lg panel_add_event_input col-xs-6" placeholder="content ..." id="panel_add_event_content"></textarea>
+        <input type="file"  class="input-lg panel_add_event_input  col-xs-offset-1 " id="panel_add_event_image_url">
+        <button class=" btn-lg btn-primary col-xs-offset-2 " id="add_event"> Add Event <i class="fa fa-plus-circle"
+                                                                                         aria-hidden="true"></i>
+        </button>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Event Title</th>
+            </tr>
+            </thead>
+            <tbody id="eventTable">
+
+
+            </tbody>
+        </table>
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Button trigger modal -->
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="event_edit_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Edit Event</h4>
+                    </div>
+                    <div class="modal-body">
+                        <br>
+                        <input class="input-lg panel_add_event_input col-xs-12" placeholder="Event Title" id="panel_edit_event_title">
+                        <input type="date" class="input-lg panel_add_event_input col-xs-12 " id="panel_edit_event_date">
+                        <input type="text" class="input-lg panel_add_event_input col-xs-12" placeholder="Place" id="panel_edit_event_place">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <textarea class="input-lg panel_edit_event_input col-xs-12" placeholder="content ..." id="panel_edit_event_content"></textarea>
+                        <input type="file"  class="input-lg panel_edit_event_input  " id="panel_add_event_image_url">
+                    </div>
+                    <div class="modal-footer" id="edit_event_submit">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+<?php
+
+
     }else if ($_GET['action']=='student'){ ?>
         <div class="tabbable"> <!-- Only required for left/right tabs -->
             <ul class="nav nav-tabs">
@@ -304,7 +396,9 @@ else if ($_GET['action']=='add_tech') {
             <?php
         }
         else if ($_GET['action']=='class') {
+
         ?>
+            <!--
         <br>
         <br>
         <input class="input-lg panel_add_class_input col-xs-2" style="margin-right: 15px" placeholder="Class - Name" id="panel_add_class_input">
@@ -317,7 +411,7 @@ else if ($_GET['action']=='add_tech') {
 
         <div class="col-xs-6 col-xs-offset-2 class_info" id="class_info" >
 
-            <!--    get values form ajax-->
+            <!--    get values form ajax-
 
         </div>
         <table class="table" style="text-align: center">
@@ -335,6 +429,63 @@ else if ($_GET['action']=='add_tech') {
 
             </tbody>
         </table>
+
+-->
+
+<div id="panel_class_levels_tabs">
+
+</div>
+            <br>
+            <br>
+
+
+
+            <input class="input-lg panel_add_class_input col-xs-2" style="margin-right: 15px" placeholder="Class - Name" id="panel_add_class_input">
+            <input class="input-lg panel_add_max_number_input col-xs-2" style="margin-right: 15px" placeholder="Max -  Number" id="panel_add_max_number_input">
+
+            <div id="panel_classTable" ></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="modal fade" id="class_edit_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Edit Class</h4>
+                        </div>
+                        <div class="modal-body">
+                                <input type="text " class="input-lg col-xs-12" placeholder="Class - Name " id="class_name_update">
+                            <br>
+                            <br>
+                            <br>
+                            <input type="text " class="input-lg col-xs-12" placeholder="Max - Number" id="class_max_update">
+                            <br>
+                            <br>
+                            <br>
+                        <div class="modal-footer" id="edit_class_submit">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
 
 
 

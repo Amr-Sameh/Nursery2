@@ -1,14 +1,20 @@
 <?php
+//TODO but class id in $classid
+//and user id in $user id
+//and gropid in $gropid
+$classid=2;
+    $userid=1;
+        $gropid=2;
 session_start();
 
 include_once "../classes/classs.php";
 $class=new classs();
-$posts=$class->getpostsofclass(2);
+$posts=$class->getpostsofclass($classid);
 if(isset($_POST["posttext"])){
-    $class->addpost( $_SESSION['userid'],2,$_POST["posttext"]);
+    $class->addpost( $userid,2,$_POST["posttext"]);
 }
 if(isset($_POST["commenttext"])){
-    $class->addcomment( $_SESSION['userid'],$_POST["id"],$_POST["commenttext"]);
+    $class->addcomment( $userid,$_POST["id"],$_POST["commenttext"]);
 }
 if(isset($_POST["removepost"])){
     $class->removepst($_POST['removepost']);
@@ -25,6 +31,8 @@ if(isset($_POST["newcomment"])){
 if(isset($_POST["reportpostid"])){
     $class->reportpost($_POST['reportpostid']);
 }
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,6 +51,7 @@ if(isset($_POST["reportpostid"])){
         <div class="uk-container-expand post ">
             <div class="container">
                 <li class="hlhl" >
+                    <div class="note"  id="<?php echo $userid;?>"></div>
                     <div class="uk-card uk-carde uk-card-default uk-width-2-3@m uk-visible-toggle" >
                         <div class="uk-card-header" style="background-color:  #f8f8f8">
                             <div class="uk-grid-small uk-flex-middle" uk-grid>
@@ -63,7 +72,6 @@ if(isset($_POST["reportpostid"])){
                         $postuser=$class->getuser($post['user_id']);?>
 
 
-
                         <div class="uk-card uk-carde uk-card-default uk-width-2-3@m uk-visible-toggle"
                              id="<?php echo $post["post_id"]; ?>">
                             <div class="uk-card-header">
@@ -81,7 +89,7 @@ if(isset($_POST["reportpostid"])){
                                 </div>
                                 <div class="uk-width-auto" style="float: right;">
                                     <ul class="uk-invisible-hover uk-iconnav">
-                                        <?php if ($_SESSION['userid'] == $post['user_id']) {
+                                        <?php if ($userid == $post['user_id']||$gropid==1) {
                                             ?>
                                             <li><a uk-icon="icon: pencil" href="#modal-sections" class="editpost" uk-toggle id="<?php echo 'y'.$post['post_id']?>"></a>
                                             </li>
@@ -120,7 +128,7 @@ if(isset($_POST["reportpostid"])){
                                                 </ul>
                                             </div>
                                             <div class="uk-width-auto" style="float: right;">
-                                                <?php if ($_SESSION['userid'] == $comment['user_id']) {
+                                                <?php if ($userid == $comment['user_id']||$gropid==1) {
                                                     ?>
                                                     <ul class="uk-invisible-hover uk-iconnav">
                                                         <li><a   uk-icon="icon: pencil" href="#modal-sections" class="editcomment" uk-toggle id="<?php echo 'y'.$comment['comment_id']?>"></a></li>
@@ -148,14 +156,15 @@ if(isset($_POST["reportpostid"])){
             </div></div>
         <div class="uk-container-expand  subject">
             <div class="container">
-                <?php  $userid=1;
-                if($userid==1){
+                <?php
+                if($gropid!=2){
                     ?>
                     <li>
                         <ul id="subjects" class="uk-switcher">
                             <?php
-                            $listofsub = array("Arabic","English","Math","Art","Funny","Qran");
-                            foreach ($listofsub as $value){
+                            $listofsub=$class->get_all_class_subs($classid);
+                            foreach ($listofsub as $sub){
+
                                 ?>
                                 <li>
                                     <div class="uk-width-2-3@m" style="margin: auto;background-color: rgba(255,255,255,0.9)">
@@ -171,10 +180,13 @@ if(isset($_POST["reportpostid"])){
                                             </thead>
                                             <tbody>
                                             <?php
-                                            for($k=0;$k<15;$k++){
+                                            include_once "../classes/subject.php";
+                                            $sube = new subject();
+                                            $listofHw=$sube->get_sub_class_hw($sub['id'],$classid);
+                                            foreach ($listofHw as $val){
                                                 ?>
                                                 <tr>
-                                                    <td><?php echo"HW".$k;?></td>
+                                                    <td><?php echo"HW ".$val['hw_id'];?></td>
                                                     <td >
                                                         <span uk-icon="icon: cloud-download; ratio: 2"></span>
                                                     </td>
@@ -195,13 +207,19 @@ if(isset($_POST["reportpostid"])){
                             <?php } ?>
                         </ul>
                     </li>
-                <?php }else if($userid==0){
+                <?php }else if($gropid==2){
                     ?>
                     <li>
                         <ul id="subjects" class="uk-switcher">
                             <?php
-                            $listofHw = array("HW1","HW2","HW3","HW4","HW5","HW6");
+                            include "../classes/teacher.php";
+                            $teacher = new teacher();
+                            include_once "../classes/subject.php";
+                            $sube = new subject();
+
+                            $listofHw=$sube->get_sub_class_hw($teacher->get_teacher_sub($userid)[0]['sub_id'],$classid);
                             foreach ($listofHw as $value){
+
                                 ?>
                                 <li>
                                     <div class="uk-width-2-3@m" style="margin: auto;background-color: rgba(255,255,255,0.9)">
@@ -213,20 +231,24 @@ if(isset($_POST["reportpostid"])){
                                                 <th >Answer</th>
                                                 <th >Grade</th>
                                                 <th >Comment</th>
+                                                <th >submit</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <?php
-                                                for($k=0;$k<15;$k++){
+                                                $classstudent=$class->get_class_students($classid);
+                                                foreach ($classstudent as $student){
                                                 ?>
                                                 <tr>
-                                                    <td><p>mostafa saleh sopih</p></td>
-                                                    <td><p>20150533</p></td>
+
+                                                    <td><p><?php echo $student['first_name']." ".$student['mid_name']." ".$student['last_name'];?></p></td>
+                                                    <td><p><?php echo $student['username']?></p></td>
                                                     <td >
                                                         <span uk-icon="icon: cloud-download; ratio: 2"></span>
                                                     </td>
                                                     <td class="uk-text-primary"><input type="text" placeholder="Grade"></td>
                                                     <td class="uk-text-primary"><input type="text" placeholder="Comment"></td>
+                                                    <td class="uk-text-primary"><button class="uk-button-primary">submit</button></td>
                                                 </tr>
                                             <?php } ?>
                                             </tbody>
@@ -253,16 +275,17 @@ if(isset($_POST["reportpostid"])){
                             </thead>
                             <tbody>
                             <?php
-                            for($k=0;$k<15;$k++){
+                            $classstudent=$class->get_class_students($classid);
+                            foreach ($classstudent as $student){
                                 ?>
                                 <tr>
                                     <td><div class=" uk-border-circle" style="width: 50px;height: 50px;overflow: hidden;padding: 0; ">
-                                            <img class="" width="100%" height="100%" src="images/child-only.png">
+                                            <img class="" width="100%" height="1002%" src="images/child-only.png">
                                         </div></td>
                                     <td >
-                                        <a class="uk-link-reset"  >Mostafa saleh sopih mohamed</a>
+                                        <a class="uk-link-reset"  ><?php echo $student['first_name']." ".$student['mid_name']." ".$student['last_name'];?></a>
                                     </td>
-                                    <td>235664</td>
+                                    <td><?php echo $student['username']?></td>
                                 </tr>
                             <?php } ?>
                             </tbody>
@@ -350,24 +373,25 @@ if(isset($_POST["reportpostid"])){
                     <li class="uk-parent">
 
                         <?php
-                        if($userid==1) {
+                        if($gropid!=2) {
                             ?>
                             <a href="#">Subjects</a>
                             <ul class="uk-nav-sub" uk-switcher="connect: #subjects; animation: uk-animation-fade; toggle: > :not(.uk-nav-header)">
                                 <?php
-                                foreach ($listofsub as $value) {
-                                    echo "<li><a href='#'>" . $value . "</a></li>";
+                                $listofsub=$class->get_all_class_subs($classid);
+                                foreach ($listofsub as $sube){
+                                    echo "<li><a href='#'>".$sube['name']."</a></li>";
                                 }
                                     ?>
                                     </ul>
                                     <?php
-                                    }else if($userid==0){
+                                    }else if($gropid==2){
                                     ?>
                                     <a  href="#">HomeWork</a>
                                     <ul class="uk-nav-sub" uk-switcher="connect: #subjects; animation: uk-animation-fade; toggle: > :not(.uk-nav-header)">
                                     <?php
-                                    foreach ($listofHw as $value) {
-                                        echo "<li><a href='#'>" . $value . "</a></li>";
+                                    foreach ($listofHw as $hw) {
+                                        echo "<li><a href='#'> HW " . $hw['hw_id'] . "</a></li>";
                                     }
                                 ?>
                             </ul>
@@ -384,23 +408,23 @@ if(isset($_POST["reportpostid"])){
     </div>
 
 </div>
-<div id="modal-sections" uk-modal="center: true">
+<div class="tryy" id="modal-sections" uk-modal>
     <div class="uk-modal-dialog">
         <label class="uk-label-danger"></label>
         <div class="uk-modal-body" >
             <textarea class="newPost" id="edit"></textarea>
         </div>
         <div class="uk-modal-footer uk-text-right">
-            <button class="uk-button uk-button-default uk-modal-close" type="button" id="noedit">Cancel</button>
+            <button class="uk-button uk-button-default uk-modal-close tryy" type="button" id="noedit">Cancel</button>
             <button class="uk-button uk-button-primary  uk-modal-close" type="button" id="yesedit" >Save</button>
         </div>
     </div>
 </div>
-<div id="remove" uk-modal>
+<div class="try" id="remove" uk-modal>
     <div class="uk-modal-dialog uk-modal-body">
         <p>are you sure that you want delete it.</p>
         <p class="uk-text-right">
-            <button class="uk-button uk-button-default uk-modal-close" type="button" id="nodelet">Cancel</button>
+            <button class="uk-button uk-button-default uk-modal-close try" type="button" id="nodelet">Cancel</button>
             <button class="uk-button uk-button-primary uk-modal-close" id="yesdelet" type="button">Confirm</button>
         </p>
     </div>

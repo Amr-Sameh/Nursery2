@@ -16,7 +16,11 @@ class subject_query
     {
         $this->db = database::get_instrance();
     }
-
+    public function get_subject_class_hw_by_id($subid,$classid)
+    {
+        $query = "SELECT * FROM hw WHERE sub_id ='$subid' AND class_id ='$classid'";
+        return $this->db->excute_query($query)->fetchAll();
+    }
     public function get_subject_hw_by_id($id)
     {
         $query = "SELECT * FROM hw WHERE sub_id ='$id'";

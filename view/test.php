@@ -25,7 +25,14 @@ class Pdf extends FPDF{
   function  footer(){
     $this->Cell(180,10,"--------------------------------------------------------------------------------",0,1,'C');
     $this->Cell(50, 10, "Nursery_Mail:", 0, 0,'L');
-    $this->Cell(50,10,$this->PutLink("MikaelMounir@gmail.com","MikaelMounir@gmail.com") ,0,1,'L');
+    $this->Cell(50,10,$this->PutLink("MikaelMounir@gmail.com","MikaelMounir@gmail.com") ,0,1,'L'); // write the mail
+    $this->Ln(5);
+    $this->Cell(50,10,"Nursery_Phone: ",0,0,'L'); // nursery phone
+    $this->Cell(50,10,"234324234",0,0,'L'); // write the phone
+      $this->Ln(18);
+      $this->SetTextColor(0,0,255);
+    $this->Cell(50,10,"* Please fill your profile information on Site",0,0,'L');
+
 
   }
  public function content($first_name,$mid_name,$last_name,$user_name,$password){

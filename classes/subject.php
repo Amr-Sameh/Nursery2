@@ -13,9 +13,9 @@ class subject
  private $name;
  private $level_id;
  private $sub_id;
- private $db;
+ private $subject_query;
  public  function __construct(){
-    $this->db=new subject_query();
+    $this->subject_query=new subject_query();
  }
  public function get_name(){
      return $this->name;
@@ -27,12 +27,14 @@ class subject
      return $this->sub_id;
  }
     public function get_all_subjects(){
-        return $this->db->get_all_sub();
+        return $this->subject_query->get_all_sub();
     }
-
+    public function get_sub_class_hw($subid,$classid){
+        return $this->subject_query->get_subject_class_hw_by_id($subid,$classid);
+}
 
     public function get_all_subjects_not_in_level($id){
-        return $this->db->get_all_sub_not_in_level($id);
+        return $this->subject_query->get_all_sub_not_in_level($id);
     }
 
 

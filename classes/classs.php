@@ -90,16 +90,16 @@ public function get_class_sub()
         return $this->classquery->report_post($postid);
     }
 
-    public function add_class($student_number,$max_student_num,$level_id){
-        $this->classquery->add_class($student_number,$max_student_num ,$level_id);
+    public function add_class($name,$max_student_num,$level_id){
+        $this->classquery->add_class($name,$max_student_num ,$level_id);
     }
 
     public function delete_class($id){
         $this->classquery->delet_class($id);
     }
 
-    public function update_class($id,$student_number,$max_student_num,$level_id){
-        $this->classquery->update_class($id,$student_number,$max_student_num,$level_id);
+    public function update_class($id,$max_student_num,$name){
+        $this->classquery->update_class($id,$max_student_num,$name);
     }
 
     public function delet_student($student_id){
@@ -142,7 +142,13 @@ public function get_class_sub()
         public function get_all_class(){
           return $this->classquery->get_all_classes();
         }
+    public function get_all_class_for_level($id){
+        return $this->classquery->get_all_class_for_level($id);
+    }
 
+        public function get_all_class_subs($id){
+            return $this->classquery->get_class_subjects_by_id($id);
+        }
     /*public function add_class($name,$level_name,$max_student_number){
         $this->classquery->insert_class($name,$level_name,$max_student_number);
 

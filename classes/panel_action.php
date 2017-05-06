@@ -269,6 +269,7 @@ if ($_POST['action'] == 'all_system_sub_asSelect'){
 
 
 
+        // start class part
 
 
 
@@ -276,11 +277,31 @@ if ($_POST['action'] == 'all_system_sub_asSelect'){
 
 
 
-        if ($_POST['action'] == 'getClasses') {
+
+        if ($_POST['action'] == 'getClassesforlevel') {
             include_once 'classs.php';
             $class = new classs();
-            $classList = $class->get_all_class();
-            $classAsTable = '';
+            $classList = $class->get_all_class_for_level($_POST['level_id']);
+            $classAsTable = '
+
+
+            <button class=" btn-lg btn-primary col-xs-offset-2 panel_add_class_btn" id="panel_add_class_btn'.$_POST['level_id'].'"> Add Class <i class="fa fa-plus-circle" aria-hidden="true"></i> </button>
+            <br>
+            <br>
+                
+                
+                <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Class - Name</th>
+                <th>Max - Student</th>
+                <th>Student - Number</th>
+
+
+            </tr>
+            </thead>
+            <tbody  >';
             $i = 1;
             foreach ($classList as $singleClass) {
                 $classAsTable .= '<tr>';
@@ -288,16 +309,203 @@ if ($_POST['action'] == 'all_system_sub_asSelect'){
                 $classAsTable .= ' <td>' . $singleClass['class_name'] . '</td>';
                 $classAsTable .= ' <td>' . $singleClass['students_num'] . '</td>';
                 $classAsTable .= ' <td>' . $singleClass['max_student_num'] . '</td>';
-                $classAsTable .= ' <td>' . $singleClass['level_id'] . '</td>';
-                $classAsTable .= '<td><button class="btn-lg btn-success panel_edit_class" id="edit_class' . $singleClass['class_id'] . '">Edit</button></td>';
-                $classAsTable .= '<td><button class="btn-lg btn-danger panel_delete_class" id="delete_class' . $singleClass['class_id'] . '">Delete</button></td>';
-                $classAsTable .= '<td><button class="btn-lg btn-primary panel_view_class" id="View_class' . $singleClass['class_id'] . '">View <i class="fa fa-eye" aria-hidden="true"></i></button></td>';
+                $classAsTable .= '<td><button class="btn-lg btn-success panel_edit_class" id="edit_class'.$singleClass['class_id'].'$'.$singleClass['level_id'].'" data-toggle="modal" data-target="#class_edit_model">Edit</button></td>';
+                $classAsTable .= '<td><button class="btn-lg btn-danger panel_delete_class " id="delete_class'.$singleClass['class_id'].'$'.$singleClass['level_id'].'">Delete</button></td>';
                 $classAsTable .= '</tr>';
                 $i++;
             }
+            $classAsTable.='
+            </tbody>
+            </table>';
             echo $classAsTable;
             exit();
         }
+
+
+
+
+
+
+
+
+
+
+
+        if ($_POST['action'] == 'getClasses_level_tabs') {
+
+            include_once 'level_class.php';
+            $level = new level_class();
+            $levelList = $level->get_all_levels();
+            $levelAsTabs = ' <ul class="nav nav-tabs" role="tablist" >';
+
+            foreach ($levelList as $singleLevel){
+                $levelAsTabs.=' <li class="nav-item">
+                    <a class="nav-link panel_class_level_link_tab" data-toggle="tab" href="#l" role="tab" id="'.$singleLevel['id'].'">'.$singleLevel['name'].'</a>
+                </li>';
+            }
+            $levelAsTabs.='</ul> <div class="tab-content">';
+           // foreach ($levelList as $singleLevel) {
+                $levelAsTabs .= '<div class="tab-pane " id="l" role="tabpanel"></div>';
+           // }
+            $levelAsTabs.='</div>';
+            echo $levelAsTabs;
+            exit();
+        }
+
+
+
+        if ($_POST['action'] == 'add_class_to_level') {
+            include_once '../classes/classs.php';
+            $class=new classs();
+            $level_id=$_POST['level_id'];
+
+            $class->add_class($_POST['name'],$_POST['max'],$level_id);
+                echo 'true';
+            exit();
+
+
+        }
+
+
+        if ($_POST['action'] == 'delete_class') {
+            include_once '../classes/classs.php';
+            $class=new classs();
+            $class_id=$_POST['class_id'];
+            $class->delete_class($class_id);
+            echo 'true';
+            exit();
+
+
+        }
+
+        if ($_POST['action'] == 'update_class') {
+            include_once '../classes/classs.php';
+            $class=new classs();
+            $class->update_class($_POST['class_id'],$_POST['max'],$_POST['name']);
+            echo 'true';
+            exit();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //event part
+
+
+
+        if ($_POST['action'] == 'getEvents') {
+    include_once '../classes/event_class.php';
+            $event = new event_class();
+            $eventList = $event->get_all_events();
+            $eventAsTable = '';
+            $i = 1;
+            foreach ($eventList as $events) {
+                $eventAsTable .= '<tr>';
+                $eventAsTable .= '<th scope="row">' . $i . '</th>';
+                $eventAsTable .= '<td>' . $events['title'] . '</td>';
+                $eventAsTable .= '<td><button class="btn-lg btn-success panel_edit_event" id="edit_event'.$events['event_id'] . '"  data-toggle="modal" data-target="#event_edit_model" >Edit</button></td>';
+                $eventAsTable .= '<td><button class="btn-lg btn-danger panel_delete_event" id="delete_event'.$events['event_id'] . '">Delete</button></td>';
+                $eventAsTable .= '<td><button class="btn-lg btn-primary panel_view_event" id="View_event'.$events['event_id'] . '">View <i class="fa fa-eye" aria-hidden="true"></i></button></td>';
+                $eventAsTable .= '</tr>';
+                $i++;
+            }
+            echo $eventAsTable;
+            exit();
+        }
+
+
+        if($_POST['action']=='getEventInfo'){
+            include_once '../classes/event_class.php';
+            $event=new event_class();
+            $event_info = $event->get_event_Info($_POST['id']);
+            $eventInfo = '   <h1 class="text-center text-primary" id="level_info_name">' . $event_info['title'] . '</h1>';
+            $eventInfo ='
+            <table class="table">
+            <thead>
+                <tr>
+                    <th>Event img</th>
+                    <th>Event Title</th>      
+                </tr>
+            </thead>
+            <tbody id="Event_info_table">
+            ';
+
+            $i=1 ;
+            foreach ($eventList as $singleevent){
+                $eventInfo.= '<tr>';
+                $eventInfo.= '<th scope="row"> '. $i .'</th>';
+                $eventInfo.= '<td>'.$singleevent['title'].'</td>';
+                $eventInfo.= '</tr>';
+                $i++ ;
+            }
+            $eventInfo.='</tbody>
+                         </table>
+                         <button class="btn-danger btn-lg col-xs-4 col-xs-offset-4" id="level_info_Table_close">Close</button>';
+            echo $eventInfo;
+            exit();
+        }
+
+
+        if($_POST['action']=='addEvent'){
+            include_once '../classes/event_class.php';
+            $event = new event_class();
+            $event->add_event($_POST['content'],$_POST['title'],$_POST['date'],$_POST['place'],$_POST['image']);
+
+        exit();
+        }
+
+
+        if($_POST['action']=='deleteEvent'){
+            include_once '../classes/event_class.php';
+            $event=new event_class();
+            $event->delet_event($_POST['id']);
+
+            echo 'true' ;
+            exit ();
+        }
+
+
+        if($_POST['action']=='update_event'){
+            include_once '../classes/event_class.php';
+            $event=new event_class();
+            $event->update_event($_POST['title'],$_POST['content'],$_POST['place'],$_POST['date'],$_POST['image'],$_POST['id']);
+                echo 'true';
+            exit();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
