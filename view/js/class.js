@@ -1,5 +1,26 @@
 
 $(document).ready(function () {
+    var userid = $('.note').attr('id');
+    alert(userid);
+    setInterval((function () {
+        $.ajax({
+            url:"note.php",
+            method:"POST",
+            data:{action: userid},
+            success:function (data) {
+                if (data=='' || data==null || !data.trim()){
+
+                }else{
+                    UIkit.notification({
+                        message: data,
+                        status: 'primary',
+                        pos: 'bottom-right',
+                        timeout: 20000
+                    });
+            }}
+        });
+    }),500);
+
     $(".huhu").click(function (e) {
             var id=this.id.substring(1);
             var commenttext=$('#c'.concat(id)).val();
@@ -37,17 +58,20 @@ $(document).ready(function () {
         var id=this.id.substring(1);
         var oldpost=$('#h'.concat(id)).html();
         $('#edit').val(oldpost);
-        $('#noedit').click(function (e) {
-            $('#yesedit').unbind();
+        $('#modal-sections').on({
+            'hide.uk.modal': function(){
+                $('#yesedit').unbind();
+            }
         });
         $('#yesedit').click(function (e) {
+            $('#yesedit').unbind();
             var newpost=$('#edit').val();
             if (newpost=='' || newpost==null || !newpost.trim()){
                 e.preventDefault();
                 $(this).blur();
                 UIkit.modal.dialog("<p class='uk-modal-body'>This comment is empty you can't</p>");
             }else if(oldpost==newpost){
-
+                      alert("lllll");
             }else{
                 $.ajax({
                     url:"class.php",
@@ -60,9 +84,13 @@ $(document).ready(function () {
         });
     });
 
-
     $('.removepost').click(function (e) {
         var id=this.id.substring(1);
+        $('#remove').on({
+            'hide.uk.modal': function(){
+                $('#yesdelet').unbind();
+            }
+        });
           $('#yesdelet').click(function () {
             $.ajax({
                 url:"class.php",
@@ -77,8 +105,10 @@ $(document).ready(function () {
 
     $(document).on('click', '.removecomment',function (e) {
         var id=this.id.substring(1);
-        $('#nodelet').click(function () {
-            $('#yesdelet').unbind();
+        $('#remove').on({
+            'hide.uk.modal': function(){
+                $('#yesdelet').unbind();
+            }
         });
         $('#yesdelet').click(function () {
             $.ajax({
@@ -105,6 +135,11 @@ $(document).ready(function () {
         var id=this.id.substring(1);
         var oldpost=$('#b'.concat(id)).html();
         $('#edit').val(oldpost);
+        $('#modal-sections').on({
+            'hide.uk.modal': function(){
+                $('#yesedit').unbind();
+            }
+        });
         $('#yesedit').click(function (e) {
             var newpost=$('#edit').val();
             if (newpost=='' || newpost==null || !newpost.trim()){
@@ -140,7 +175,8 @@ $(document).ready(function () {
                 url:"class.php",
                 method:"POST",
                 data:{posttext:posttext},
-                success:function () {
+                success:function (data) {
+                    alert(data);
                     location.reload();
                     $('#klpa').val("");
                 }

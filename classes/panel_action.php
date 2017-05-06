@@ -195,17 +195,45 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 
 
 
-
         if ($_POST['action'] == 'addStudent') {
-            include_once '../classes/user.php';
             include_once '../classes/student.php';
             $user = new user();
             $user_id = $user->insert_user($_POST['first_name'], $_POST['mid_name'], $_POST['last_name'], $_POST['gender'], 2);
-            $stu = new student();
+            $stu=new student();
             $stu->insert_student($user_id, $_POST['level_id'], $_POST['class_id']);
             echo "Operation Success";
             exit();
         }
+
+        if($_POST['action']=='all_level_add_stud'){
+            include_once 'level_class.php';
+            $level = new level_class();
+            $levelList = $level->get_all_levels();
+            $level_option='';
+            $level_option.='<option value="' . -2 . '">' ."---" . '</option>';
+            foreach ($levelList as $level){
+              $level_option.='<option value="' . $level['id'] . '">' . $level['name'] . '</option>';
+            }
+            echo $level_option;
+            exit();
+
+        }
+        if($_POST['action']=='get_classes_add_stud'){
+            include_once '../classes/level_class.php';
+            $level_id=$_POST['id'];
+            $classe=new level_class();
+            $classlist=$classe->get_level_classes_by_level_id($level_id);
+            $class_option='';
+            foreach ($classlist as $class){
+                 $class_option.='<option value="' . $class['class_id'] . '">' . $class['class_name'] . '</option>';
+            }
+
+            echo  $class_option;
+            exit();
+        }
+
+
+
 
 
         if ($_POST['action'] == 'addTeacher') {
@@ -251,6 +279,7 @@ if ($_POST['action'] == 'all_system_sub_asSelect'){
 
 
         if ($_POST['action'] == 'getClassesforlevel') {
+
             include_once 'classs.php';
             $class = new classs();
             $classList = $class->get_all_class_for_level($_POST['level_id']);

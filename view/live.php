@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['userid']=2;
+$_SESSION['userid']=1;
 if($_SERVER['REQUEST_METHOD']=='POST') {
 
 

@@ -146,6 +146,9 @@ public function get_class_sub()
         return $this->classquery->get_all_class_for_level($id);
     }
 
+        public function get_all_class_subs($id){
+            return $this->classquery->get_class_subjects_by_id($id);
+        }
     /*public function add_class($name,$level_name,$max_student_number){
         $this->classquery->insert_class($name,$level_name,$max_student_number);
 

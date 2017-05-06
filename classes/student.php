@@ -6,6 +6,7 @@
  * Date: 26/04/17
  * Time: 10:15 ص
  */
+include_once 'user.php';
 include "../database/student_query.php";
 
 class student extends user 
