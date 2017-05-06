@@ -92,29 +92,59 @@ $(document).ready(function () {
             method: "POST",
             data: add_stud.serialize() + "&action=addStudent",
             success: function (data) {
-
                 if (data == "Operation Success") {
                     alert(data);
+                }else{
+                    alert(data);
                 }
+                add_stud[0].reset();
             }
         });
     });
+
+    if($("#all_level_add_stud").length!=0){
+        all_level_add_stud();
+    }
+    $('#all_level_add_stud').change(function () {
+       $.ajax({
+         url:"../classes/panel_action.php",
+         method:"POST",
+         data:{action: 'get_classes_add_stud',id: $('#all_level_add_stud option:selected').val()},
+         success:function (data) {
+             $('#all_class_for_level').html(data);
+         }
+
+
+       });
+
+    });
+
+
+
+
+
+
+
     /*
      *  add tech
      * */
 
-    var add_stud = $('#panel_add_tech');
-    add_stud.submit(function (event) {
+    var add_tech = $('#panel_add_tech');
+    add_tech.submit(function (event) {
         event.preventDefault();
         $.ajax({
             url: "../classes/panel_action.php",
             method: "POST",
-            data: add_stud.serialize() + "&action=addTeacher",
+            data: add_tech.serialize() + "&action=addTeacher",
             success: function (data) {
 
                 if (data == "Operation Success") {
                     alert(data);
+                }else{
+                    alert("Some Error happen");
+
                 }
+                add_tech[0].reset();
             }
         });
     });
@@ -220,6 +250,18 @@ $(document).ready(function () {
             }
         });
     }
+
+   function all_level_add_stud() {
+       $.ajax({
+           url:"../classes/panel_action.php",
+           method:"POST",
+           data:{action:'all_level_add_stud'},
+           success:function (data) {
+               $('#all_level_add_stud').html(data);
+           }
+
+       });
+   }
 
 
 
