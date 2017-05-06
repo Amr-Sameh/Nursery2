@@ -93,11 +93,11 @@ class class_query
 
 
 
-    public function add_class($student_number,$max_student_num,$level_id) {
-        $query="INSERT INTO class (student_num,max_student_num,level_id) VALUES ($student_number,$max_student_num,$level_id)" ;
+    public function add_class($name,$max_student_num,$level_id) {
+        $query="INSERT INTO class (class_name,max_student_num,level_id) VALUES ('$name',$max_student_num,$level_id)" ;
 
         //TODO CALL FAUNCTION EXCUTE
-        $this ->db ->excute_query($query);
+        $this->db->excute_query($query);
     }
 
     public function delet_class($id){
@@ -159,6 +159,9 @@ public function get_all_classes(){
     $query="SELECT * FROM class";
    return $this->db->excute_query($query)->fetchAll();
 }
-
+public function get_all_class_for_level($level_id){
+    $query="SELECT * FROM class WHERE level_id=$level_id";
+    return $this->db->excute_query($query)->fetchAll();
+}
 
 }

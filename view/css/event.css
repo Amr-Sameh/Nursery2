@@ -1,7 +1,141 @@
+body {
+    background:url(../images/.jpg) center center no-repeat fixed;
+    background-size: cover;}
 
 
-.eventslider > .item > img, .carousel-inner > .item > a > img{
+/*carousel start */
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img{
     min-width: 100%;
-    max-height: 600px;
+    max-height: 550px;
+    padding: 50px;
+}
+
+
+
+.carousel-caption h1 {
+    font-size: 36px;
+    padding-bottom: 100px;
+    color: #6B0000;
+}
+.carousel-indicators
+{
+    padding-bottom: 34px;
+}
+.carousel-indicators li {
+    border: 1px solid #8B7878;
+}
+.carousel-indicators .active
+{
+    background-color: #ee070a;
+}
+
+/*carousel end */
+/*start h1*/
+
+.h1 {
+    text-align: center;
+    color: #04005c;
+    margin-bottom: 0px;
+    text-decoration: underline overline;
+}
+.h1 span{
+    color: #a40010;
+}
+
+/*end h1*/
+/* start event*/
+
+.event {
+    padding: 20px;
+    background-color: rgba(178, 8, 8, 0.15);
+    border-radius: 69px;
+    overflow: hidden;
+    margin-top: 50px;
+}
+.event img{
+    max-width:100%;
+    border-radius:20% ;
+    z-index: 1;
+    transition: a11 .5s ease-in-out ;
+    -webkit-transition: all .5s ease-in-out
+}
+
+.event img:hover{
+    border:7px solid #77005B;
+    transform:scale(0.8,.9);
+}
+
+.events h1 ,
+.event .title a{
+    font-size: 42px;
+    text-decoration: none;
+    margin-top: 20px;
+    cursor: pointer;
+    color: #EA1216;
 
 }
+
+.event .img:hover .title a{
+    display: block
+}
+
+.event h2{
+    margin: 0px;
+}
+
+
+.event .content{
+    font-size: 12px;
+    position: relative;
+}
+.event button {
+    width: 80px;
+    color: #170202;
+    background-color: #F7B7BC;
+    border-color: #BE6262;
+    border-radius: 30px;
+    transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+}
+.event button:hover {
+    color: #fff;
+    background-color: #f7132e;
+    border-color: #fff;
+}
+/* END event*/
+
+/*start event page */
+.events{
+    height:600px ;
+    padding: 30px;
+    padding-top: 70px;
+
+}
+.events .date{
+    font-size: 30px ;
+    color: #0800ac;
+}
+.events p{
+    font-size: 22px;
+}
+
+.info
+{
+    width: 50%;
+    height:200px;
+
+}
+
+.more{
+    border: 2cm solid #2b542c;
+}
+
+
+
+
+
+/*start event page */
