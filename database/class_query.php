@@ -126,7 +126,7 @@ class class_query
 
     public function stu_num ($class_id){
         $query="SELECT students_num FROM class WHERE class_id=$class_id" ;
-       return $this->db->excute_query($query)->fetch()['students_num'];
+        return $this->db->excute_query($query)->fetch()['students_num'];
 
     }
 
@@ -143,25 +143,25 @@ class class_query
 
     public function get_class_students($class_id){
         $query="SELECT * FROM `student`,`general_user` WHERE student.user_id=general_user.id  AND class_id='$class_id'";
-       return $this->db->excute_query($query)->fetchAll();
+        return $this->db->excute_query($query)->fetchAll();
     }
     public function get_class_subjects_by_id($id){
-    $query="SELECT * FROM `class`,`subject`,`level_to_sub` WHERE `class_id`='$id' AND level_to_sub.level_id = class.level_id AND id = level_to_sub.sub_id ";
-    return $this->db->excute_query($query)->fetchAll();
-}
-   public function class_by_id($id){
-    $query="SELECT * FROM `class` WHERE `class_id`='$id'";
-    return $this->db->excute_query($query)->fetch();
+        $query="SELECT * FROM `class`,`subject`,`level_to_sub` WHERE `class_id`='$id' AND level_to_sub.level_id = class.level_id AND id = level_to_sub.sub_id ";
+        return $this->db->excute_query($query)->fetchAll();
+    }
+    public function class_by_id($id){
+        $query="SELECT * FROM `class` WHERE `class_id`='$id'";
+        return $this->db->excute_query($query)->fetch();
 
-}
+    }
 
-public function get_all_classes(){
-    $query="SELECT * FROM class";
-   return $this->db->excute_query($query)->fetchAll();
-}
-public function get_all_class_for_level($level_id){
-    $query="SELECT * FROM class WHERE level_id=$level_id";
-    return $this->db->excute_query($query)->fetchAll();
-}
+    public function get_all_classes(){
+        $query="SELECT * FROM class";
+        return $this->db->excute_query($query)->fetchAll();
+    }
+    public function get_all_class_for_level($level_id){
+        $query="SELECT * FROM class WHERE level_id=$level_id";
+        return $this->db->excute_query($query)->fetchAll();
+    }
 
 }
