@@ -98,8 +98,8 @@ public function get_class_sub()
         $this->classquery->delet_class($id);
     }
 
-    public function update_class($id,$max_student_num,$level_id){
-        $this->classquery->update_class($id,$max_student_num,$level_id);
+    public function update_class($id,$max_student_num,$name){
+        $this->classquery->update_class($id,$max_student_num,$name);
     }
 
     public function delet_student($student_id){

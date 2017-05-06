@@ -279,7 +279,6 @@ if ($_POST['action'] == 'all_system_sub_asSelect'){
 
 
         if ($_POST['action'] == 'getClassesforlevel') {
-
             include_once 'classs.php';
             $class = new classs();
             $classList = $class->get_all_class_for_level($_POST['level_id']);
@@ -310,7 +309,7 @@ if ($_POST['action'] == 'all_system_sub_asSelect'){
                 $classAsTable .= ' <td>' . $singleClass['class_name'] . '</td>';
                 $classAsTable .= ' <td>' . $singleClass['students_num'] . '</td>';
                 $classAsTable .= ' <td>' . $singleClass['max_student_num'] . '</td>';
-                $classAsTable .= '<td><button class="btn-lg btn-success panel_edit_class" id="edit_class'.$singleClass['class_id'].'" data-toggle="modal" data-target="#class_edit_model">Edit</button></td>';
+                $classAsTable .= '<td><button class="btn-lg btn-success panel_edit_class" id="edit_class'.$singleClass['class_id'].'$'.$singleClass['level_id'].'" data-toggle="modal" data-target="#class_edit_model">Edit</button></td>';
                 $classAsTable .= '<td><button class="btn-lg btn-danger panel_delete_class " id="delete_class'.$singleClass['class_id'].'$'.$singleClass['level_id'].'">Delete</button></td>';
                 $classAsTable .= '</tr>';
                 $i++;
@@ -382,6 +381,9 @@ if ($_POST['action'] == 'all_system_sub_asSelect'){
         if ($_POST['action'] == 'update_class') {
             include_once '../classes/classs.php';
             $class=new classs();
+            $class->update_class($_POST['class_id'],$_POST['max'],$_POST['name']);
+            echo 'true';
+            exit();
         }
 
 

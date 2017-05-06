@@ -265,14 +265,15 @@ delete_class(class_and_level_id[0],class_and_level_id[1]);
     $(document).on('click','.submit_class_edit',function () {
 var class_id=this.name;
 var level_id=this.id;
+var class_name=$('#class_name_update').val();
+var max_stu = $('#class_max_update').val();
 
         $.ajax({
             url:"../classes/panel_action.php",
             method:"POST",
-            data:{action:'update_class',class_id:class_id},
+            data:{action:'update_class',class_id:class_id,name:class_name,max:max_stu},
             success: function (data) {
-
-
+                get_level_classes(level_id);
             }
         });
 

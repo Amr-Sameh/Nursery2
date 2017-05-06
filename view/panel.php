@@ -468,11 +468,11 @@ else if ($_GET['action']=='add_tech') {
                             <h4 class="modal-title" id="myModalLabel">Edit Class</h4>
                         </div>
                         <div class="modal-body">
-                                <input type="text " class="input-lg col-xs-12" placeholder="Class - Name ">
+                                <input type="text " class="input-lg col-xs-12" placeholder="Class - Name " id="class_name_update">
                             <br>
                             <br>
                             <br>
-                            <input type="text " class="input-lg col-xs-12" placeholder="Max - Number">
+                            <input type="text " class="input-lg col-xs-12" placeholder="Max - Number" id="class_max_update">
                             <br>
                             <br>
                             <br>

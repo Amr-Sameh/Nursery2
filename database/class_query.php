@@ -107,8 +107,8 @@ class class_query
         $this->db->excute_query($query);
     }
 
-    public function update_class($class_id,$student_number,$max_student_num,$level_id){
-        $query="UPDATE class SET student_number=$student_number , max_student_num=$max_student_num, level_id=$level_id WHERE id=$class_id";
+    public function update_class($class_id,$max_student_num , $class_name){
+        $query="UPDATE class SET  max_student_num=$max_student_num , class_name='$class_name' WHERE class_id=$class_id";
 
         //TODO CALL FAUNCTION EXCUTE
         $this->db->excute_query($query);
