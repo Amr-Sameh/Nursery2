@@ -1,12 +1,25 @@
 
 $(document).ready(function () {
-        UIkit.notification({
-            message: '',
-            status: 'primary',
-            pos: 'bottom-right',
-            timeout: 5000
-        });
+    var userid = $('.note').attr('id');
+    setInterval((function () {
+        $.ajax({
+            url:"note.php",
+            method:"POST",
+            data:{action: userid},
+            success:function (data) {
+                alert(data);
+                if (data=='' || data==null || !data.trim()){
 
+                }else{
+                    UIkit.notification({
+                        message: data,
+                        status: 'primary',
+                        pos: 'bottom-right',
+                        timeout: 20000
+                    });
+            }}
+        });
+    }),500);
 
     $(".huhu").click(function (e) {
             var id=this.id.substring(1);
