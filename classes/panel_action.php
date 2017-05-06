@@ -198,7 +198,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
         if ($_POST['action'] == 'addStudent') {
             include_once '../classes/student.php';
             $user = new user();
-            $user_id = $user->insert_user($_POST['first_name'], $_POST['mid_name'], $_POST['last_name'], $_POST['gender'], 2);
+            $user_id = $user->insert_user($_POST['first_name'], $_POST['mid_name'], $_POST['last_name'], $_POST['gender'], 3);
             $stu=new student();
             $stu->insert_student($user_id, $_POST['level_id'], $_POST['class_id']);
             echo "Operation Success";

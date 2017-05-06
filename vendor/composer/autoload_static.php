@@ -99,6 +99,7 @@ class ComposerStaticInita0e152cc800bb6371f3f7fc549ae2e86
     );
 
     public static $classMap = array (
+        'FPDF' => __DIR__ . '/..' . '/setasign/fpdf/fpdf.php',
         'Google\\Auth\\ApplicationDefaultCredentials' => __DIR__ . '/..' . '/google/auth/src/ApplicationDefaultCredentials.php',
         'Google\\Auth\\CacheTrait' => __DIR__ . '/..' . '/google/auth/src/CacheTrait.php',
         'Google\\Auth\\CredentialsLoader' => __DIR__ . '/..' . '/google/auth/src/CredentialsLoader.php',
