@@ -1,13 +1,13 @@
 
 $(document).ready(function () {
     var userid = $('.note').attr('id');
+    alert(userid);
     setInterval((function () {
         $.ajax({
             url:"note.php",
             method:"POST",
             data:{action: userid},
             success:function (data) {
-                alert(data);
                 if (data=='' || data==null || !data.trim()){
 
                 }else{

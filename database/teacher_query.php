@@ -34,5 +34,9 @@ public function add_new_Teacher($user_id,$sub_id){
         $query="SELECT * FROM `teacher`,`general_user` WHERE teacher.user_id=general_user.id";
         return $this->db->excute_query($query)->fetchAll();
     }
+    public function get_teacher_sub($tech_id){
+        $query="SElECT sub_id from teacher where teacher_id ='$tech_id'";
+        return $this->db->excute_query($query)->fetchAll();
+    }
 
 }

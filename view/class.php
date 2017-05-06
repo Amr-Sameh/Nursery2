@@ -4,7 +4,7 @@
 //and gropid in $gropid
 $classid=2;
     $userid=1;
-        $gropid=1;
+        $gropid=2;
 session_start();
 
 include_once "../classes/classs.php";
@@ -31,6 +31,8 @@ if(isset($_POST["newcomment"])){
 if(isset($_POST["reportpostid"])){
     $class->reportpost($_POST['reportpostid']);
 }
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -155,13 +157,14 @@ if(isset($_POST["reportpostid"])){
         <div class="uk-container-expand  subject">
             <div class="container">
                 <?php
-                if($userid==3){
+                if($gropid!=2){
                     ?>
                     <li>
                         <ul id="subjects" class="uk-switcher">
                             <?php
-                            $listofsub=$class->
-                            foreach ($listofsub as $value){
+                            $listofsub=$class->get_all_class_subs($classid);
+                            foreach ($listofsub as $sub){
+
                                 ?>
                                 <li>
                                     <div class="uk-width-2-3@m" style="margin: auto;background-color: rgba(255,255,255,0.9)">
@@ -177,13 +180,13 @@ if(isset($_POST["reportpostid"])){
                                             </thead>
                                             <tbody>
                                             <?php
-                                            include "../classes/hw_class.php";
-                                            $hw=new hw_class();
-                                            $listofHw=0;
-                                            foreach ($listofhw as $value){
+                                            include_once "../classes/subject.php";
+                                            $sube = new subject();
+                                            $listofHw=$sube->get_sub_class_hw($sub['id'],$classid);
+                                            foreach ($listofHw as $val){
                                                 ?>
                                                 <tr>
-                                                    <td><?php echo"HW".$k;?></td>
+                                                    <td><?php echo"HW ".$val['hw_id'];?></td>
                                                     <td >
                                                         <span uk-icon="icon: cloud-download; ratio: 2"></span>
                                                     </td>
@@ -204,13 +207,19 @@ if(isset($_POST["reportpostid"])){
                             <?php } ?>
                         </ul>
                     </li>
-                <?php }else if($userid==0){
+                <?php }else if($gropid==2){
                     ?>
                     <li>
                         <ul id="subjects" class="uk-switcher">
                             <?php
-                            $listofHw = array("HW1","HW2","HW3","HW4","HW5","HW6");
+                            include "../classes/teacher.php";
+                            $teacher = new teacher();
+                            include_once "../classes/subject.php";
+                            $sube = new subject();
+
+                            $listofHw=$sube->get_sub_class_hw($teacher->get_teacher_sub($userid)[0]['sub_id'],$classid);
                             foreach ($listofHw as $value){
+
                                 ?>
                                 <li>
                                     <div class="uk-width-2-3@m" style="margin: auto;background-color: rgba(255,255,255,0.9)">
@@ -222,20 +231,24 @@ if(isset($_POST["reportpostid"])){
                                                 <th >Answer</th>
                                                 <th >Grade</th>
                                                 <th >Comment</th>
+                                                <th >submit</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <?php
-                                                for($k=0;$k<15;$k++){
+                                                $classstudent=$class->get_class_students($classid);
+                                                foreach ($classstudent as $student){
                                                 ?>
                                                 <tr>
-                                                    <td><p>mostafa saleh sopih</p></td>
-                                                    <td><p>20150533</p></td>
+
+                                                    <td><p><?php echo $student['first_name']." ".$student['mid_name']." ".$student['last_name'];?></p></td>
+                                                    <td><p><?php echo $student['username']?></p></td>
                                                     <td >
                                                         <span uk-icon="icon: cloud-download; ratio: 2"></span>
                                                     </td>
                                                     <td class="uk-text-primary"><input type="text" placeholder="Grade"></td>
                                                     <td class="uk-text-primary"><input type="text" placeholder="Comment"></td>
+                                                    <td class="uk-text-primary"><button class="uk-button-primary">submit</button></td>
                                                 </tr>
                                             <?php } ?>
                                             </tbody>
@@ -262,16 +275,17 @@ if(isset($_POST["reportpostid"])){
                             </thead>
                             <tbody>
                             <?php
-                            for($k=0;$k<15;$k++){
+                            $classstudent=$class->get_class_students($classid);
+                            foreach ($classstudent as $student){
                                 ?>
                                 <tr>
                                     <td><div class=" uk-border-circle" style="width: 50px;height: 50px;overflow: hidden;padding: 0; ">
-                                            <img class="" width="100%" height="100%" src="images/child-only.png">
+                                            <img class="" width="100%" height="1002%" src="images/child-only.png">
                                         </div></td>
                                     <td >
-                                        <a class="uk-link-reset"  >Mostafa saleh sopih mohamed</a>
+                                        <a class="uk-link-reset"  ><?php echo $student['first_name']." ".$student['mid_name']." ".$student['last_name'];?></a>
                                     </td>
-                                    <td>235664</td>
+                                    <td><?php echo $student['username']?></td>
                                 </tr>
                             <?php } ?>
                             </tbody>
@@ -359,24 +373,25 @@ if(isset($_POST["reportpostid"])){
                     <li class="uk-parent">
 
                         <?php
-                        if($userid==1) {
+                        if($gropid!=2) {
                             ?>
                             <a href="#">Subjects</a>
                             <ul class="uk-nav-sub" uk-switcher="connect: #subjects; animation: uk-animation-fade; toggle: > :not(.uk-nav-header)">
                                 <?php
-                                foreach ($listofsub as $value) {
-                                    echo "<li><a href='#'>" . $value . "</a></li>";
+                                $listofsub=$class->get_all_class_subs($classid);
+                                foreach ($listofsub as $sube){
+                                    echo "<li><a href='#'>".$sube['name']."</a></li>";
                                 }
                                     ?>
                                     </ul>
                                     <?php
-                                    }else if($userid==0){
+                                    }else if($gropid==2){
                                     ?>
                                     <a  href="#">HomeWork</a>
                                     <ul class="uk-nav-sub" uk-switcher="connect: #subjects; animation: uk-animation-fade; toggle: > :not(.uk-nav-header)">
                                     <?php
-                                    foreach ($listofHw as $value) {
-                                        echo "<li><a href='#'>" . $value . "</a></li>";
+                                    foreach ($listofHw as $hw) {
+                                        echo "<li><a href='#'> HW " . $hw['hw_id'] . "</a></li>";
                                     }
                                 ?>
                             </ul>
