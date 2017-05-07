@@ -187,6 +187,7 @@ include_once 'navbar.php';
                                                     <th >Name</th>
                                                     <th >ID</th>
                                                     <th >Edit</th>
+                                                    <th >Edit</th>
                                                     <th >Delet</th>
                                                 </tr>
                                                 </thead>

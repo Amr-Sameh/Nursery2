@@ -1,7 +1,6 @@
 
 $(document).ready(function () {
     var userid = $('.note').attr('id');
-    alert(userid);
     setInterval((function () {
         $.ajax({
             url:"note.php",
@@ -19,7 +18,7 @@ $(document).ready(function () {
                     });
             }}
         });
-    }),500);
+    }),1500);
 
     $(".huhu").click(function (e) {
             var id=this.id.substring(1);
@@ -176,7 +175,6 @@ $(document).ready(function () {
                 method:"POST",
                 data:{posttext:posttext},
                 success:function (data) {
-                    alert(data);
                     location.reload();
                     $('#klpa').val("");
                 }
