@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
     var userid = $('.note').attr('id');
-    alert(userid);
+
     setInterval((function () {
         $.ajax({
             url:"note.php",
@@ -176,11 +176,54 @@ $(document).ready(function () {
                 method:"POST",
                 data:{posttext:posttext},
                 success:function (data) {
-                    alert(data);
                     location.reload();
                     $('#klpa').val("");
                 }
             });
         }
     });
+
+    document.getElementsByClassName('ubloadanswer').addEventListener("change", handleFilesans, false);
+    function handleFilesans() {
+        var form = new FormData(document.getElementById(this.attr('id')));
+        form.append("stu_id",$('.hw_upload_btn').attr('name'));
+        form.append("te_id",$('.hw_upload_btn').attr('id'));
+
+        $.ajax({
+            url: "../classes/amr_test.php",
+            method:"POST",
+            data :form,
+            contentType: false,
+            cache: false,
+            processData:false,
+            success:function (data) {
+
+            }
+        });
+    }
+
+
+    document.getElementById('hw_upload').addEventListener("change", handleFiles, false);
+    function handleFiles() {
+        var fileList = document.getElementById('hw_upload'); /* now you can work with the file list */
+        var form = new FormData(document.getElementById('quta'));
+        form.append("class_id",$('.hw_upload_btn').attr('name'));
+        form.append("sub_id",$('.hw_upload_btn').attr('id'));
+
+        $.ajax({
+           url: "../classes/amr_test.php",
+            method:"POST",
+            data :form,
+            contentType: false,
+            cache: false,
+            processData:false,
+            success:function (data) {
+
+            }
+        });
+    }
+
+
 });
+
+

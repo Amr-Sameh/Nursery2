@@ -373,7 +373,6 @@ var max_stu = $('#class_max_update').val();
             method: "POST",
             data: {action: 'update_event', content:content ,title:title,date:date ,place:place,image:image,id:event_id},
             success: function (data) {
-            alert(data);
                getEvents();
 
             }

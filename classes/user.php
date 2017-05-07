@@ -48,9 +48,10 @@ class user
 
 
 
+
             //TODO decide what's better cockies or sessien
             //TODO Move to app main page
-            return $user_info['group_id'];
+            return '1';
 
         }
 

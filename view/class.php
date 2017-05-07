@@ -2,11 +2,17 @@
 //TODO but class id in $classid
 //and user id in $user id
 //and gropid in $gropid
-$classid=2;
-    $userid=1;
-        $gropid=2;
 session_start();
+if(!isset($_GET['class'])){
+    header('location:homee.php');
+}else {
+    if(!isset($_SESSION['user_type'])&&!isset($_SESSION['user_id']))
+        header('location:homee.php');
 
+    $classid = $_GET['class'];
+    $userid = $_SESSION['user_id'];
+    $gropid = $_SESSION['user_type'];
+}
 include_once "../classes/classs.php";
 $class=new classs();
 $posts=$class->getpostsofclass($classid);
@@ -51,7 +57,7 @@ if(isset($_POST["reportpostid"])){
         <div class="uk-container-expand post ">
             <div class="container">
                 <li class="hlhl" >
-                    <div class="note"  id="<?php echo $userid;?>"></div>
+<!--                    <div class="note"  id="--><?php //echo $userid;?><!--"></div>-->
                     <div class="uk-card uk-carde uk-card-default uk-width-2-3@m uk-visible-toggle" >
                         <div class="uk-card-header" style="background-color:  #f8f8f8">
                             <div class="uk-grid-small uk-flex-middle" uk-grid>
@@ -188,13 +194,23 @@ if(isset($_POST["reportpostid"])){
                                                 <tr>
                                                     <td><?php echo"HW ".$val['hw_id'];?></td>
                                                     <td >
-                                                        <span uk-icon="icon: cloud-download; ratio: 2"></span>
+                                                        <a class="download" href="<?php echo '../classes/amr_test.php?action='.$val['hw_id'];?>" uk-icon="icon: cloud-download; ratio: 2" id="<?php echo $val['hw_id'];?>"></a>
                                                     </td>
                                                     <td>
-                                                        <div uk-form-custom>
-                                                            <input type="file">
-                                                            <span uk-icon="icon:  cloud-upload; ratio: 2"  tabindex="-1"></span>
-                                                        </div>
+
+
+                                                        <form id="quta">
+                                                            <div uk-form-custom>
+                                                                <input class="ubloadanswer" type="file" id="<?php echo $val['hw_id']?>">
+                                                                <span uk-icon="icon:  cloud-upload; ratio: 2"  tabindex="-1" name="<?php echo $classid?>" id="<?php echo $sub_id ?>"></span>
+                                                            </div>
+                                                        </form>
+
+
+
+
+
+
                                                     </td>
                                                     <td class="uk-text-primary">8</td>
                                                     <td class="uk-text-primary">you are good</td>
@@ -216,8 +232,8 @@ if(isset($_POST["reportpostid"])){
                             $teacher = new teacher();
                             include_once "../classes/subject.php";
                             $sube = new subject();
-
-                            $listofHw=$sube->get_sub_class_hw($teacher->get_teacher_sub($userid)[0]['sub_id'],$classid);
+                                $sub_id=$teacher->get_teacher_sub($userid)['sub_id'];
+                            $listofHw=$sube->get_sub_class_hw($sub_id,$classid);
                             foreach ($listofHw as $value){
 
                                 ?>
@@ -394,12 +410,24 @@ if(isset($_POST["reportpostid"])){
                                         echo "<li><a href='#'> HW " . $hw['hw_id'] . "</a></li>";
                                     }
                                 ?>
+
+
                             </ul>
+
                         <?php }?>
                         <p class="uk-heading-divider"></p></li>
                     <li><a href="#">students</a><p class="uk-heading-divider"></p></li>
                     <li><a href="panel.php">Timetable</a><p class="uk-heading-divider"></p></li>
                 </ul>
+<form id="quta">
+                <div class="test-upload" uk-form-custom>
+                    <input type="file" multiple name="hw_upload" id="hw_upload">
+                    <button class="uk-button uk-button-default hw_upload_btn" type="button" tabindex="-1 " name="<?php echo $classid?>" id="<?php echo $sub_id ?>" >Add New HW</button>
+                </div>
+</form>
+
+
+
             </div>
             <!-->
         </div>

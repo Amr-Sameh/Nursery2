@@ -22,4 +22,10 @@ class hw
 
   }
 
+
+  public function add_hw_return_id($class_id,$sub_id){
+      return $this->hw_query->add_hw_return_id($class_id,$sub_id);
+
+  }
+
 }

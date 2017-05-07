@@ -65,7 +65,7 @@ $(document).ready(function () {
             success: function (data) {
 
 
-                if (data == 1) {
+                if (data == '1') {
 
                     location.href="homee.php";
 
