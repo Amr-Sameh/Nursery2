@@ -3,7 +3,7 @@
  */
 $(document).ready(function () {
 
-
+       print();
     $(".getstudentfromlevel").click(function (e) {
         var levelid = this.id.substring(2);
         $(".getstudent").click(function (e) {
@@ -13,8 +13,8 @@ $(document).ready(function () {
                 method: "POST",
                 data: {action: 'GetClassStudents', class_id: id, level_id: levelid},
                 success: function (data) {
+                    alert(data);
                     $('#StudentsList'.concat(id)).html(data);
-
                 }
             });
         });
@@ -33,7 +33,6 @@ $(document).ready(function () {
             data: {action: 'showteacher'},
             success: function (data) {
                 $('#teachers').html(data);
-
             }
         });
     });

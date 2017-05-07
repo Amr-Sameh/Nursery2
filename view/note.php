@@ -10,11 +10,10 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
           include "../classes/note.php";
           $not=new note();
           $r=date('Y-m-d H:i:s');
-          echo $r;
-          $list= $not->getnote($_POST['action'],date('Y-m-d H:i:s'));
-          foreach ($list as $note){
-                  echo $note['not_content'].'<br>';
-                  echo $note['not_date'].'<br>';
+          $list= $not->getnote($_POST['action'],date('Y-m-d H:i:s',strtotime($r)-1));
+          foreach ($list as $not){
+                  echo $not['not_content'].'<br>';
+                  echo $not['not_date'].'<br>';
 
           }
         exit();

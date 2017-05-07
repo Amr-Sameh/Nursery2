@@ -19,7 +19,7 @@ $(document).ready(function () {
                     });
             }}
         });
-    }),500);
+    }),1500);
 
     $(".huhu").click(function (e) {
             var id=this.id.substring(1);
@@ -187,7 +187,7 @@ $(document).ready(function () {
     function handleFilesans() {
         var form = new FormData(document.getElementById(this.attr('id')));
         form.append("stu_id",$('.hw_upload_btn').attr('name'));
-        form.append("te_id",$('.hw_upload_btn').attr('id'));
+        form.append("_id",$('.hw_upload_btn').attr('id'));
 
         $.ajax({
             url: "../classes/amr_test.php",
