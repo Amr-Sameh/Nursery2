@@ -2,6 +2,8 @@
 //TODO but class id in $classid
 //and user id in $user id
 //and gropid in $gropid
+include_once "../classes/hw_answer.php";
+$answer=new hw_answer();
 session_start();
 if(!isset($_GET['class'])){
     header('location:homee.php');
@@ -9,9 +11,12 @@ if(!isset($_GET['class'])){
     if(!isset($_SESSION['user_type'])&&!isset($_SESSION['user_id']))
         header('location:homee.php');
 
+    include_once '../classes/student.php';
+    $stu=new student();
     $classid = $_GET['class'];
     $userid = $_SESSION['user_id'];
     $gropid = $_SESSION['user_type'];
+    $stu_id=$stu->get_stu_id_by_user_id($userid);
 }
 include_once "../classes/classs.php";
 $class=new classs();
@@ -37,7 +42,6 @@ if(isset($_POST["newcomment"])){
 if(isset($_POST["reportpostid"])){
     $class->reportpost($_POST['reportpostid']);
 }
-
 
 ?>
 <!DOCTYPE html>
@@ -199,21 +203,21 @@ if(isset($_POST["reportpostid"])){
                                                     <td>
 
 
-                                                        <form id="quta">
+                                                        <form id="<?php echo "upload_hw_answer".$val['hw_id']?>">
                                                             <div uk-form-custom>
-                                                                <input class="ubloadanswer" type="file" id="<?php echo $val['hw_id']?>">
-                                                                <span uk-icon="icon:  cloud-upload; ratio: 2"  tabindex="-1" name="<?php echo $classid?>" id="<?php echo $sub_id ?>"></span>
+                                                                <input class="ubloadanswer" type="file" id="<?php echo $val['hw_id']?>" name="stu_id_answer">
+                                                                <span uk-icon="icon:  cloud-upload; ratio: 2"  tabindex="-1" class="answer_upload_span"  name="answer_upload_span" id="<?php echo $stu_id; ?>"></span>
                                                             </div>
                                                         </form>
 
 
 
 
-
+                                                        <?php $answerid=$answer->get_answer_id($val['hw_id'],$stu_id)?>
 
                                                     </td>
-                                                    <td class="uk-text-primary">8</td>
-                                                    <td class="uk-text-primary">you are good</td>
+                                                    <td class="uk-text-primary"><?php echo $answerid['grade']?></td>
+                                                    <td class="uk-text-primary"><?php echo $answerid['comment']?></td>
                                                 </tr>
                                             <?php } ?>
                                             </tbody>
@@ -260,11 +264,12 @@ if(isset($_POST["reportpostid"])){
                                                     <td><p><?php echo $student['first_name']." ".$student['mid_name']." ".$student['last_name'];?></p></td>
                                                     <td><p><?php echo $student['username']?></p></td>
                                                     <td >
-                                                        <span uk-icon="icon: cloud-download; ratio: 2"></span>
+                                                        <?php $answerid=$answer->get_answer_id($value['hw_id'],$student['stu_id'])?>
+                                                        <a class="download" href="<?php echo '../classes/amr_test.php?downloadanswer='.$answerid['answer_id'];?>" uk-icon="icon: cloud-download; ratio: 2" id="<?php echo $val['hw_id'];?>"></a>
                                                     </td>
-                                                    <td class="uk-text-primary"><input type="text" placeholder="Grade"></td>
-                                                    <td class="uk-text-primary"><input type="text" placeholder="Comment"></td>
-                                                    <td class="uk-text-primary"><button class="uk-button-primary">submit</button></td>
+                                                    <td class="uk-text-primary"><input type="text" placeholder="Grade" value="<?php echo $answerid['grade']?>" id="grade<?php echo $value['hw_id']."".$student['stu_id']?>"></td>
+                                                    <td class="uk-text-primary"><input type="text" placeholder="Comment" value="<?php echo $answerid['comment']?>" id="comment<?php echo $value['hw_id']."".$student['stu_id']?>"></td>
+                                                    <td class="uk-text-primary"><button class="uk-button-primary submit_grade_comment" id="<?php echo $value['hw_id']."%".$student['stu_id']?>">submit</button></td>
                                                 </tr>
                                             <?php } ?>
                                             </tbody>

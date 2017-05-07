@@ -71,4 +71,26 @@ class user_query
     }
 
 
+
+
+
+
+
+
+    public function get_user_profile($id){
+        $query="SELECT `first_name`, `mid_name` , `last_name` ,`email` ,`city` ,`country` ,`street` FROM `general_user` WHERE id=$id";
+        return $this->db->excute_query($query)->fetch() ;
+
+    }
+
+    public function edit_user_profile($id,$user_name,$password){
+        $query="UPDATE general_user SET username='$user_name' ,password='$password' WHERE id='$id'" ;
+        $this->db->excute_query($query);
+    }
+
+
+
+
+
+
 }

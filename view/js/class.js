@@ -182,13 +182,17 @@ $(document).ready(function () {
             });
         }
     });
+    var classname = document.getElementsByClassName("ubloadanswer");
+    for (var i = 0; i < classname.length; i++) {
+        classname[i].addEventListener('change', function(){
+            clicked_upload_answer(this);
+        }, false);
+    }
+    function clicked_upload_answer(element) {
 
-    document.getElementsByClassName('ubloadanswer').addEventListener("change", handleFilesans, false);
-    function handleFilesans() {
-        var form = new FormData(document.getElementById(this.attr('id')));
-        form.append("stu_id",$('.hw_upload_btn').attr('name'));
-        form.append("_id",$('.hw_upload_btn').attr('id'));
-
+        var form = new FormData(document.getElementById("upload_hw_answer"+element.id));
+        form.append("stu_id",$('.answer_upload_span').attr('id'));
+        form.append("hw_id",element.id);
         $.ajax({
             url: "../classes/amr_test.php",
             method:"POST",
@@ -197,15 +201,43 @@ $(document).ready(function () {
             cache: false,
             processData:false,
             success:function (data) {
-
+alert(data);
             }
         });
+
+
+
+
+
     }
+
+
+
+
+
+    $('.submit_grade_comment').click(function () {
+
+        var hw_id_stu_id=this.id.split("%");
+        var hw_id=hw_id_stu_id[0];
+        var stu_id=hw_id_stu_id[1];
+        var grade= $("#grade"+hw_id+stu_id).val();
+        var comment =$("#comment"+hw_id+stu_id).val();
+        $.ajax({
+            url:"../classes/amr_test.php",
+            method:"POST",
+            data :{action:'grade',hw_id:hw_id,stu_id:stu_id,grade:grade,comment:comment},
+            success:function (data) {
+alert(data);
+            }
+        });
+    });
+
+
+
 
 
     document.getElementById('hw_upload').addEventListener("change", handleFiles, false);
     function handleFiles() {
-        var fileList = document.getElementById('hw_upload'); /* now you can work with the file list */
         var form = new FormData(document.getElementById('quta'));
         form.append("class_id",$('.hw_upload_btn').attr('name'));
         form.append("sub_id",$('.hw_upload_btn').attr('id'));

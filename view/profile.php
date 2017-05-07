@@ -1,52 +1,98 @@
 <?php
-include "static/header.php";
+/**
+ * Created by PhpStorm.
+ * User: fatma
+ * Date: 5/6/2017
+ * Time: 6:53 PM
+ */
+include_once 'static/header.php';
+include_once 'navbar.php';
+include_once '../classes/user.php';
+//$id=$_SESSION['id'];
+$user=new user();
+$id='1';
+$data=$user->get_user_profile($id);
+// check if method post request
+$username='';
+$password='';
+
+if($_SERVER['REQUEST_METHOD']=='POST')
+{
+    $username =$_POST['user'];
+    $password =$_POST['pass'];
+    $complain=$_POST['comp'];
+}
+
+echo $complain ;
+
+$user->edit_user_profile( $id,$username,$password);
+
+
+
+
+
 ?>
-<div class="uk-container-expand post ">
 
-    <div class="container" >
+    <div class="back" >
+        <div class="profile col-xs-offset-2 col-xs-8">
+            <div class="pro_pic col-xs-12 col-xs-offset-4">
+                <img src="images/child-only.png"  class="img-responsive">
+            </div>
+            <div class="data col-xs-8 col-xs-offset-2" >
+                <input class="col-xs-12 wow bounceInLeft" type="text"  value="NAME :<?php echo $data['first_name'],' ',$data['mid_name'],' ',$data['last_name'] ?> "  disabled>
+                <input class="col-xs-12 wow bounceInRight" type="email" value="EMAIL : <?php echo $data['email'] ?>" disabled>
+                <input class="col-xs-12 wow bounceInLeft" type="text" value="ADDRESS : <?php echo $data['city'],$data['country'],$data['street'] ?>" disabled>
+                <button class="col-xs-4 col-xs-offset-2 wow bounceInLeft" id="edit" data-toggle="modal" data-target="#profile_edit_model"> edit data</button>
+                <button type="button" class="  col-xs-4 wow bounceInRight"" data-toggle="modal" data-target="#profile_complain_model">
+                complain
+                </button>
+            </div>
+        </div>
+    </div>
 
-          <div class=" ho" style=" width: 100%;height: 350px;overflow: hidden;padding: 0; ">
+    <!-- edit Modal -->
+    <div class="modal fade" id="profile_edit_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">edit data</h4>
+                </div>
+                <div class="modal-body">
+                    <form action=" <?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+                        <input class="form-control col-xs-12" type="text"  name="user" placeholder="user name"   onautocomplete="0" >
+                        <input class="form-control col-xs-12" type="password" name="pass" placeholder="password" onautocomplete="0">
+                        <input type="submit" value="edit" class="btn btn-primary">
+                    </form>
+                </div>
+                <div class="modal-footer">
 
-          </div>
-        <div class="pic">
-        <h1 class="uk-heading-line uk-text-center "><span>   <div class=" uk-border-circle" style=" background-color:white;width: 150px;height: 150px;overflow: hidden;padding: 0; ">
-                                            <img class="" width="100%" height="100%" src="images/child-only.png">
-                                        </div></span></h1></div>
-        <div class="uk-container-small"style="margin: auto;margin-bottom: 20px ">
-        <div class="uk-grid-small" uk-grid>
-            <div class="uk-width-expand" uk-leader>Name</div>
-            <div>mostafa saleh sopih</div>
-        </div><div class="uk-grid-small" uk-grid>
-            <div class="uk-width-expand" uk-leader>Id</div>
-            <div>2505545641</div>
-        </div><div class="uk-grid-small" uk-grid>
-            <div class="uk-width-expand" uk-leader>E-mail</div>
-            <div>mostafa.saleh423@yahoo.com</div>
-        </div><div class="uk-grid-small" uk-grid>
-            <div class="uk-width-expand" uk-leader>birthdate</div>
-            <div>10/10/1997</div>
-        </div><div class="uk-grid-small" uk-grid>
-            <div class="uk-width-expand" uk-leader>Gender</div>
-            <div>Male</div>
-        </div><div class="uk-grid-small" uk-grid>
-            <div class="uk-width-expand" uk-leader>age</div>
-            <div>50</div>
-        </div><div class="uk-grid-small" uk-grid>
-            <div class="uk-width-expand" uk-leader>Level</div>
-            <div>3</div>
-        </div></div><div class="uk-grid-small" uk-grid>
-            <div class="uk-width-expand" uk-leader>subject</div>
-            <div>Arabic</div>
-        </div><div class="uk-grid-small" uk-grid>
-            <div class="uk-width-expand" uk-leader>Class</div>
-            <div>A</div>
-        </div><div class="uk-grid-small" uk-grid>
-            <div class="uk-width-expand" uk-leader>address</div>
-            <div>42 sayed elgewile st Giza</div>
-        </div></div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--complain Modal -->
+    <div class="modal fade" id="profile_complain_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                    <h4 class="modal-title" id="myModalLabel">complain</h4>
+                </div>
+                <div class="modal-body">
+                    <form action=" <?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+                        <textarea class="col-xs-9" name="comp" placeholder="right your complain here please"></textarea>
+                        <input type="submit" value="send" class="btn btn-primary">
+                    </form>
+                </div>
+                <div class="modal-footer">
 
+                </div>
+            </div>
+        </div>
+    </div>
 <?php
-include "static/footer.php";
-?>
+
+
+
+include_once 'static/footer.php';

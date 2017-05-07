@@ -313,4 +313,13 @@ class user
     }
 
 
+    public function get_user_profile($id){
+        return  $this->user_query->get_user_profile($id);
+    }
+
+    public function edit_user_profile($id,$user_name,$password){
+        $this->user_query->edit_user_profile($id,$user_name,$password);
+    }
+
+
 }

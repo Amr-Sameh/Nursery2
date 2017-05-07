@@ -64,7 +64,6 @@ $(document).ready(function () {
             data: {action: action, username: username, password: password},
             success: function (data) {
 
-
                 if (data == '1') {
 
                     location.href="homee.php";
