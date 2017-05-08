@@ -2,7 +2,32 @@
  * Created by meir on 26/04/17.
  */
 $(document).ready(function () {
+    if($("#showteasher").length!=0){
+        $.ajax({
+            url: "../classes/panel_action.php",
+            method: "POST",
+            data: {action: 'showteacher'},
+            success: function (data) {
+                $('#teachers').html(data);
+            }
+        });
+    }
+    $(document).on('click', '.klklkl', function () {
+        var id=this.id.substring(2);
+        $(document).on('click', '#classstu', function () {
+           var classid=$('#all_class_for_level').val();
+            $.ajax({
+                url: "../classes/panel_action.php",
+                method: "POST",
+                data: {action: 'addclasstoteacher', class_id: classid, teacherid: id},
+                success: function (data) {
+                    $('#StudentsList'.concat(id)).html(data);
+                }
+            });
+        });
 
+
+    });
     $(".getstudentfromlevel").click(function (e) {
         var levelid = this.id.substring(2);
         $(".getstudent").click(function (e) {
@@ -25,16 +50,7 @@ $(document).ready(function () {
     }
 
 
-    $("#showteasher").click(function (e) {
-        $.ajax({
-            url: "../classes/panel_action.php",
-            method: "POST",
-            data: {action: 'showteacher'},
-            success: function (data) {
-                $('#teachers').html(data);
-            }
-        });
-    });
+
 
 
     $('#add_level').click(function () {

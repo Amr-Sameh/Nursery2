@@ -519,6 +519,7 @@ else if ($_GET['action']=='add_tech') {
 
 <!--        left nav-->
 
+
         <button class="uk-button uk-button-default uk-margin-small-right push-left-nav" type="button" uk-toggle="target: #offcanvas-push"><i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
 
         <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
@@ -550,6 +551,28 @@ else if ($_GET['action']=='add_tech') {
                 </div>
             </div>
         </div>
+    <div id="tr" uk-modal="center: true">
+        <div class="uk-modal-dialog">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <div class="uk-modal-header">
+                <h2 class="uk-modal-title">Modal Title</h2>
+            </div>
+            <div class="uk-modal-body">
+                <select class="col-xs-5" name="level_id"  style="margin-left: 3%;margin-top:1.5%" id="all_level_add_stud"required>
+
+                </select>
+
+
+                <select class="col-xs-5"name="class_id" style="margin-left: 10%;margin-top:1.5%" id="all_class_for_level" required>
+
+
+                </select></div>
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <button class="uk-button uk-button-primary  uk-modal-close"id="classstu" type="button">Save</button>
+            </div>
+        </div>
+    </div>
 <?php
 include_once 'static/footer.php';
 

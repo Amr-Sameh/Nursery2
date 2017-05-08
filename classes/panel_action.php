@@ -8,6 +8,7 @@
 if($_SERVER['REQUEST_METHOD']=='POST') {
 
 
+
     if (isset($_POST['action'])) {
 
 
@@ -15,11 +16,14 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
         if ($_POST['action'] == 'GetClassStudents') {
             include_once 'classs.php';
             $class = new classs();
+
+
             $studentsList = $class->get_class_students($_POST['class_id']);
             $studentAsTable = '';
             foreach ($studentsList as $student) {
-                 print_r($student);
-                echo "<br>"."<br>"."<br>";
+                $subname=$class->git_class_by_id($student['class_id'])['class_name'];
+                $levelname=$class->git_level_by_id($student['level_id'])['name'];
+                echo $subname.$levelname;
                 $studentAsTable .= ' <tr>';
                 $studentAsTable .= ' <td><div class=" uk-border-circle" style="width: 50px;height: 50px;overflow: hidden;padding: 0; ">';
                 $studentAsTable .= ' <img class="" width="100%" height="100%" src="images/child-only.png">';
@@ -28,20 +32,18 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
                 $studentAsTable .= ' <a class="uk-link-reset"  >' . $student['first_name'] . " " . $student['mid_name'] . " " . $student['last_name'] . '</a>';//grap the name from user table
                 $studentAsTable .= '</td><td>' . $student['stu_id'] . '</td>';
                 $studentAsTable .= ' <td><button class="uk-button uk-button-default" type="button" uk-toggle="target: #r' . $student['stu_id'] . '; animation: uk-animation-slide-left, uk-animation-slide-bottom">view</button></td>';
-                $studentAsTable .= ' <td><button class="uk-button uk-button-primary" id="'.$student['stu_id'].'" type="button">edit</button></td>
-                        <td><button class="uk-button uk-button-danger" type="button">delete</button></td>';
+                $studentAsTable .= ' <td><button class="uk-button uk-button-primary" id="'.$student['stu_id'].'" type="button" >edit</button></td>
+                        <td><a class="uk-button uk-button-danger" >delete</a></td>';
                 $studentAsTable .= '</tr><tr id="r' . $student['stu_id'] . '" class="uk-card uk-card-default uk-card-body uk-margin-small" hidden="hidden" aria-hidden="true">
-                                <td  >Username : <br>E-mail : </td><td>'.$student["username"]."<br>".$student["email"].'</td>
-                                <td  >Gender : <br>Password : </td><td>';
+                                <td  >Username : <br>E-mail : <br>Emargancy Person name : <br>Emargancy Person relation : <br>Emargancy Person phone : <br>level : <br>Birthdate : </td><td><label id="username'.$student["stu_id"].'">'.$student["username"].'</label><br><label id="email'.$student["stu_id"].'">'.$student["email"].'</label><br><label id="emrg_persone_name'.$student["stu_id"].'">'.$student["emrg_persone_name"].'</label><br><label id="emrg_persone_relation'.$student["stu_id"].'">'.$student["emrg_persone_relation"].'</label><br><label id="emrg_persone_phone'.$student["stu_id"].'">'.$student["emrg_persone_phone"].'</label><br><label id="level'.$student["stu_id"].'">'.$levelname.'</label><br><label id="class'.$student["stu_id"].'">'.$student["birth_date"].'</label></td>
+                                <td  >Gender : <br>Password : <br>country : <br>city : <br>street : <br>class : </td><td>';
 
                 if($student["gender"]==0){
                     $studentAsTable .="Female"."<br>".$student["password"];
                 }else{
-                    $studentAsTable .="Female"."<br>".$student["password"];
+                    $studentAsTable .="male"."<br>".$student["password"];
                 }
-                $studentAsTable .='</td>
-                               
-              </tr>';
+                $studentAsTable .='<br>'.$student["country"].'<br>'.$student["city"].'<br>'.$student["street"].'<br>'.$subname.'</td></tr>';
 
             }
 
@@ -52,30 +54,41 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
         }
 
 
-        if ($_POST['action'] == 'showteacherss') {
+        if ($_POST['action'] == 'addclasstoteacher') {
+        include "teacher.php";
+        $te=new teacher();
+        $te->addteacherclass($_POST['class_id'],$_POST['teacherid']);
+        }
 
-
+        if ($_POST['action'] == 'showteacher') {
+            include_once 'classs.php';
+            $class = new classs();
             include_once 'teacher.php';
             $teacher = new teacher();
             $teachersList = $teacher->get_all_teachers();
             $studentAsTable = '';
-            foreach ($teachersList as $teacher) {
+            foreach ($teachersList as $student) {
+                $subname=$class->git_sub_by_id($student['teacher_id'])['name'];
                 $studentAsTable .= ' <tr>';
                 $studentAsTable .= ' <td><div class=" uk-border-circle" style="width: 50px;height: 50px;overflow: hidden;padding: 0; ">';
                 $studentAsTable .= ' <img class="" width="100%" height="100%" src="images/child-only.png">';
                 $studentAsTable .= ' </div></td>
                                                         <td >';
-                $studentAsTable .= ' <a class="uk-link-reset"  >' . $teacher['first_name'] . " " . $teacher['mid_name'] . " " . $teacher['last_name'] . '</a>';//grap the name from user table
-                $studentAsTable .= '</td><td>' . $teacher['teacher_id'] . '</td>';
-                $studentAsTable .= ' <td><button class="uk-button uk-button-default" type="button"  uk-toggle="target: #S' . $teacher['teacher_id'] . '; animation:  uk-animation-slide-left, uk-animation-slide-bottom">view</button></td>';
-                $studentAsTable .= ' <td><button class="uk-button uk-button-primary" type="button">edit</button></td>
+                $studentAsTable .= ' <a class="uk-link-reset"  >' . $student['first_name'] . " " . $student['mid_name'] . " " . $student['last_name'] . '</a>';//grap the name from user table
+                $studentAsTable .= '</td><td>' . $student['teacher_id'] . '</td>';
+                $studentAsTable .= ' <td><button class="uk-button uk-button-default" type="button"  uk-toggle="target: #S' . $student['teacher_id'] . '; animation:  uk-animation-slide-left, uk-animation-slide-bottom">view</button></td>';
+                $studentAsTable .= ' <td><button class="uk-button uk-button-primary klklkl"id="sd'.$student["teacher_id"].'" type="button" href="#tr" uk-toggle>edit</button></td>
                         <td><button class="uk-button uk-button-danger" type="button">delete</button></td>';
-                $studentAsTable .= '</tr><tr id="S' . $teacher['teacher_id'] . '" class="uk-card uk-card-default uk-card-body uk-margin-small" hidden="hidden" aria-hidden="true">
-                                <td ><div >aslkadsdjkalsdlkajskdljaskdjksajd dfklsdjfds fsdklfjsdkf dfkljsdlf dikfljsdkf diokfljsdkkf dklsfjsdlkfdkls;ad</div></td>
-                                <td ><div >aslkadsdjkalsdlkajskdljaskdjksajd dfklsdjfds fsdklfjsdkf dfkljsdlf dikfljsdkf diokfljsdkkf dklsfjsdlkfdkls;ad</div></td>
-                                <td></td>
-                                <td></td>
-              </tr>';
+                $studentAsTable .= '</tr><tr id="S' . $student['teacher_id'] . '" class="uk-card uk-card-default uk-card-body uk-margin-small" hidden="hidden" aria-hidden="true">
+                                <td  >Username : <br>E-mail : <br>level : <br>Birthdate : </td><td><label id="username'.$student["teacher_id"].'">'.$student["username"].'</label><br><label id="email'.$student["teacher_id"].'">'.$student["email"].'</label><br><label id="level'.$student["teacher_id"].'">'.$subname.'</label><br><label id="class'.$student["teacher_id"].'">'.$student["birth_date"].'</label></td>
+                                <td  >Gender : <br>Password : <br>country : <br>city : <br>street : <br>class : </td><td>';
+
+                if($student["gender"]==0){
+                    $studentAsTable .="Female"."<br>".$student["password"];
+                }else{
+                    $studentAsTable .="male"."<br>".$student["password"];
+                }
+                $studentAsTable .='<br>'.$student["country"].'<br>'.$student["city"].'<br>'.$student["street"].'<br>'.'</td></tr>';
 
             }
 

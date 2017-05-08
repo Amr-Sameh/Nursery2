@@ -90,4 +90,9 @@ class student_query
     	$query = "UPDATE student SET stage = '$stage',emrg_persone_name = '$this->emrg_persone_name',emrg_persone_relation = '$this->emrg_persone_relation',emrg_persone_phone = '$this->emrg_persone_phone',class_id = '$class_id',level_id = '$level_id',iq_grade = '$iq_grade' WHERE stu_id = '$stu_id'";
     	$this->db->excute_query($query);
     }
+    public function get_stu_id_by_user_id($user_id){
+$query="SELECT stu_id FROM student WHERE user_id=$user_id LIMIT 1";
+return$this->db->excute_query($query)->fetch()['stu_id'];
+}
+
 }

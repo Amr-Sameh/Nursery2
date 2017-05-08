@@ -155,6 +155,14 @@ public function get_class_sub()
     }
     */
 
-
+      public function git_class_by_id($id){
+         return $this->classquery->git_class_by_id($id);
+      }
+    public function git_level_by_id($id){
+      return  $this->classquery->git_level_by_id($id);
+    }
+    public function git_sub_by_id($id){
+        return  $this->classquery->git_sub_by_id($id);
+    }
 
 }

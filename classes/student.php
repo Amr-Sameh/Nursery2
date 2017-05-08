@@ -120,4 +120,8 @@ class student extends user
     public function getIq_grade(){
     	return $this->iq_grade;
     }
+    public function get_stu_id_by_user_id($user_id){
+       return $this->student_query->get_stu_id_by_user_id($user_id);
+    }
+
 }
