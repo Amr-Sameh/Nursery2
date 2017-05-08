@@ -3,7 +3,6 @@
  */
 $(document).ready(function () {
 
-       print();
     $(".getstudentfromlevel").click(function (e) {
         var levelid = this.id.substring(2);
         $(".getstudent").click(function (e) {
