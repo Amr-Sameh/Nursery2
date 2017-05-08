@@ -6,7 +6,14 @@
  * Time: 10:56 م
  */
 //TODO pop-up iframe window to view events
-
+if($_SERVER['REQUEST_METHOD']=="POST"){
+    if(isset($_GET['action']) && $_GET['action']="add_sub"){
+        include_once '../classes/subject.php';
+        $sub=new subject();
+$sub->add_new_sub($_POST['sub_name']);
+header('location:panel.php?action=sub');
+    }
+}
 function activ($currect_page){
     $url_array =  explode('/', $_SERVER['REQUEST_URI']) ;
     $url = end($url_array);
@@ -18,7 +25,8 @@ function activ($currect_page){
     }
 }
 
-
+if (!isset($_GET['action']))
+    $_GET['action']="";
 
 include_once 'static/header.php';
 include_once 'navbar.php';
@@ -389,6 +397,27 @@ else if ($_GET['action']=='add_tech') {
 
 
 
+        <?php
+    }
+
+
+
+    else if ($_GET['action']=='sub') {
+
+        ?>
+
+
+
+
+        <br>
+        <br>
+        <br>
+        <form action="<?php echo $_SERVER['PHP_SELF']."?action=add_sub" ?>" method="post">
+            <input name="sub_name" type="text" placeholder="subject - name" class="input-lg col-xs-5">
+            <button type="submit" class="btn-lg btn-primary col-xs-offset-1">ADD <i class="fa fa-plus-circle"
+                                                                                   aria-hidden="true"></i></button>
+        </form>
+
 
 
 
@@ -396,6 +425,9 @@ else if ($_GET['action']=='add_tech') {
 
             <?php
         }
+
+
+
         else if ($_GET['action']=='class') {
 
         ?>
@@ -535,6 +567,8 @@ else if ($_GET['action']=='add_tech') {
 
         <li><a  href="<?php echo $_SERVER['PHP_SELF'].'?action=student';?>">Student</a></li>
         <li id="showteasher"><a  href="<?php echo $_SERVER['PHP_SELF'].'?action=teacher';?>" >Teacher</a></li>
+        <li id="showteasher"><a  href="<?php echo $_SERVER['PHP_SELF'].'?action=add_stud';?>" >Add Student</a></li>
+        <li id="showteasher"><a  href="<?php echo $_SERVER['PHP_SELF'].'?action=add_tech';?>" >Add Teacher</a></li>
                      </ul></li>
 
 
@@ -545,6 +579,8 @@ else if ($_GET['action']=='add_tech') {
 
                         <li class="left-nav-link col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=level';?>">Levels</a></li>
                         <li class="left-nav-link col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=class';?>">Classes</a></li>
+                        <li class="left-nav-link col-xs-12"><a href="<?php echo $_SERVER['PHP_SELF'].'?action=sub';?>">Subjects</a></li>
+
                     </ul>
                    </div>
                 </div>

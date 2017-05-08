@@ -205,11 +205,17 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 
         if ($_POST['action'] == 'addStudent') {
             include_once '../classes/student.php';
+            include_once '../classes/Printpdf.php';
             $user = new user();
             $user_id = $user->insert_user($_POST['first_name'], $_POST['mid_name'], $_POST['last_name'], $_POST['gender'], 3);
             $stu=new student();
             $stu->insert_student($user_id, $_POST['level_id'], $_POST['class_id']);
-            echo "Operation Success";
+            $user_info=$user->get_user_by_id($user_id);
+            $pdf=new pdf1();
+            $pdf->AddPage();
+            $pdf->content($user_info['first_name'],$user_info['mid_name'],$user_info['last_name'],$user_info['username'],$user_info['password']);
+            $pdf->Output("user_info/$user_id.pdf","F");
+            echo "../classes/download.php?file=".$user_id.".pdf&path=user_info/";
             exit();
         }
 
@@ -251,7 +257,12 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
             $user_id = $user->insert_user($_POST['first_name'], $_POST['mid_name'], $_POST['last_name'], $_POST['gender'], 2);
             $tech = new teacher();
             $tech->addnewTeacher($user_id, $_POST['subject']);
-            echo "Operation Success";
+            $user_info=$user->get_user_by_id($user_id);
+            $pdf=new pdf1();
+            $pdf->AddPage();
+            $pdf->content($user_info['first_name'],$user_info['mid_name'],$user_info['last_name'],$user_info['username'],$user_info['password']);
+            $pdf->Output("user_info/$user_id.pdf","F");
+            echo "../classes/download.php?file=".$user_id.".pdf&path=user_info/";
             exit();
         }
 

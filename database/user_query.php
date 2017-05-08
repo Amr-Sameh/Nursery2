@@ -36,7 +36,7 @@ class user_query
 }
     public function get_user_by_id($id){
         $query="SELECT * FROM  general_user WHERE id='$id' LIMIT 1";
-        $row =$this->db->excute_query($query);
+     return   $this->db->excute_query($query)->fetch();
     }
 
 

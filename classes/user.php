@@ -320,6 +320,9 @@ class user
     public function edit_user_profile($id,$user_name,$password){
         $this->user_query->edit_user_profile($id,$user_name,$password);
     }
+    public function get_user_by_id($id){
+        return  $this->user_query->get_user_by_id($id);
+    }
 
 
 }

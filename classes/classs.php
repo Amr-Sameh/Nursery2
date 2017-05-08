@@ -155,6 +155,13 @@ public function get_class_sub()
     }
     */
 
+    public function get_class_id_by_stu_id($id)
+    {
+        return $this->classquery->get_class_id_by_stu_id($id);
+
+    }
+
+
 
 
 }

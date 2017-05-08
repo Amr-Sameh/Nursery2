@@ -163,5 +163,10 @@ class class_query
         $query="SELECT * FROM class WHERE level_id=$level_id";
         return $this->db->excute_query($query)->fetchAll();
     }
+    public function get_class_id_by_stu_id($id){
+
+        $query="SELECT class_id FROM student WHERE stu_id=$id LIMIT 1";
+        return $this->db->excute_query($query)->fetch();
+    }
 
 }

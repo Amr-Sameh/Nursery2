@@ -37,6 +37,39 @@ if(isset($_POST['action'])&&$_POST['action']=='logout'){
 }
 }
 
+
+if (isset($_SESSION['user_type'])){
+    if ($_SESSION['user_type']!=1&&$_SESSION['user_type']!=2){
+        include_once '../classes/student.php';
+        include_once '../classes/classs.php';
+
+        $stu=new student();
+        $stu_id=$stu->get_stu_id_by_user_id($_SESSION['user_id']);
+        $class=new classs();
+        $class_id=$class->get_class_id_by_stu_id($stu_id);
+        $class_link='<li><a class="hvr-sweep-to-right" href="class.php?class='.$class_id['class_id'].'"><i class="fa fa-cogs" aria-hidden="true"></i>
+class</a></li>';
+    }
+   else if($_SESSION['user_type']==2){
+        include_once '../classes/teacher.php';
+        include_once '../classes/classs.php';
+        $teach =new teacher();
+        $teach_id=$teach->get_teacher_id($_SESSION['user_id']);
+        $classes=$teach->get_teacher_class($teach_id);
+
+$class_link='';
+foreach ($classes as $class){
+    $class_link.='<li><a class="hvr-sweep-to-right" href="class.php?class='.$class['class_id'].'"><i class="fa fa-cogs" aria-hidden="true"></i>
+'.$class['class_name'].'</a></li>';
+}
+    }
+    else if ($_SESSION['user_type']==1){
+        $class_link='<li><a class="hvr-sweep-to-right" href="panel.php"><i class="fa fa-cogs" aria-hidden="true"></i>
+Panel</a></li>';
+    }
+
+}
+
 ?>
 
 <nav class="navbar navbar-default  ">
@@ -74,10 +107,9 @@ if(isset($_POST['action'])&&$_POST['action']=='logout'){
                     echo ' <li class="dropdown nav-switch">
           <a href="" class="dropdown-toggle hvr-sweep-to-right" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$_SESSION['first_name'].'<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a class="hvr-sweep-to-right" href="#'.$_SESSION['user_id'].'"><i class="fa fa-user" aria-hidden="true"></i>
+            <li><a class="hvr-sweep-to-right" href="profile.php"><i class="fa fa-user" aria-hidden="true"></i>
 Profile</a></li>
-            <li><a class="hvr-sweep-to-right" href="#"><i class="fa fa-cogs" aria-hidden="true"></i>
-Settings</a></li>
+            '.$class_link.'
             <li role="separator" class="divider"></li>
             <li><a id="logout" class="hvr-sweep-to-right" href="#"><i class="fa fa-lock" aria-hidden="true"></i>  Logout </a></li>
           </ul>

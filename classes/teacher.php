@@ -38,6 +38,15 @@ public function addnewTeacher($user_id,$sub_id){
 
       return $this->teacherquery->get_teacher_sub($techid);
     }
+    function get_teacher_class($id){
+        return $this->teacherquery->get_teacher_class($id);
+    }
+
+    function get_teacher_id($id){
+        return $this->teacherquery->get_teacher_id($id);
+    }
+
+
     /**
      * @return mixed
      */
