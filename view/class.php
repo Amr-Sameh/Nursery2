@@ -61,7 +61,7 @@ if(isset($_POST["reportpostid"])){
         <div class="uk-container-expand post ">
             <div class="container">
                 <li class="hlhl" >
-<!--                    <div class="note"  id="--><?php //echo $userid;?><!--"></div>-->
+                    <div class="note"  id="<?php echo $userid;?>"></div>
                     <div class="uk-card uk-carde uk-card-default uk-width-2-3@m uk-visible-toggle" >
                         <div class="uk-card-header" style="background-color:  #f8f8f8">
                             <div class="uk-grid-small uk-flex-middle" uk-grid>

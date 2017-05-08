@@ -23,6 +23,11 @@ class TL_Queries
         if($check>$tldate)return;
         $query="INSERT INTO timeline (`fr_tech_id`,`tldate`,`headline`,`content`) VALUES('$id','$tldate','$headline','$content')";
         $this->db->excute_query($query);
+        $TimeLine="TimeLine";
+        $query="INSERT INTO `notification`(`not_id`, `sender_heder`, `not_content`, `reciver_id`, `not_date`, `not_seen`)
+                                    VALUES (NULL ,'$TimeLine','$content','$id','$tldate',0)";
+        $this->db->excute_query($query);
+
     }
 
     public function update_TL($tldate, $headline, $content, $id,$tl_id)

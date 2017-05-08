@@ -51,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!-- new timeline -->
     <!-- show timeline contained-->
     <header class="page-header">
+        <div class="note"  id="<?php echo $id;?>"></div>
         <h1 style="">Timeline</h1>
 
         <a href="#newtask" uk-toggle class="create">
