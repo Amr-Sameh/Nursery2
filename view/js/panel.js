@@ -103,12 +103,11 @@ $(document).ready(function () {
             method: "POST",
             data: add_stud.serialize() + "&action=addStudent",
             success: function (data) {
-                if (data == "Operation Success") {
-                    alert(data);
-                }else{
-                    alert(data);
-                }
                 add_stud[0].reset();
+                    var win = window.open(data, '_blank');
+                    win.focus();
+
+
             }
         });
     });
@@ -148,14 +147,10 @@ $(document).ready(function () {
             method: "POST",
             data: add_tech.serialize() + "&action=addTeacher",
             success: function (data) {
-
-                if (data == "Operation Success") {
-                    alert(data);
-                }else{
-                    alert("Some Error happen");
-
-                }
                 add_tech[0].reset();
+                var win = window.open(data, '_blank');
+                win.focus();
+
             }
         });
     });

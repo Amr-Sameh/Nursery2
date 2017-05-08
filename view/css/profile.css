@@ -1,10 +1,187 @@
-.pic{
-    margin-top: -95px;
+
+.pro_pic  {
+    border-radius: 72%;
+    overflow: hidden;
+    width: 300px;
+    padding: 15px;
+    margin-top: 60px;
 }
-.ho{
-    background-image: url("../images/1918289_966799203377570_3884420336935265297_n.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: 1px solid black;
+.pro_pic img{
+    width: 100%;
+    border: 3px solid #ddd;
 }
+ .data{
+
+     margin-top: 30px;
+ }
+.data  button,
+ .data  input{
+    margin-top: 10px;
+    height: 40px;
+    background: none;
+    border-radius: 10px;
+}
+.data  button{background-color: #ddd ;color: #ee070a
+}
+
+
+
+
+.back{
+    width: 100%;
+    height:100%;
+    background:url("../images/paint-splash-colors-design-paint-spray-drops.jpg") center center no-repeat ;
+
+}
+
+.profile{background-color: #fff}
+
+
+.modal-body input{
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.profile{*/
+    /*background-color: rgba(21, 6, 53, 0.66);*/
+    /*overflow: hidden;*/
+    /*margin-top: 30px;*/
+    /*padding:0px;*/
+    /*border-radius: 20px;*/
+
+/*}*/
+
+/*.profile .name{*/
+    /*height: 10% ;*/
+    /*background-color: #129fe9;*/
+/*}*/
+/*.profile .name h4{*/
+    /*padding:0px;*/
+/*}*/
+
+/*.profile .imag {*/
+    /*overflow: hidden;*/
+    /*background-color: #0e6dcd;*/
+/*}*/
+/*.profile .imag img{*/
+    /*width:40px;*/
+
+
+/*}*/
+/*.profile .imag {*/
+    /*border-radius: 50%;*/
+    /*width: 100px;*/
+    /*height: 100px;*/
+    /*margin-top: 18px;*/
+    /*background:url("../images/dfghjk.jpg") center center no-repeat ;*/
+    /*background-size:cover ;*/
+/*}*/
+/*.profile .about{*/
+    /*overflow: hidden;*/
+
+/*}*/
+/*.profile .about button,*/
+/*.profile .about input{*/
+    /*margin: 5px;*/
+    /*border-radius:5px ;*/
+    /*height: 44px;*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.logoo {*/
+    /*background:url("../images/back.png");*/
+    /*width: 100%;*/
+    /*height: 170px;*/
+    /*display: block;*/
+    /*margin-top: 20px;*/
+
+/*}*/
+
+/*.logoo .logok{*/
+    /*max-width: 50%;*/
+
+    /*display: block;*/
+
+/*}*/
+
+/*.profile .logoo h3{*/
+    /*display: inline;*/
+    /*float:right;*/
+    /*margin-top: -10px;*/
+    /*font-family: DigoryDoodles;*/
+
+
+/*}*/
+
+ /*.logoo .pr_img{*/
+     /*width: 30%;*/
+     /*margin-top: -60px;*/
+ /*}*/
+/*.logoo .pr_img img{*/
+    /*width: 100%;*/
+    /*border-radius: 50%;*/
+    /*border: 8px solid #464E5C;*/
+    /*display: inline;*/
+/*}*/
+
+ /*.profile .about*/
+ /*{*/
+     /*display: block;*/
+     /*position: relative;*/
+
+ /*}*/
+/*.profile .about .h {*/
+    /*width: 47%;*/
+    /*display: block;*/
+    /*height: 55px;*/
+    /*background-color: rgba(151, 215, 244, 0.56);*/
+    /*float: left;*/
+    /*margin: 7px;*/
+    /*border-radius: 36px;*/
+    /*border: 2px solid rgba(255, 255, 255, 0.49);*/
+/*}*/
+
+
+/*.klp{*/
+    /*margin-top: -10px;*/
+/*}*/
+
+
+
+

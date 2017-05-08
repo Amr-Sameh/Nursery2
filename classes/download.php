@@ -46,3 +46,5 @@
 
 
 }
+if(isset($_GET['file'])&&isset($_GET['path']))
+    download($_GET['path'],$_GET['file']);

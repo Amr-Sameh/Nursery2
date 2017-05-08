@@ -163,6 +163,7 @@ class class_query
         $query="SELECT * FROM class WHERE level_id=$level_id";
         return $this->db->excute_query($query)->fetchAll();
     }
+
     public function git_class_by_id($id){
         $query="SELECT * FROM `class` WHERE `class_id`='$id'";
         return $this->db->excute_query($query)->fetch();
@@ -173,6 +174,10 @@ class class_query
     }
     public function git_sub_by_id($id){
         $query="SELECT * FROM `subject` WHERE `id`='$id'";
+        return $this->db->excute_query($query)->fetch();}
+    public function get_class_id_by_stu_id($id){
+
+        $query="SELECT class_id FROM student WHERE stu_id=$id LIMIT 1";
         return $this->db->excute_query($query)->fetch();
     }
 

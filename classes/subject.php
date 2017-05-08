@@ -36,6 +36,9 @@ class subject
     public function get_all_subjects_not_in_level($id){
         return $this->subject_query->get_all_sub_not_in_level($id);
     }
+    public function add_new_sub($name){
+        $this->subject_query->add_new_sub($name);
+    }
 
 
 

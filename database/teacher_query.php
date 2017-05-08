@@ -38,9 +38,20 @@ public function add_new_Teacher($user_id,$sub_id){
         $query="SElECT sub_id from teacher where user_id ='$tech_id'";
         return $this->db->excute_query($query)->fetch();
     }
-    public function addteacherclass($classid,$teid){
-        $query="INSERT INTO `class_to_teacher`(`teacher_id`, `class_id`) VALUES ($teid,$classid)";
+
+    public function addteacherclass($classid,$teid)
+    {
+        $query = "INSERT INTO `class_to_teacher`(`teacher_id`, `class_id`) VALUES ($teid,$classid)";
         $this->db->excute_query($query);
+    }
+    public function get_teacher_class($id){
+        $query="SELECT * FROM class_to_teacher ,class WHERE class_to_teacher.teacher_id=$id AND class.class_id=class_to_teacher.class_id";
+        return $this->db->excute_query($query)->fetchAll();
+    }
+    public function get_teacher_id($id){
+        $query="SELECT teacher_id FROM teacher WHERE user_id=$id";
+        return $this->db->excute_query($query)->fetch()['teacher_id'];
+
     }
 
 }

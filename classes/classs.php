@@ -155,6 +155,7 @@ public function get_class_sub()
     }
     */
 
+
       public function git_class_by_id($id){
          return $this->classquery->git_class_by_id($id);
       }
@@ -164,5 +165,15 @@ public function get_class_sub()
     public function git_sub_by_id($id){
         return  $this->classquery->git_sub_by_id($id);
     }
+
+    public function get_class_id_by_stu_id($id)
+    {
+        return $this->classquery->get_class_id_by_stu_id($id);
+
+    }
+
+
+
+
 
 }

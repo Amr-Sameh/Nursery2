@@ -40,6 +40,10 @@ class subject_query
         return $this->db->excute_query($query)->fetchAll();
     }
 
+    public function add_new_sub($name){
 
+        $query="INSERT INTO subject (`name`) VALUES ('$name')";
+        $this->db->excute_query($query);
+    }
 
 }
