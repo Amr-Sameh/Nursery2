@@ -183,6 +183,7 @@ if(isset($_POST["reportpostid"])){
                                             <tr>
                                                 <th >Name</th>
                                                 <th >HoneWork</th>
+                                                <th >Deadline</th>
                                                 <th >Answer</th>
                                                 <th >Grade</th>
                                                 <th >Comment</th>
@@ -200,6 +201,7 @@ if(isset($_POST["reportpostid"])){
                                                     <td >
                                                         <a class="download" href="<?php echo '../classes/amr_test.php?action='.$val['hw_id'];?>" uk-icon="icon: cloud-download; ratio: 2" id="<?php echo $val['hw_id'];?>"></a>
                                                     </td>
+                                                    <td><?php echo $val['dead_line']?></td>
                                                     <td>
 
 
@@ -248,6 +250,7 @@ if(isset($_POST["reportpostid"])){
                                             <tr>
                                                 <th >Name</th>
                                                 <th >Id</th>
+                                                <th >Dadeline</th>
                                                 <th >Answer</th>
                                                 <th >Grade</th>
                                                 <th >Comment</th>
@@ -263,6 +266,8 @@ if(isset($_POST["reportpostid"])){
 
                                                     <td><p><?php echo $student['first_name']." ".$student['mid_name']." ".$student['last_name'];?></p></td>
                                                     <td><p><?php echo $student['username']?></p></td>
+                                                    <td><?php echo $value['dead_line']?></td>
+
                                                     <td >
                                                         <?php $answerid=$answer->get_answer_id($value['hw_id'],$student['stu_id'])?>
                                                         <a class="download" href="<?php echo '../classes/amr_test.php?downloadanswer='.$answerid['answer_id'];?>" uk-icon="icon: cloud-download; ratio: 2" id="<?php echo $val['hw_id'];?>"></a>
@@ -424,13 +429,10 @@ if(isset($_POST["reportpostid"])){
                     <li><a href="#">students</a><p class="uk-heading-divider"></p></li>
                     <li><a href="panel.php">Timetable</a><p class="uk-heading-divider"></p></li>
                 </ul>
-<form id="quta">
-                <div class="test-upload" uk-form-custom>
-                    <input type="file" multiple name="hw_upload" id="hw_upload">
-                    <button class="uk-button uk-button-default hw_upload_btn" type="button" tabindex="-1 " name="<?php echo $classid?>" id="<?php echo $sub_id ?>" >Add New HW</button>
-                </div>
-</form>
-
+                <?php
+                if($gropid==2)
+                    echo ' <button  href="#dateline" uk-toggle>llll</button>';
+                ?>
 
 
             </div>
@@ -460,6 +462,29 @@ if(isset($_POST["reportpostid"])){
             <button class="uk-button uk-button-default uk-modal-close try" type="button" id="nodelet">Cancel</button>
             <button class="uk-button uk-button-primary uk-modal-close" id="yesdelet" type="button">Confirm</button>
         </p>
+    </div>
+
+    <div id="dateline" uk-modal="center: true">
+        <div class="uk-modal-dialog">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <div class="uk-modal-header">
+                <h2 class="uk-modal-title">Modal Title</h2>
+            </div>
+            <div class="uk-modal-body">
+                <form id="quta" class="uk-form">
+                    <div class="test-upload" uk-form-custom>
+                        <input type="file" multiple name="hw_upload" id="hw_upload" required>
+                        <button class="uk-button uk-button-default hw_upload_btn" type="button" tabindex="-1 " name="<?php echo $classid?>" id="<?php echo $sub_id ?>">Add New HW</button>
+                    </div>
+
+                    <input type="date" data-uk-datepicker="{format:'DD.MM.YYYY'}" name="hw_deadline" required>
+
+                </form></div>
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <button class="uk-button uk-button-primary" type="button" id="submit_new_hw">Save</button>
+            </div>
+        </div>
     </div>
 
 </div>

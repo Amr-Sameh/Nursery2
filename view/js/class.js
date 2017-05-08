@@ -236,24 +236,49 @@ alert(data);
 
 
 
-    document.getElementById('hw_upload').addEventListener("change", handleFiles, false);
-    function handleFiles() {
+    // document.getElementById('hw_upload').addEventListener("change", handleFiles, false);
+    // function handleFiles() {
+    //     var form = new FormData(document.getElementById('quta'));
+    //     form.append("class_id",$('.hw_upload_btn').attr('name'));
+    //     form.append("sub_id",$('.hw_upload_btn').attr('id'));
+    //
+    //     $.ajax({
+    //        url: "../classes/amr_test.php",
+    //         method:"POST",
+    //         data :form,
+    //         contentType: false,
+    //         cache: false,
+    //         processData:false,
+    //         success:function (data) {
+    //
+    //         }
+    //     });
+    // }
+
+
+
+    $('#submit_new_hw').click(function () {
         var form = new FormData(document.getElementById('quta'));
         form.append("class_id",$('.hw_upload_btn').attr('name'));
         form.append("sub_id",$('.hw_upload_btn').attr('id'));
 
         $.ajax({
-           url: "../classes/amr_test.php",
+            url: "../classes/amr_test.php",
             method:"POST",
             data :form,
             contentType: false,
             cache: false,
             processData:false,
             success:function (data) {
-
+alert(data);
             }
         });
-    }
+    });
+
+
+
+
+
 
 
 });

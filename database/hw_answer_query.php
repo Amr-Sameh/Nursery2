@@ -16,10 +16,16 @@ class hw_answer_query
         $this->db=new database();
     }
     public function add_hw_answer_return_id($hw_id,$stu_id){
-        $query="INSERT INTO `hw_answer`( `hw_id`, `stu_id`) VALUES ($hw_id,$stu_id)";
-        $this->db->excute_query($query);
-        $query="SELECT `answer_id` FROM `hw_answer` ORDER BY `answer_id` DESC LIMIT 1";
-        return $this->db->excute_query($query)->fetch()['answer_id'];
+        $datee=date("y-m-d");
+        $query="SELECT * FROM `hw` WHERE  `hw_id` = '$hw_id' AND `dead_line` >= '$datee' LIMIT 1";
+        if($this->db->excute_query($query)->rowCount()==0) {
+             return "-1";
+        }else{
+            $query = "INSERT INTO `hw_answer`( `hw_id`, `stu_id`) VALUES ($hw_id,$stu_id)";
+            $this->db->excute_query($query);
+            $query = "SELECT `answer_id` FROM `hw_answer` ORDER BY `answer_id` DESC LIMIT 1";
+            return $this->db->excute_query($query)->fetch()['answer_id'];
+        }
     }
 
     public function get_answer_id($hw_id,$stu_id){

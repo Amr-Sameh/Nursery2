@@ -16,7 +16,7 @@
     if(isset($_FILES['hw_upload'])){
 include_once 'hw_class.php';
 $hw=new hw();
-$hw_id=$hw->add_hw_return_id($_POST['class_id'],$_POST['sub_id']);
+$hw_id=$hw->add_hw_return_id($_POST['class_id'],$_POST['sub_id'],$_POST['hw_deadline']);
 
 
 
@@ -26,24 +26,22 @@ $hw_id=$hw->add_hw_return_id($_POST['class_id'],$_POST['sub_id']);
         move_uploaded_file($tmp_file, '../upload/hw/' . $hw_id.".".$file_ex);
 
 
-echo 'file Uploaded';
-
-
-
 }
 
 if(isset($_FILES['stu_id_answer'])){
 include_once "hw_answer.php";
 $hw_answer=new hw_answer();
 $hw_answer_id=$hw_answer->add_hw_answer_return_id($_POST['hw_id'],$_POST['stu_id']);
-
+if ($hw_answer_id!="-1"){
     $tmp_file = $_FILES['stu_id_answer']['tmp_name'];
     $filename = $_FILES['stu_id_answer']['name'];
     $file_ex=substr($_FILES["stu_id_answer"]["name"], strrpos($_FILES["stu_id_answer"]["name"], ".") + 1);
     move_uploaded_file($tmp_file, '../upload/answer/' . $hw_answer_id.".".$file_ex);
 
 
-    echo 'file Uploaded';
+    echo 'file Uploaded';}else{
+    echo "deadline end";
+}
 
 }
 

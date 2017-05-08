@@ -23,8 +23,8 @@ class hw_query
     }
 
 
-    public function add_hw_return_id($class_id,$sub_id){
-        $query="INSERT INTO `hw`( `sub_id`, `class_id`) VALUES ($sub_id,$class_id)";
+    public function add_hw_return_id($class_id,$sub_id,$dead){
+        $query="INSERT INTO `hw`( `sub_id`, `class_id` , `dead_line`) VALUES ($sub_id,$class_id,'$dead')";
       $this->db->excute_query($query);
         $query="SELECT `hw_id` FROM `hw` ORDER BY `hw_id` DESC LIMIT 1";
         return $this->db->excute_query($query)->fetch()['hw_id'];
