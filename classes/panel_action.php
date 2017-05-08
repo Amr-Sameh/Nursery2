@@ -266,6 +266,8 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
         if ($_POST['action'] == 'addTeacher') {
             include_once '../classes/user.php';
             include_once '../classes/teacher.php';
+            include_once '../classes/Printpdf.php';
+
             $user = new user();
             $user_id = $user->insert_user($_POST['first_name'], $_POST['mid_name'], $_POST['last_name'], $_POST['gender'], 2);
             $tech = new teacher();

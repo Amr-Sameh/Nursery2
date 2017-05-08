@@ -8,9 +8,8 @@
 include_once 'static/header.php';
 include_once 'navbar.php';
 include_once '../classes/user.php';
-//$id=$_SESSION['id'];
+$id=$_SESSION['user_id'];
 $user=new user();
-$id='1';
 $data=$user->get_user_profile($id);
 // check if method post request
 $username='';
@@ -18,14 +17,23 @@ $password='';
 
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
+    if(isset($_POST['submit_edit'])){
     $username =$_POST['user'];
     $password =$_POST['pass'];
-    $complain=$_POST['comp'];
+        $user->edit_user_profile( $id,$username,$password);
+
+    }
+
+    if(isset($_POST['submit_comp'])) {
+        $complain = $_POST['comp'];
+        include_once '../classes/complain.php';
+        $comp=new complain();
+        $comp->in($id,$complain);
+    }
 }
 
-echo $complain ;
 
-$user->edit_user_profile( $id,$username,$password);
+
 
 
 
@@ -62,7 +70,7 @@ $user->edit_user_profile( $id,$username,$password);
                     <form action=" <?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                         <input class="form-control col-xs-12" type="text"  name="user" placeholder="user name"   onautocomplete="0" >
                         <input class="form-control col-xs-12" type="password" name="pass" placeholder="password" onautocomplete="0">
-                        <input type="submit" value="edit" class="btn btn-primary">
+                        <input type="submit" value="edit" class="btn btn-primary" name="submit_edit">
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -82,7 +90,7 @@ $user->edit_user_profile( $id,$username,$password);
                 <div class="modal-body">
                     <form action=" <?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                         <textarea class="col-xs-9" name="comp" placeholder="right your complain here please"></textarea>
-                        <input type="submit" value="send" class="btn btn-primary">
+                        <input type="submit" value="send" class="btn btn-primary" name="submit_comp">
                     </form>
                 </div>
                 <div class="modal-footer">

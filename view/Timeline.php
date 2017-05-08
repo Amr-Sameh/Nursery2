@@ -9,8 +9,7 @@ include_once 'static/header.php';
 include_once 'navbar.php';
 include_once '../database/TL_Queries.php';
 $my_tl = new TL_Queries();
-$_SESSION['id'] = 1; // that will be stored in
-$id = $_SESSION['id'];
+$id = $_SESSION['user_id'];
 $page=1;
 $page_num=0;
    if(isset($_GET['page'])){

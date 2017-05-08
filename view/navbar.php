@@ -62,6 +62,9 @@ foreach ($classes as $class){
     $class_link.='<li><a class="hvr-sweep-to-right" href="class.php?class='.$class['class_id'].'"><i class="fa fa-cogs" aria-hidden="true"></i>
 '.$class['class_name'].'</a></li>';
 }
+       $class_link.='<li><a class="hvr-sweep-to-right" href="Timeline.php"><i class="fa fa-cogs" aria-hidden="true"></i>Time Line</a></li>';
+
+
     }
     else if ($_SESSION['user_type']==1){
         $class_link='<li><a class="hvr-sweep-to-right" href="panel.php"><i class="fa fa-cogs" aria-hidden="true"></i>

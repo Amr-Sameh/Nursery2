@@ -240,7 +240,28 @@ include_once 'navbar.php';
         echo '<h1>survey</h1>';
 
     else if ($_GET['action']=='complain')
-        echo '<h1>cpmplain</h1>';
+    {
+        include_once '../classes/complain.php';
+        include_once '../classes/user.php';
+        $user = new user();
+        $comp = new complain();
+        $result = $comp->out();
+        foreach ($result as $com){
+            $use=$user->get_user_by_id($com['user_id']);
+        ?>
+
+            <div>
+                <div class="uk-card uk-card-hover uk-card-body">
+                    <h3 class="uk-card-title  text-primary " ><?php echo $use['first_name']?></h3>
+                    <br>
+                    <p><?php echo $com['content'] ?></p>
+                </div>
+            </div>
+
+
+        <?php
+        }
+    }
     else if ($_GET['action']=='event'){
         ?>
 
